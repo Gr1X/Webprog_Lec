@@ -30,16 +30,11 @@
 
                 <!-- Navigasi Tambah Event dan My Event -->
                 <ul class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll">
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="#">
-                            <i class='bx bxs-calendar-plus fs-4'></i>
-                            <span class="mx-2 p-0">Tambah Event</span>
-                        </a>
-                    </li>
+                
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center" href="#">
                             <i class='bx bxs-calendar-event fs-4'></i>
-                            <span class="mx-2 p-0">My Event</span>
+                            <span class="mx-2 p-0">My List</span>
                         </a>
                     </li>
                     
@@ -49,7 +44,7 @@
                             <i class='bx bxs-user-circle fs-1 text-dark'></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                            <li><a class="dropdown-item" href="accountinfo.php">Account Settings</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item text-danger d-flex justify-content-between" href="#">Log Out<i class='bx bx-log-out fs-4 align-self-center' ></i></a></li>
                         </ul>
@@ -64,7 +59,7 @@
             <!-- Card Gambar Event -->
             <div class="col-md-4">
                 <div class="card border border-0 mb-4" style="width: 100%;">
-                    <img src="../img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
+                    <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
                     <div class="card-body mt-4 p-0">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
@@ -89,9 +84,9 @@
       <!-- Modal Event -->
         <div class="modal fade border border-0" id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
             <div class="modal-dialog modal_custom modal-dialog-centered border border-0">
-                <div class="modal-content rounded-4">
-                    <img src="../img/christmas.jpg" class="card-img-top object-fit-cover rounded-top-4" alt="..." style="width: 100%; height: 300px;">
-                    <div class="modal-body">
+                <div class="modal-content border border-0 rounded-4">
+                    <img src="img/christmas.jpg" class="card-img-top object-fit-cover border border-0 rounded-top-4" alt="..." style="width: 100%; height: 300px;">
+                    <div class="modal-body p-5 py-3">
                         <h4 class="modal-title fw-semibold my-2">Christmas Street Party</h4>
                         <p class="card-text m-0">
                             Christmas is an annual festival commemorating the birth of Jesus Christ, 
@@ -105,7 +100,7 @@
                             <div class="d-flex border border-0 rounded-5 px-4 py-1 kategori_tombol">
                                 <p class="align-self-center p-0 m-0">Tradition</p>
                             </div>
-                            <button type="button" class="btn button_event rounded-pill">Register</button>
+                            <button type="button" class="btn button_register rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalRegister">Register</button>
                         </div>
 
                         <div class="mb-4">
@@ -118,7 +113,25 @@
             </div>
         </div>
 
+        <!-- Modal Confirm Data-->
+        <div class="modal fade border border-0" id="modalRegister" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered border border-0">
+                <div class="modal-content border border-0">
+                    <div class="modal-body text-center fs-3 modal_register text-light rounded-top-2 shadow">
+                        Are You Sure Want to Register?
+                    </div>
 
+                    <div class="modal-footer">
+
+                        <form action="">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Yes</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

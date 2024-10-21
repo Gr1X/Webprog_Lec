@@ -36,6 +36,7 @@
                             <span class="mx-2 p-0">Tambah Event</span>
                         </a>
                     </li>
+                    
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center" href="#">
                             <i class='bx bxs-calendar-event fs-4'></i>
@@ -49,7 +50,7 @@
                             <i class='bx bxs-user-circle fs-1 text-dark'></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                            <li><a class="dropdown-item" href="accountview.php">Account Settings</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item text-danger d-flex justify-content-between" href="#">Log Out<i class='bx bx-log-out fs-4 align-self-center' ></i></a></li>
                         </ul>
@@ -64,7 +65,7 @@
             <!-- Card Gambar Event -->
             <div class="col-md-4">
                 <div class="card border border-0 mb-4" style="width: 100%;">
-                    <img src="../img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
+                    <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
                     <div class="card-body mt-4 p-0">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title align-self-center m-0">Chirstmas Street Party</h5>

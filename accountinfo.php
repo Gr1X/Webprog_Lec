@@ -60,10 +60,10 @@
                 </a>
                 <ul class="list-unstyled">
                     <li>
-                        <a href="" class="text-decoration-none">View Account</a>
+                        <a href="accountview.php" class="text-decoration-none">View Account</a>
                     </li>
                     <li>
-                        <a href="" class="text-decoration-none">Account Information</a>
+                        <a href="accountinfo.php" class="text-decoration-none">Account Information</a>
                     </li>
                 </ul>
             </div>

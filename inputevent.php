@@ -57,8 +57,10 @@
             </div>
         </div>
     </nav>
+    
     <div class="form-container">
         <h2 class="">Create Event</h2>
+
         <form action="create_event.php" method="post" enctype="multipart/form-data">
             <div class="upload-photo">
                 <input type="file" name="event_image" style="display:none;" id="eventImage">
@@ -102,6 +104,7 @@
                 <button type="submit" class="btn-create">Create Event</button>
             </div>
         </form>
+
     </div>
 </body>
 </html>

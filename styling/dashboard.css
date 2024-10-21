@@ -101,3 +101,12 @@ body {
     ::-webkit-scrollbar-thumb:hover {
     background: #555; 
     }
+
+    .kategori_modal {
+        background-color: #B88EE5; /* Mengubah warna latar belakang */
+        border: 2px solid #B88EE5; /* Border sesuai warna tema */
+    }
+    
+    .kategori_modal p {
+        color: #ffffff; /* Mengubah warna teks menjadi putih */
+    }

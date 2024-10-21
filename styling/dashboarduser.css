@@ -130,4 +130,17 @@ button.btn {
     margin-right: 10px;
 }
 
+.button_register {
+    color: #B88EE5; 
+    border-color: #B88EE5;
+}
+
+.button_register:hover {
+    border-color: #B88EE5;
+    color: #B88EE5;
+}
+
+.modal-content .modal-body.modal_register {
+    background-color: #B88EE5 !important; /* Tambahkan !important jika masih tidak berubah */
+}
 

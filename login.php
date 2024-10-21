@@ -75,6 +75,7 @@
                             <h5 class="card-title fw-bold mt-5">Login</h5>
                             <p class="card-text text-muted">Hello, Enter your details to sign in to your account</p>
                         </div>
+
                         <div class="d-flex border rounded mb-3">
                             <i class='bx bx-user text-center align-self-center fs-4 p-2'></i>
                             <input type="text" class="form-control border-0" placeholder="Email">
@@ -86,6 +87,7 @@
                         <div class="d-grid mb-3">
                             <button type="submit" class="btn button_login">Login In</button>
                         </div>
+                        
                         <p class="text-muted">Don't have an account? <a href="#" class="text-decoration-none">Sign Up now</a></p>
                     </div>
                 </div>
