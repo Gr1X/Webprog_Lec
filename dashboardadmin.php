@@ -31,7 +31,7 @@
                 <!-- Navigasi Tambah Event dan My Event -->
                 <ul class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll">
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="#">
+                        <a class="nav-link d-flex align-items-center" href="inputevent.php">
                             <i class='bx bxs-calendar-plus fs-4'></i>
                             <span class="mx-2 p-0">Tambah Event</span>
                         </a>

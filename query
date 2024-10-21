@@ -38,3 +38,9 @@ FROM registerke AS r
 JOIN account AS a ON a.id_akun = r.id_akun
 JOIN listevent AS l ON l.id_event = r.id_event
 WHERE r.id_event = ?;
+
+
+-- if Register User
+-- 1. Jika belum regis & belum penuh  > Tombol regis normal
+-- 2. Jika belum regis & sudah penuh  > Tombol regis di disabled          -- Pakai COUNT
+-- 3. JIka sudah regis                > Tombol Regis menjadi un-register
