@@ -1,3 +1,16 @@
+<?php
+session_start();
+if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
+  $akses = $_SESSION['akses_akun'];
+  if($akses == 'user'){
+    header('location: dashboarduser.php');
+  }
+  else if($akses == 'admin'){
+    header('location: dashboardadmin.php');
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

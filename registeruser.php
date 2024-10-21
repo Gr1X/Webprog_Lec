@@ -29,25 +29,26 @@
                             <p class="card-text text-muted">Hello, Enter set your account for registration</p>
                         </div>
 
-                        <form action="..." method="post">
+                        <form action="registerproses.php" method="post">
                             <div class="d-flex border rounded mb-3">
                                 <i class='bx bx-user text-center align-self-center fs-4 p-2'></i>
-                                <input type="text" class="form-control border-0" placeholder="Username">
+                                <input type="text" required class="form-control border-0" name="username" placeholder="Username">
                             </div>
                             <div class="d-flex border rounded mb-3">
                                 <i class='bx bx-envelope-open text-center align-self-center fs-4 p-2'></i>
-                                <input type="text" class="form-control border-0" placeholder="Email">
+                                <input type="email" required class="form-control border-0" name="email" placeholder="Email">
                             </div>
                             <div class="d-flex border rounded mb-4">
                                 <i class='bx bx-lock text-center align-self-center fs-4 p-2'></i>
-                                <input type="password" class="form-control border-0" placeholder="Password">
+                                <input type="password" required class="form-control border-0" name="password_akun" placeholder="Password">
                             </div>
                             <div class="d-grid mb-3">
+                                <input type="hidden" name="akses_akun" value="user">
                                 <button type="submit" class="btn button_login">Register</button>
                             </div>
                         </form>
 
-                        <p class="text-muted">Already have an Account? <a href="#" class="text-decoration-none">Login</a></p>
+                        <p class="text-muted">Already have an Account? <a href="login.php" class="text-decoration-none">Login</a></p>
                         <p class="m-0">
                             <button type="button" class="btn btn_admin p-0 pb-1" data-bs-toggle="modal" data-bs-target="#titleModal">
                                 Register as Admin
@@ -67,7 +68,7 @@
                     </div>
                     
                     <!-- input judul -->
-                    <form action="..." method="post">
+                    <form action="registeradmin.php" method="post">
                         <div class="modal-body">
                             <div class="input-group d-block">
                                 <p>Please enter the company password to register.</p>
