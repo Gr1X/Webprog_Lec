@@ -9,7 +9,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/af48b2d60e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="styling/dashboarduser.css">
 </head>
 
 <body>
@@ -67,7 +67,7 @@
                     <img src="../img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
                     <div class="card-body mt-4 p-0">
                         <div class="d-flex justify-content-between">
-                            <h5 class="card-title align-self-center m-0">Chirstmas Street Party</h5>
+                            <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
                             <button type="button" class="btn button_event rounded-pill">Upcoming</button>
                         </div>
 
@@ -77,7 +77,7 @@
                             </div>
                             <div class="ps-4">
                                 <div class="d-flex justify-content-center pe-4">
-                                    <a href="#" class="btn btn-primary bg-transparent border border-0 text-muted"><i class="fa-regular fa-eye"></i> See More Information</a>
+                                    <button href="#" class="btn bg-transparent border border-0 text-muted" data-bs-toggle="modal" data-bs-target="#cardModal"><i class="fa-regular fa-eye"></i> See More Information</button>
                                 </div>
                             </div>
                         </div>
@@ -85,6 +85,40 @@
                 </div>
             </div>
         </div>
+
+      <!-- Modal Event -->
+        <div class="modal fade border border-0" id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal_custom modal-dialog-centered border border-0">
+                <div class="modal-content rounded-4">
+                    <img src="../img/christmas.jpg" class="card-img-top object-fit-cover rounded-top-4" alt="..." style="width: 100%; height: 300px;">
+                    <div class="modal-body">
+                        <h4 class="modal-title fw-semibold my-2">Christmas Street Party</h4>
+                        <p class="card-text m-0">
+                            Christmas is an annual festival commemorating the birth of Jesus Christ, 
+                            observed primarily on December 25[a] as a religious and cultural celebration among billions 
+                            of people around the world. A feast central to the liturgical year in Christianity, it follows 
+                            the season of Advent (which begins four Sundays before) or the Nativity Fast, and initiates the season of Christmastide,
+                            which historically in the West lasts twelve days and culminates on Twelfth Night.
+                        </p>
+
+                        <div class="d-flex gap-3 my-4 ">
+                            <div class="d-flex border border-0 rounded-5 px-4 py-1 kategori_tombol">
+                                <p class="align-self-center p-0 m-0">Tradition</p>
+                            </div>
+                            <button type="button" class="btn button_event rounded-pill">Register</button>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="card-text m-0 my-2 d-flex"><i class='bx bx-calendar-alt align-self-center fs-4 me-3'></i>21 October 2024</p>
+                            <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-time align-self-center fs-4 me-3'></i>17.00 - 19.00</p>
+                            <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-map align-self-center fs-4 me-3'></i>Gelora Bung Jebret</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 </body>
 

@@ -9,7 +9,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/af48b2d60e.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="dashboarduser.css">
+    <link rel="stylesheet" href="styling/dashboard.css">
 </head>
 
 <body>
@@ -77,7 +77,7 @@
                             </div>
                             <div class="ps-4">
                                 <div class="d-flex justify-content-center pe-4">
-                                    <a href="#" class="btn btn-primary bg-transparent border border-0 text-muted"><i class="fa-regular fa-eye"></i> See More Information</a>
+                                    <button type="button" href="#" class="btn btn-primary bg-transparent border border-0 text-muted"><i class="fa-regular fa-eye"></i> See More Information</button>
                                 </div>
                             </div>
                         </div>

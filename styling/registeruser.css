@@ -2,14 +2,14 @@
 
 body {
     font-family: 'Coolvetica', sans-serif;
-    background-image: url('img/bg.jpg');
+    background: url('../img/bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .background-card {
-    background: url('img/fire1.jpeg') no-repeat center center;
+    background: url('../img/fire1.jpeg') no-repeat center center;
     background-size: cover;
     height: 100%;
     display: flex;

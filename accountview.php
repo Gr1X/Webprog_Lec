@@ -6,7 +6,7 @@
     <title>Account Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="accountview.css"> <!-- Kode CSS yang ditambahkan -->
+    <link rel="stylesheet" href="styling/accountview.css"> <!-- Kode CSS yang ditambahkan -->
 </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-lg px-4 py-2 shadow">
@@ -96,19 +96,19 @@
                         <div class="details-list pt-1">
                             <ul class="list-unstyled">
                                 <li class="">
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark fw-semibold text-muted" data-bs-toggle="modal" data-bs-target="#userNameModal">
+                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted" data-bs-toggle="modal" data-bs-target="#userNameModal">
                                         Change My Username
                                     </button>
                                 </li>
     
                                 <li class="">
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark fw-semibold text-muted" data-bs-toggle="modal" data-bs-target="#firstNameModal">
+                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted" data-bs-toggle="modal" data-bs-target="#firstNameModal">
                                         Change My Firstname
                                     </button>
                                 </li>
     
                                 <li>
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark fw-semibold text-muted" data-bs-toggle="modal" data-bs-target="#lastNameModal">
+                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted" data-bs-toggle="modal" data-bs-target="#lastNameModal">
                                         Change My Lastname
                                     </button>
                                 </li>
