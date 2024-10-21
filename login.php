@@ -1,3 +1,16 @@
+<?php
+session_start();
+if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
+  $akses = $_SESSION['akses_akun'];
+  if($akses == 'user'){
+    header('location: dashboarduser.php');
+  }
+  else if($akses == 'admin'){
+    header('location: dashboardadmin.php');
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,18 +88,21 @@
                             <h5 class="card-title fw-bold mt-5">Login</h5>
                             <p class="card-text text-muted">Hello, Enter your details to sign in to your account</p>
                         </div>
-                        <div class="d-flex border rounded mb-3">
-                            <i class='bx bx-user text-center align-self-center fs-4 p-2'></i>
-                            <input type="text" class="form-control border-0" placeholder="Email">
-                        </div>
-                        <div class="d-flex border rounded mb-4">
-                            <i class='bx bx-lock text-center align-self-center fs-4 p-2'></i>
-                            <input type="password" class="form-control border-0" placeholder="Password">
-                        </div>
-                        <div class="d-grid mb-3">
-                            <button type="submit" class="btn button_login">Login In</button>
-                        </div>
-                        <p class="text-muted">Don't have an account? <a href="#" class="text-decoration-none">Sign Up now</a></p>
+
+                        <form action="loginproses.php" method="post">
+                            <div class="d-flex border rounded mb-3">
+                                <i class='bx bx-user text-center align-self-center fs-4 p-2'></i>
+                                <input type="email" required class="form-control border-0" name="email" placeholder="Email">
+                            </div>
+                            <div class="d-flex border rounded mb-4">
+                                <i class='bx bx-lock text-center align-self-center fs-4 p-2'></i>
+                                <input type="password" required class="form-control border-0" name="password_akun" placeholder="Password">
+                            </div>
+                            <div class="d-grid mb-3">
+                                <button type="submit" required class="btn button_login">Login In</button>
+                            </div>
+                        </form>
+                        <p class="text-muted">Don't have an account? <a href="registeruser.php" class="text-decoration-none">Sign Up now</a></p>
                     </div>
                 </div>
             </div>
