@@ -1,4 +1,4 @@
 <?php
-    $dsn = "mysql:host=localhost;dbname=eventus";
+    $dsn = "mysql:host=localhost;dbname=mene";
     $db = new PDO($dsn, "root", "");
 ?>

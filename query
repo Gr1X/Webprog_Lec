@@ -1,0 +1,39 @@
+CREATE DATABASE mene;
+
+CREATE TABLE account(
+  id_akun INT auto_increment,
+  username VARCHAR(50) UNIQUE NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password_akun VARCHAR(255) NOT NULL,
+  akses_akun VARCHAR(20) NOT NULL,
+  PRIMARY KEY (id_akun));
+
+CREATE TABLE registerke(
+  id_register INT auto_increment,
+  id_akun INT NOT NULL,
+  id_event INT NOT NULL,
+  PRIMARY KEY (id_register),
+  FOREIGN KEY (id_akun) REFERENCES account(id_akun),
+  FOREIGN KEY (id_event) REFERENCES listevent(id_event));
+
+CREATE TABLE listevent(
+  id_event INT auto_increment,
+  nama_event VARCHAR(50) NOT NULL,
+  foto_event VARCHAR(255) NOT NULL,
+  deskripsi VARCHAR(400) NOT NULL,
+  kategori VARCHAR(20) NOT NULL, 
+  tanggal_event DATE NOT NULL,
+  waktu_event VARCHAR(50) NOT NULL,
+  lokasi_event VARCHAR(150) NOT NULL,
+  PRIMARY KEY (id_event));
+
+-- Kategori -> Music, Arts, Technology, Culture
+-- Waktu Event (Gabungan input waktu mulai & waktu selesai) -> 00:00 - 24:00
+
+-- Itung Jumlah Org Yg Register Di Event X
+
+SELECT r.id_akun, username, r.id_event, nama_event
+FROM registerke AS r
+JOIN account AS a ON a.id_akun = r.id_akun
+JOIN listevent AS l ON l.id_event = r.id_event
+WHERE r.id_event = ?;
