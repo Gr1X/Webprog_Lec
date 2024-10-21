@@ -5,9 +5,6 @@ body {
     font-family: 'Coolvetica', sans-serif;
 }
 
-.navbar_custom {
-    border-bottom: 2px solid #B88EE5; /* Mengatur warna dan ketebalan border */
-}
 
 /* Input search styling */
 .input_search {

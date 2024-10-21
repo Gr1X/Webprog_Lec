@@ -76,8 +76,17 @@ h1 {
     background: #555;
 }
 
-.navbar_custom {
-    background-color: #B88EE5; /* Pastikan warna diterapkan */
+/* Pengaturan layout flexbox navbar */
+.navbar {
     flex-wrap: nowrap; /* Memastikan elemen tidak berpindah baris */
+    background-color: #B88EE5;
+}
+
+.navbar-nav {
+    gap: 10px; /* Memberi jarak antara item navigasi */
+}
+
+.nav-link {
+    white-space: nowrap; /* Mencegah teks memotong baris */
 }
 

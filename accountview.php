@@ -6,6 +6,7 @@
     <title>Account Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styling/accountview.css"> <!-- Kode CSS yang ditambahkan -->
 </head>
 <body>
@@ -72,9 +73,9 @@
             <div class="col-md-9 right-column">
                 <!-- Judul Account -->
                 <h1>Account</h1>
-                <p class="text-muted mt-2">Account Details</p>
+                <p class="text-muted mt-2 m-0">Account Details</p>
 
-                <div class="ms-4 mt-4">
+                <div class="ms-4">
                     <!-- Detail Akun -->
                     <div class="account-details">
                         <div class="">
@@ -83,44 +84,43 @@
                             <p class="fw-semibold">MarinirJawa23@gmail.com</p>
                         </div>
                     </div>
-
                 </div>
 
                 <!-- Change Details -->
-                <div class="change_details pt-4">
-                    <h6 class="mt-5 mb-4 text-muted">Changing Account Details</h6>
+                <div class="change_details">
+                    <h6 class="mt-4 mb-2 text-muted">Changing Account Details</h6>
 
                     <div class="ms-4">
-                        <h4 class="mt-1 fw-bold">Options</h4>
+                        <h4 class="mt-1 fw-bold">Options Account</h4>
                         
                         <div class="details-list pt-1">
                             <ul class="list-unstyled">
                                 <li class="">
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted" data-bs-toggle="modal" data-bs-target="#userNameModal">
+                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted p-0" data-bs-toggle="modal" data-bs-target="#userNameModal">
                                         Change My Username
                                     </button>
                                 </li>
     
                                 <li class="">
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted" data-bs-toggle="modal" data-bs-target="#firstNameModal">
+                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted p-0" data-bs-toggle="modal" data-bs-target="#firstNameModal">
                                         Change My Firstname
                                     </button>
                                 </li>
     
                                 <li>
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted" data-bs-toggle="modal" data-bs-target="#lastNameModal">
+                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted p-0" data-bs-toggle="modal" data-bs-target="#lastNameModal">
                                         Change My Lastname
                                     </button>
                                 </li>
     
                                 <li>
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark fw-semibold" data-bs-toggle="modal" data-bs-target="#passwordModal">
+                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark fw-semibold p-0" data-bs-toggle="modal" data-bs-target="#passwordModal">
                                         Reset My Password
                                     </button>
                                 </li>
                     
                                 <li>
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark fw-semibold" data-bs-toggle="modal" data-bs-target="#emailModal">
+                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark fw-semibold p-0" data-bs-toggle="modal" data-bs-target="#emailModal">
                                         Change My Email
                                     </button>
                                 </li>
