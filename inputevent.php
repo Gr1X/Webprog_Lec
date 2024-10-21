@@ -61,38 +61,42 @@
     <div class="form-container">
         <h2 class="">Create Event</h2>
 
-        <form action="create_event.php" method="post" enctype="multipart/form-data">
+        <form action="inputeventproses.php" method="post" enctype="multipart/form-data">
             <div class="upload-photo">
-                <input type="file" name="event_image" style="display:none;" id="eventImage">
+                <input type="file" required name="foto_event" style="display:none;" id="eventImage">
                 <label for="eventImage" style="cursor: pointer;">+ Select Photo to Upload</label>
             </div>
             <div class="form-group">
+                <label for="location">Event Name</label>
+                <input type="text" required name="nama_event" id="" placeholder="Event Name">
+            </div>
+            <div class="form-group">
                 <label for="description">Description</label>
-                <textarea name="description" id="description" placeholder="Share more about your event and let everyone know" maxlength="1000"></textarea>
+                <textarea name="deskripsi" required id="description" placeholder="Share more about your event and let everyone know" maxlength="400"></textarea>
             </div>
             <div class="form-group">
                 <label for="location">Location</label>
-                <input type="text" name="location" id="location" placeholder="Specific">
+                <input type="text" required name="lokasi_event" id="location" placeholder="Specific">
             </div>
             <div class="form-group">
                 <label for="event_date">Event Date</label>
-                <input type="date" name="event_date" id="event_date">
+                <input type="date" required name="tanggal_event" id="event_date">
             </div>
             <div class="form-group">
                 <label for="event_start_time">Event Start Time</label>
-                <input type="time" name="event_start_time" id="event_start_time">
+                <input type="time" required name="waktu_mulai" id="event_start_time">
             </div>
             <div class="form-group">
                 <label for="event_end_time">Event End Time</label>
-                <input type="time" name="event_end_time" id="event_end_time">
+                <input type="time" required name="waktu_selesai" id="event_end_time">
             </div>
             <div class="form-group">
                 <label for="max_participants">Maximum Participants</label>
-                <input type="number" name="max_participants" id="max_participants" placeholder="Number">
+                <input type="number" required name="max_peserta" id="max_participants" placeholder="Number">
             </div>
             <div class="form-group">
                 <label for="category">Category</label>
-                <select name="category" id="category">
+                <select name="kategori" required id="category">
                     <option value="music">Music</option>
                     <option value="sports">Sports</option>
                     <option value="art">Art</option>

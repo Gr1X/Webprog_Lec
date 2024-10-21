@@ -93,11 +93,11 @@ if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
                         <form action="loginproses.php" method="post">
                             <div class="d-flex border rounded mb-3">
                                 <i class='bx bx-user text-center align-self-center fs-4 p-2'></i>
-                                <input type="text" class="form-control border-0" placeholder="Email">
+                                <input type="email" required class="form-control border-0" name="email" placeholder="Email">
                             </div>
                             <div class="d-flex border rounded mb-4">
                                 <i class='bx bx-lock text-center align-self-center fs-4 p-2'></i>
-                                <input type="password" class="form-control border-0" placeholder="Password">
+                                <input type="password" required class="form-control border-0" name="password_akun" placeholder="Password">
                             </div>
                             <div class="d-grid mb-3">
                                 <button type="submit" class="btn button_login">Login In</button>
