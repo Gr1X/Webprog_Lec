@@ -25,6 +25,7 @@ CREATE TABLE listevent(
   tanggal_event DATE NOT NULL,
   waktu_event VARCHAR(50) NOT NULL,
   lokasi_event VARCHAR(150) NOT NULL,
+  max_peserta INT NOT NULL,
   PRIMARY KEY (id_event));
 
 -- Kategori -> Music, Arts, Technology, Culture
