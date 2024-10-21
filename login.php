@@ -34,7 +34,7 @@ if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
     }
 
     .background-card {
-        background: url('img/fire1.jpeg') no-repeat center center;
+        background: url('img/bg.jpg') no-repeat center center;
         background-size: cover;
         height: 100%;
         display: flex;
