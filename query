@@ -26,7 +26,23 @@ CREATE TABLE listevent(
   waktu_event VARCHAR(50) NOT NULL,
   lokasi_event VARCHAR(150) NOT NULL,
   max_peserta INT NOT NULL,
+  status_event VARCHAR(15) DEFAULT "open" NOT NULL,
   PRIMARY KEY (id_event));
+
+CREATE TABLE histori(
+  id_histori INT auto_increment,
+  id_akun INT NOT NULL,
+  id_event INT NOT NULL,
+  PRIMARY KEY (id_histori),
+  FOREIGN KEY (id_akun) REFERENCES account(id_akun),
+  FOREIGN KEY (id_event) REFERENCES listevent(id_event));
+
+
+
+-- Apapun yang masuk registerke masuk juga ke histori
+-- registerke bisa di update & delete kapan saja
+-- histori hanya bisa di delete ketika akun user di delete admin
+
 
 -- Kategori -> Music, Arts, Technology, Culture
 -- Waktu Event (Gabungan input waktu mulai & waktu selesai) -> 00:00 - 24:00
@@ -42,5 +58,6 @@ WHERE r.id_event = ?;
 
 -- if Register User
 -- 1. Jika belum regis & belum penuh  > Tombol regis normal
--- 2. Jika belum regis & sudah penuh  > Tombol regis di disabled          -- Pakai COUNT
+-- 2. Jika belum regis & sudah penuh  > Tombol regis di disabled          -- Pakai COUNT -- Status Closed
 -- 3. JIka sudah regis                > Tombol Regis menjadi un-register
+
