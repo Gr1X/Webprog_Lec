@@ -78,11 +78,62 @@
                             </div>
                             <div class="ps-4">
                                 <div class="d-flex justify-content-center pe-4">
-                                    <button type="button" href="#" class="btn btn-primary bg-transparent border border-0 text-muted"><i class="fa-regular fa-eye"></i> See More Information</button>
+                                    <button type="button" href="#" class="btn btn-primary bg-transparent border border-0 text-muted" data-bs-toggle="modal" data-bs-target="#cardModal"><i class="fa-regular fa-eye"></i> See More Information</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade border border-0" id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal_custom modal-dialog-centered border border-0">
+                <div class="modal-content border border-0 rounded-4">
+                    <img src="img/christmas.jpg" class="card-img-top object-fit-cover border border-0 rounded-top-4" alt="..." style="width: 100%; height: 300px;">
+                    <div class="modal-body p-5 py-3">
+                        <h4 class="modal-title fw-semibold my-2">Christmas Street Party</h4>
+                        <p class="card-text m-0">
+                            Christmas is an annual festival commemorating the birth of Jesus Christ, 
+                            observed primarily on December 25[a] as a religious and cultural celebration among billions 
+                            of people around the world. A feast central to the liturgical year in Christianity, it follows 
+                            the season of Advent (which begins four Sundays before) or the Nativity Fast, and initiates the season of Christmastide,
+                            which historically in the West lasts twelve days and culminates on Twelfth Night.
+                        </p>
+
+                        <div class="d-flex gap-3 my-4 ">
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#">Edit</button>
+                            <button type="button" class="btn button_register rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalRegister">Delete</button>
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#participantsModal">Participants</button>
+                        </div>
+
+                        <div class="mb-4">
+                            <p class="card-text m-0 my-2 d-flex"><i class='bx bx-calendar-alt align-self-center fs-4 me-3'></i>21 October 2024</p>
+                            <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-time align-self-center fs-4 me-3'></i>17.00 - 19.00</p>
+                            <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-map align-self-center fs-4 me-3'></i>Gelora Bung Jebret</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="participantsModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal_custom modal-dialog-centered border border-0">
+                <div class="modal-content border border-0 rounded-4">
+                    <div>
+                        <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#cardModal">Back</button>
+                        <form class="input-group mx-3" role="search">
+                            <input class="form-control part_search" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn tombol_search" type="submit"><i class='bx bx-search'></i></button>
+                        </form>
+                        <button type="button" class="btn">Export</button>
+                    </div>
+                    <table class="table">
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
