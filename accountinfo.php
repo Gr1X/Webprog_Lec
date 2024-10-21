@@ -21,20 +21,7 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
 
                 <!-- Navigasi Tambah Event dan My Event -->
-                <ul class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll">
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="#">
-                            <i class='bx bxs-calendar-plus fs-4 text-white'></i>
-                            <span class="mx-2 p-0 text-white">Tambah Event</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="#">
-                            <i class='bx bxs-calendar-event fs-4 text-white'></i>
-                            <span class="mx-2 p-0 text-white">My Event</span>
-                        </a>
-                    </li>
-                    
+                <ul class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll">    
                     <!-- Profile Icon -->
                     <li class="nav-item dropdown d-flex align-items-center">
                         <a class="text-decoration-none align-self-center mt-auto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

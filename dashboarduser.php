@@ -63,7 +63,11 @@
                     <div class="card-body mt-4 p-0">
                         <div class="d-flex justify-content-between">
                             <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
-                            <button type="button" class="btn button_event rounded-pill">Upcoming</button>
+
+                            <div class="">
+                                <button type="button" class="btn btn-outline-danger rounded-pill">Closed</button>
+                                <button type="button" class="btn button_event rounded-pill">Upcoming</button>
+                            </div>
                         </div>
 
                         <div class="d-flex mt-2">
@@ -127,7 +131,7 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary">Yes</button>
                         </form>
-                        
+
                     </div>
                 </div>
             </div>
