@@ -4,6 +4,27 @@ body {
     font-family: 'Coolvetica', sans-serif;
 }
 
+/* Tombol pencarian */
+.tombol_search {
+    background-color: #B88EE5; /* Warna latar belakang tombol */
+    color: #fff; /* Warna ikon atau teks tombol */
+    border: none; /* Menghapus border default */
+    outline: none; /* Menghilangkan outline default */
+}
+
+.tombol_search:hover {
+    background-color: #9A6CC5; /* Warna saat tombol di-hover */
+    color: #fff; /* Warna ikon atau teks saat di-hover */
+}
+
+.tombol_search:focus,
+.tombol_search:active {
+    background-color: #9A6CC5; /* Warna saat tombol ditekan atau difokuskan */
+    color: #fff;
+    outline: none; /* Menghilangkan outline biru saat tombol difokuskan */
+    box-shadow: none; /* Menghilangkan shadow biru saat tombol ditekan */
+}
+
 .navbar_custom {
     border-bottom: 2px solid #B88EE5; /* Mengatur warna dan ketebalan border */
 }
@@ -33,4 +54,22 @@ body {
 
 .accord-custom:focus{
     border: none;
+}
+
+.card-header{
+    background-color: #9A6CC5;
+    border: #9A6CC5;
+    color: #fff;
+}
+
+.accordion-button:focus {
+    background-color: #B88EE5; /* Mengubah warna latar belakang saat focus */
+    border-color: #B88EE5; /* Mengubah warna border */
+    outline: none; /* Menambahkan efek bayangan */
+}
+
+/* Mengubah warna latar belakang tombol accordion saat terbuka */
+.accordion-button:not(.collapsed) {
+    background-color: #B88EE5; /* Ganti dengan warna yang Anda inginkan */
+    color: white; /* Mengubah warna teks */
 }

@@ -42,7 +42,7 @@
         <div class="row">
             <!-- Kolom Kiri untuk Navigasi -->
             <div class="col-md-3 left-column">
-                <a href="dashboard.php" class="d-flex align-items-center text-dark mb-3 text-decoration-none">
+                <a href="dashboarduser.php" class="d-flex align-items-center text-dark mb-3 text-decoration-none">
                     <i class='bx bx-left-arrow-alt align-self-center fs-4 text-decoration-none'></i>
                     <p class="mb-0">Back to dashboard</p>
                 </a>

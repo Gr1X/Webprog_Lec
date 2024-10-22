@@ -22,6 +22,10 @@
             <!-- Collapse untuk navigasi dan search bar -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
                 <!-- Search Bar -->
+                <form class="input-group mx-3" role="search">
+                    <input class="form-control input_search" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn tombol_search" type="submit"><i class='bx bx-search fw-bold'></i></button>
+                </form>
 
                 <!-- Navigasi Tambah Event dan My Event -->
                 <ul class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll">
@@ -47,11 +51,11 @@
                     
                     <!-- Profile Icon -->
                     <li class="nav-item dropdown d-flex align-items-center">
-                        <a class="text-decoration-none align-self-center mt-auto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="text-decoration-none align-self-center mt-auto" href="accountinfo.php" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class='bx bxs-user-circle fs-1 text-dark'></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                            <li><a class="dropdown-item" href="accountinfo.php">Account Settings</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item text-danger d-flex justify-content-between" href="#">Log Out<i class='bx bx-log-out fs-4 align-self-center' ></i></a></li>
                         </ul>
@@ -66,91 +70,45 @@
             <div class="col-4 mt-5 pt-5">
                 <div class="card m-0 p-0">
                     <div class="card-header">
-                        Featured
+                        User History
                     </div>
             
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title"><?php echo "Username"; ?></h5>
+                        <p class="card-text text-secondary"><?php echo "Username@gmail.com"; ?></p>
                     </div>
             
                     <div class="">
-                        <div class="accordion accordion-flush border border-0 rounded-bottom-3" id="accordionFlushExample">
+                        <div class="accordion accordion-flush border border-0 rounded-bottom-3" id="accordionFlushActivity1">
                             <div class="accordion-item border border-0 rounded-bottom-3">
                                 <h2 class="accordion-header border border-0 rounded-bottom-3">
-                                <button class="accordion-button collapsed mb-2 accord_custom" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    Accordion Item #1
+                                    <!-- Collapse Accordion (di databstarget angka nya harus diset tiap card beda, terserah mau pake angka atau yang lain) -->
+                                <button class="accordion-button collapsed mb-2 accord_custom" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    Activity Log
                                 </button>
                                 </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+                                <!-- Collapse Accordion (di id anggka nya harus diset tiap card beda) -->
+                                <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushActivity1">
+                                    <table class="table text-center">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-start" scope="col"><?php echo "Event"; ?></th>
+                                                <th scope="col"><?php echo "Date"; ?></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-start" scope="row"><?php echo "Meet Up Moo-deng"; ?></td>
+                                                <td><?php echo "19 October 2024"; ?></td>                                            
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>   
-            
-            <div class="col-4 mt-5 pt-5">
-                <div class="card m-0 p-0">
-                    <div class="card-header">
-                        Featured
-                    </div>
-            
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-            
-                    <div class="">
-                        <div class="accordion accordion-flush border border-0 rounded-bottom-3" id="accordionFlushExample">
-                            <div class="accordion-item border border-0 rounded-bottom-3">
-                                <h2 class="accordion-header border border-0 rounded-bottom-3">
-                                <button class="accordion-button collapsed mb-2 accord_custom" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    Accordion Item #1
-                                </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-4 mt-5 pt-5">
-                <div class="card m-0 p-0">
-                    <div class="card-header">
-                        Featured
-                    </div>
-            
-                    <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-            
-                    <div class="">
-                        <div class="accordion accordion-flush border border-0 rounded-bottom-3" id="accordionFlushExample">
-                            <div class="accordion-item border border-0 rounded-bottom-3">
-                                <h2 class="accordion-header border border-0 rounded-bottom-3">
-                                <button class="accordion-button collapsed mb-2 accord_custom" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    Accordion Item #1
-                                </button>
-                                </h2>
-                                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
     </div>
     
     
