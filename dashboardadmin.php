@@ -73,49 +73,25 @@
                 <div class="card border border-0 mb-4" style="width: 100%;">
                     <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
                     <div class="card-body mt-4 p-0">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="card-title m-0">Christmas Street Party</h5>
-                            <p type="button" class="btn btn-danger rounded-pill px-3 p-0 m-0">Closed</p>
+                        <div class="d-flex gap-2 mb-3">
+                            <h5 class="card-title m-0 align-self-center">Christmas Street Party</h5>
+                            <p type="button" class="btn btn-danger rounded-2 px-3 py-0 m-0">Closed</p>
                         </div>
                         
-                        <div class="d-flex gap-1 mt-2">    
-                            <!-- Kategori -->
-                            <div class="d-flex border border-0 rounded-2 px-3 py-0 kategori_tombol">
-                                <p class="align-self-center p-0 m-0">Tradition</p>
-                            </div>
-                            <!-- Upcoming Status -->
-                            <button type="button" class="btn button_event rounded-2 px-3 p-0 m-0">Upcoming</button>
-                        </div>
-
-                        <div class="d-flex mt-2">
-                            <!-- Button Modal -->
-                            <div class="">
-                                <div class="d-flex justify-content-center pe-4">
-                                    <button href="#" class="btn bg-transparent border border-0 text-muted d-flex justify-content-center m-0 p-0" data-bs-toggle="modal" data-bs-target="#cardModal"><i class='bx bxs-cog fs-4 align-self-center me-1'></i>Modify Event Information</button>
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex gap-1 align-items-center">    
+                                <!-- Kategori -->
+                                <div class="d-flex border border-0 rounded-2 px-3 py-0 kategori_tombol">
+                                    <p class="align-self-center p-0 m-0">Tradition</p>
                                 </div>
+                                <!-- Upcoming Status -->
+                                <button type="button" class="btn button_event rounded-2 px-3 p-0 m-0">Upcoming</button>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Card Gambar Event -->
-            <div class="col-md-4">
-                <div class="card border border-0 mb-4" style="width: 100%;">
-                    <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
-                    <div class="card-body mt-4 p-0">
-                        <div class="d-flex justify-content-between">
-                            <h5 class="card-title m-0">Christmas Street Party</h5>
-                            <p type="button" class="btn btn-danger rounded-pill px-3 p-0 m-0">Sold Out</p>
-                        </div>
-                        
-                        <div class="d-flex gap-1 mt-2">    
-                            <!-- Kategori -->
-                            <div class="d-flex border border-0 rounded-2 px-3 py-0 kategori_tombol">
-                                <p class="align-self-center p-0 m-0">Tradition</p>
+                            <!-- Participants -->
+                            <div class="m-0 p-0 mt-auto border border-0 rounded-2 px-3 py-0 participant_custom">
+                                <p class="d-flex align-items-center p-0 m-0 text-light"><i class='bx bx-user fs-6 fw-bold me-2'></i>.. / 30</p>
                             </div>
-                            <!-- Upcoming Status -->
-                            <button type="button" class="btn button_event rounded-2 px-3 p-0 m-0">Upcoming</button>
                         </div>
 
                         <div class="d-flex mt-2">
