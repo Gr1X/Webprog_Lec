@@ -1,3 +1,48 @@
+<?php
+session_start();
+require_once('db.php');
+
+$id_akun = $_SESSION['id_akun'];
+$username = $_SESSION['username'];
+$keyword = isset($_POST['keyword']) ? trim($_POST['keyword']) : '';
+
+// Base query
+$query10 = "SELECT e.id_event, nama_event, foto_event, status_event, kategori, tanggal_event, max_peserta, tanggal_event, waktu_event, deskripsi, lokasi_event
+            FROM listevent AS e
+            LEFT JOIN registerke AS r ON r.id_event = e.id_event";
+
+// Tambahkan kondisi jika keyword ada
+if (!empty($keyword)) {
+    $query10 .= " WHERE nama_event LIKE :keyword";
+}
+
+// Tambahkan bagian akhir query
+$query10 .= " GROUP BY e.id_event ORDER BY tanggal_event ASC";
+
+// Persiapkan dan jalankan query
+$stmt10 = $db->prepare($query10);
+
+// Bind parameter jika ada keyword
+if (!empty($keyword)) {
+    $stmt10->bindValue(':keyword', '%' . $keyword . '%');
+}
+
+$stmt10->execute();
+$events = $stmt10->fetchAll(PDO::FETCH_ASSOC);
+
+// ========================= //
+
+// Query to get the events the user has registered for
+$query12 = "SELECT id_event FROM registerke WHERE id_akun = ?";
+$stmt12 = $db->prepare($query12);
+$stmt12->execute([$id_akun]); // Note: passing $id_akun in an array
+$registers = $stmt12->fetchAll(PDO::FETCH_ASSOC);
+
+// Create an array of registered event IDs
+$registeredEvents = array_column($registers, 'id_event');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,8 +68,8 @@
             <!-- Collapse untuk navigasi dan search bar -->
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <!-- Search Bar -->
-                <form class="input-group mx-3" role="search">
-                    <input class="form-control input_search" type="search" placeholder="Search" aria-label="Search">
+                <form action="dashboarduser.php" method="post" class="input-group mx-3" role="search">
+                    <input class="form-control input_search" type="text" name="keyword" placeholder="Search" aria-label="Search">
                     <button class="btn tombol_search" type="submit"><i class='bx bx-search fw-bold'></i></button>
                 </form>
 
@@ -63,90 +108,186 @@
     <div class="container mt-5 pt-5">
         <div class="row">
             <!-- Card Gambar Event -->
-            <div class="col-md-4">
-                <div class="card border border-0 mb-4" style="width: 100%;">
-                    <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
-                    <div class="card-body mt-4 p-0">
-                        <div class="d-flex gap-2 mb-3">
-                            <h5 class="card-title m-0 align-self-center">Christmas Street Party</h5>
-                            <p type="button" class="btn btn-danger rounded-2 px-3 py-0 m-0">Closed</p>
-                        </div>
-
-                        <div class="d-flex gap-1 align-items-center">    
-                        <!-- Kategori Event -->
-                            <div class="d-flex border border-0 rounded-2 px-3 py-0 kategori_tombol">
-                                <p class="align-self-center p-0 m-0"><?php echo "Tradisional"; ?></p>
-                            </div>
-                        <!-- Upcoming Status hanya jika event kurang dari 1 minggu -->
-                            <button type="button" class="btn button_event rounded-2 px-3 py-0 m-0">Upcoming</button>
-                        </div>
-
-                        <div class="">
-                            <div class="d-flex">
-                                <button href="#" class="btn bg-transparent border border-0 text-muted m-0" data-bs-toggle="modal" data-bs-target="#cardModal"><i class="fa-regular fa-eye"></i> See More Information</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-      <!-- Modal Event -->
-        <div class="modal fade border border-0" id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal_custom modal-dialog-centered border border-0">
-                <div class="modal-content border border-0 rounded-4">
-                    <img src="img/christmas.jpg" class="card-img-top object-fit-cover border border-0 rounded-top-4" alt="..." style="width: 100%; height: 300px;">
-                    <div class="modal-body p-5 py-3">
-                        <div class="d-flex">
-                            <h4 class="modal-title fw-semibold my-2">Christmas Street Party</h4>
-                            <p class="text-bg-danger border border-0 rounded-2 align-self-center m-0 mx-2 px-2">Closed</p>
-                        </div>
-                        <p class="card-text m-0">
-                            Christmas is an annual festival commemorating the birth of Jesus Christ, 
-                            observed primarily on December 25[a] as a religious and cultural celebration among billions 
-                            of people around the world. A feast central to the liturgical year in Christianity, it follows 
-                            the season of Advent (which begins four Sundays before) or the Nativity Fast, and initiates the season of Christmastide,
-                            which historically in the West lasts twelve days and culminates on Twelfth Night.
-                        </p>
-
-                        <div class="d-flex gap-3 my-4 ">
-                            <div class="d-flex border border-0 rounded-5 px-4 py-1 kategori_tombol">
-                                <p class="align-self-center p-0 m-0">Tradition</p>
-                            </div>
-                            <button type="button" class="btn button_register rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalRegister">Register</button>
-                        </div>
-
-                        <div class="mb-4">
-                            <p class="card-text m-0 my-2 d-flex"><i class='bx bx-calendar-alt align-self-center fs-4 me-3'></i>21 October 2024</p>
-                            <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-time align-self-center fs-4 me-3'></i>17.00 - 19.00</p>
-                            <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-map align-self-center fs-4 me-3'></i>Gelora Bung Jebret</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal Confirm Data-->
-        <div class="modal fade border border-0" id="modalRegister" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
-                <div class="modal-content border border-0 text-center p-3">
-                    <div class="mx-3">
-                        <i class='bx bx-user-check text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2' ></i>
-                    </div>
-                    <p class="fw-semibold mt-3 fs-4">Register Event</p>
-                    <div class="text-center fs-6">
-                        Are you sure you want to Register to this event? All of your data will be added to the list. This action can be canceled.
-                    </div>
+            <div class="row">
+                <?php 
+                // Tanggal hari ini
+                $currentDate = new DateTime();
+                
+                foreach ($events as $event): 
+                    // Tanggal event dari database
+                    $eventDate = new DateTime($event['tanggal_event']);
                     
-                    <!-- Modal Confirm Submit Regis -->
-                    <form action="" class="d-grid gap-2 py-3">
-                        <button type="button" class="btn button_custom text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
-                        <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</button>
-                    </form>
+                    // Hitung selisih hari antara event dan tanggal saat ini
+                    $interval = $currentDate->diff($eventDate);
+                    $daysRemaining = (int) $interval->format('%r%a'); // %r untuk tanda negatif/positif
+                    
+                    // Cek apakah event kurang dari 7 hari
+                    $isUpcoming = ($daysRemaining >= 0 && $daysRemaining <= 7);
+
+                    $query13 = "SELECT id_event, COUNT(id_akun) AS jumlahdaftar
+                                FROM registerke AS r
+                                WHERE id_event = ?";
+
+                    $stmt13 = $db->prepare($query13);
+                    $stmt13->execute([$event['id_event']]);
+                    $totaldaftar = $stmt13->fetch(PDO::FETCH_ASSOC);
+                ?>
+                <div class="col-md-4">
+                    <div class="card border border-0 mb-4" style="width: 100%;">
+                        <!-- Gambar Event -->
+                        <img src="uploads/<?= $event['foto_event'] ?>" class="card-img-top border border-0 rounded-3" alt="...">
+                        
+                        <div class="card-body mt-4 p-0">
+                            <div class="d-flex gap-2 mb-3">
+                                <!-- Nama Event -->
+                                <h5 class="card-title m-0 align-self-center"><?= $event['nama_event'] ?></h5>
+                                
+                                <!-- Status Event -->
+                                <p type="button" class="btn 
+                                    <?php 
+                                        if ($totaldaftar['jumlahdaftar'] >= $event['max_peserta']) {
+                                            echo 'btn-secondary';
+                                        } else {
+                                            echo $event['status_event'] === 'open' ? 'btn-success' : 'btn-danger';
+                                        }
+                                    ?> 
+                                    rounded-2 px-3 py-0 m-0">
+                                    <?php 
+                                        if ($totaldaftar['jumlahdaftar'] >= $event['max_peserta']) {
+                                            echo 'Sold Out';
+                                        } else {
+                                            echo ucfirst($event['status_event']);
+                                        }
+                                    ?>
+                                </p>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex gap-1 align-items-center">    
+                                    <!-- Kategori Event -->
+                                    <div class="d-flex border border-0 rounded-2 px-3 py-0 kategori_tombol">
+                                        <p class="align-self-center p-0 m-0"><?= ucfirst($event['kategori']) ?></p>
+                                    </div>
+
+                                    <!-- Upcoming Status hanya jika event kurang dari 1 minggu -->
+                                    <?php if ($isUpcoming): ?>
+                                        <button type="button" class="btn button_event rounded-2 px-3 p-0 m-0">Upcoming</button>
+                                    <?php endif; ?>
+                                </div>
+
+                                <!-- Participants (dummied since it is not in the query) -->
+                                <div class="m-0 p-0 mt-auto border border-0 rounded-2 px-3 py-0 participant_custom">
+                                    <p class="d-flex align-items-center p-0 m-0 text-dark">
+                                        <i class='bx bx-user fs-6 fw-bold me-2'></i> 
+                                        <?= isset($totaldaftar['jumlahdaftar']) ? $totaldaftar['jumlahdaftar'] : 0 ?> / <?= $event['max_peserta'] ?>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex mt-2">
+                                <!-- Button Modal -->
+                                <div class="">
+                                    <div class="d-flex">
+                                        <button href="#" class="btn bg-transparent border border-0 text-muted m-0" data-bs-toggle="modal" data-bs-target="#cardModal<?=$event['id_event']?>"><i class="fa-regular fa-eye"></i> See More Information</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Modal Event -->
+                <div class="modal fade border border-0" id="cardModal<?=$event['id_event']?>" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal_custom modal-dialog-centered border border-0">
+                        <div class="modal-content border border-0 rounded-4">
+                            <img src="uploads/<?= $event['foto_event'] ?>" class="card-img-top object-fit-cover border border-0 rounded-top-4" alt="..." style="width: 100%; height: 300px;">
+                            <div class="modal-body p-5 py-3">
+
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <h4 class="modal-title fw-semibold my-2"><?= $event['nama_event'] ?></h4>
+                                        <!-- ini buat statusnya di dalem modal untuk open pakae text-bg-primary kalo sold out warning -->
+                                        <p class="<?= $event['status_event'] === 'open' ? 'text-bg-success' : 'text-bg-danger' ?> border border-0 rounded-2 align-self-center m-0 mx-2 px-2">
+                                            <?= ucfirst($event['status_event']) ?>
+                                        </p> 
+                                    </div>
+                                </div>
+                                
+                                <!-- Deskripsi -->
+                                <p class="card-text m-0">
+                                    <?= $event['deskripsi'] ?>
+                                </p>
+
+                                <div class="d-flex my-4">
+                                    <div class="d-flex justify-content-center gap-2">
+                                        <div class="d-flex border border-0 rounded-5 px-4 py-1 kategori_tombol">
+                                            <p class="align-self-center p-0 m-0">Tradition</p>
+                                        </div>
+                                    </div>
+
+                                    <?php
+                                    if ($event['status_event'] == 'open') {
+                                        // Check if the user is registered for this event
+                                        if (in_array($event['id_event'], $registeredEvents)) {
+                                            // User is already registered
+                                            ?>
+                                            <div class="mx-3">
+                                                <button type="button" class="btn button_register rounded-pill px-4" disabled>Registered</button>
+                                            </div>
+                                            <?php
+                                        } else {
+                                            // User is not registered, show the register button
+                                            ?>
+                                            <div class="mx-3">
+                                                <button type="button" class="btn button_register rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalRegister<?= $event['id_event'] ?>">Register</button>
+                                            </div>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                </div>
+
+
+                                <div class="mb-4">
+                                    <!-- Date -->
+                                    <p class="card-text m-0 my-2 d-flex"><i class='bx bx-calendar-alt align-self-center fs-4 me-3'></i><?= $event['tanggal_event'] ?></p>
+                                    <!-- Waktu -->
+                                    <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-time align-self-center fs-4 me-3'></i><?= $event['waktu_event'] ?></p>
+                                    <!-- Location -->
+                                    <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-map align-self-center fs-4 me-3'></i><?= $event['lokasi_event'] ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Confirm Data-->
+                <div class="modal fade border border-0" id="modalRegister<?= $event['id_event'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+                        <div class="modal-content border border-0 text-center p-3">
+                            <div class="mx-3">
+                                <i class='bx bx-user-check text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2' ></i>
+                            </div>
+                            <p class="fw-semibold mt-3 fs-4">Register Event</p>
+                            <div class="text-center fs-6">
+                                Are you sure you want to Register to this event? All of your data will be added to the list. This action can be canceled.
+                            </div>
+                            
+                            <!-- Modal Confirm Submit Regis -->
+                            <form action="registerevent.php" method="post" class="d-grid gap-2 py-3">
+                                <input type="hidden" name="id_event" value="<?= $event['id_event'] ?>">
+                                <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
+                                <button type="submit" class="btn button_custom text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
+                                <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
-</body>
 
+</body>
 </html>

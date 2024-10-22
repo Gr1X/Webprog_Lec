@@ -53,7 +53,11 @@ SELECT r.id_akun, username, r.id_event, nama_event
 FROM registerke AS r
 JOIN account AS a ON a.id_akun = r.id_akun
 JOIN listevent AS l ON l.id_event = r.id_event
-WHERE r.id_event = ?;
+WHERE r.id_event = 1;
+
+SELECT id_event, COUNT(id_akun)
+FROM registerke AS r
+GROUP BY id_event;
 
 
 -- if Register User

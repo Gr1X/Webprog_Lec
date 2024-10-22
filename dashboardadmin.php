@@ -29,7 +29,6 @@ if (!empty($keyword)) {
 
 $stmt5->execute();
 $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
 
 
@@ -120,10 +119,13 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                     // Cek apakah event kurang dari 7 hari
                     $isUpcoming = ($daysRemaining >= 0 && $daysRemaining <= 7);
 
-                    $query7 = "SELECT e.id_event, nama_event, foto_event, status_event, kategori, tanggal_event, max_peserta
-                               FROM listevent AS e
-                               LEFT JOIN registerke AS r ON r.id_event = e.id_event";
+                    $query14 = "SELECT id_event, COUNT(id_akun) AS jumlahdaftar
+                    FROM registerke AS r
+                    WHERE id_event = ?";
 
+                    $stmt14 = $db->prepare($query14);
+                    $stmt14->execute([$event['id_event']]);
+                    $totaldaftar = $stmt14->fetch(PDO::FETCH_ASSOC);
                 ?>
                 <div class="col-md-4">
                     <div class="card border border-0 mb-4" style="width: 100%;">
@@ -136,8 +138,22 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                 <h5 class="card-title m-0 align-self-center"><?= $event['nama_event'] ?></h5>
                                 
                                 <!-- Status Event -->
-                                <p type="button" class="btn <?= $event['status_event'] === 'open' ? 'btn-success' : 'btn-danger' ?> rounded-2 px-3 py-0 m-0">
-                                    <?= ucfirst($event['status_event']) ?>
+                                <p type="button" class="btn 
+                                    <?php 
+                                        if ($totaldaftar['jumlahdaftar'] >= $event['max_peserta']) {
+                                            echo 'btn-secondary';
+                                        } else {
+                                            echo $event['status_event'] === 'open' ? 'btn-success' : 'btn-danger';
+                                        }
+                                    ?> 
+                                    rounded-2 px-3 py-0 m-0">
+                                    <?php 
+                                        if ($totaldaftar['jumlahdaftar'] >= $event['max_peserta']) {
+                                            echo 'Sold Out';
+                                        } else {
+                                            echo ucfirst($event['status_event']);
+                                        }
+                                    ?>
                                 </p>
                             </div>
                             
@@ -157,7 +173,8 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                 <!-- Participants (dummied since it is not in the query) -->
                                 <div class="m-0 p-0 mt-auto border border-0 rounded-2 px-3 py-0 participant_custom">
                                     <p class="d-flex align-items-center p-0 m-0 text-light">
-                                        <i class='bx bx-user fs-6 fw-bold me-2'></i>.. / <?= $event['max_peserta']?>
+                                        <i class='bx bx-user fs-6 fw-bold me-2'></i> 
+                                        <?= isset($totaldaftar['jumlahdaftar']) ? $totaldaftar['jumlahdaftar'] : 0 ?> / <?= $event['max_peserta'] ?>
                                     </p>
                                 </div>
                             </div>

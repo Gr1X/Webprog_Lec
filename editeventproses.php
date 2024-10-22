@@ -22,22 +22,18 @@ if (!empty($_FILES['foto_event']['name'])){
   if (in_array($file_ext, $allowed_ext)){
     $foto_path = "uploads/{$filename}";
     move_uploaded_file($temp_file, $foto_path);
-  
-    if (file_exists('uploads/' . $filename)){
-      unlink('uploads/' . $filename);
-    }
 
     $query9 = "UPDATE listevent
-    SET nama_event = ?,
-        foto_event = ?,
-        deskripsi = ?,
-        kategori = ?,
-        tanggal_event = ?,
-        waktu_event = ?,
-        lokasi_event = ?,
-        max_peserta = ?,
-        status_event = ?
-    WHERE id_event = ?";
+               SET nama_event = ?,
+                   foto_event = ?,
+                   deskripsi = ?,
+                   kategori = ?,
+                   tanggal_event = ?,
+                   waktu_event = ?,
+                   lokasi_event = ?,
+                   max_peserta = ?,
+                   status_event = ?
+               WHERE id_event = ?";
 
     $stmt9 = $db->prepare($query9);
     $stmt9->execute([$nama_event, $filename, $deskripsi, $kategori, $tanggal_event, $waktu_event, $lokasi_event, $max_peserta, $status_event, $id_event]);
