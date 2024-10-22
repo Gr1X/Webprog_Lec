@@ -33,7 +33,7 @@
                 
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center" href="#">
-                            <i class='bx bxs-calendar-event fs-4'></i>
+                            <i class='bx bxs-inbox fs-4'></i>
                             <span class="mx-2 p-0">My List</span>
                         </a>
                     </li>
@@ -62,11 +62,71 @@
                     <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
                     <div class="card-body mt-4 p-0">
                         <div class="d-flex justify-content-between">
-                            <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
+                            <div class="d-flex">
+                                <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
+                                <p type="button" class="badge text-bg-danger">Closed</p>
+                            </div>
 
                             <div class="">
-                                <button type="button" class="btn btn-outline-danger rounded-pill">Closed</button>
-                                <button type="button" class="btn button_event rounded-pill">Upcoming</button>
+                                <p type="button" class="btn button_event rounded-pill px-2 p-0 m-0">Upcoming</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mt-2">
+                            <div class="d-flex border border-0 rounded-5 px-4 py-1 kategori_tombol">
+                                <p class="align-self-center p-0 m-0">Tradition</p>
+                            </div>
+                            <div class="ps-4">
+                                <div class="d-flex justify-content-center pe-4">
+                                    <button href="#" class="btn bg-transparent border border-0 text-muted" data-bs-toggle="modal" data-bs-target="#cardModal"><i class="fa-regular fa-eye"></i> See More Information</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border border-0 mb-4" style="width: 100%;">
+                    <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
+                    <div class="card-body mt-4 p-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex">
+                                <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
+                                <p type="button" class="badge text-bg-primary">Open</p>
+                            </div>
+
+                            <div class="">
+                                <p type="button" class="btn button_event rounded-pill p-0 px-2 m-0">Upcoming</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mt-2">
+                            <div class="d-flex border border-0 rounded-5 px-4 py-1 kategori_tombol">
+                                <p class="align-self-center p-0 m-0">Tradition</p>
+                            </div>
+                            <div class="ps-4">
+                                <div class="d-flex justify-content-center pe-4">
+                                    <button href="#" class="btn bg-transparent border border-0 text-muted" data-bs-toggle="modal" data-bs-target="#cardModal"><i class="fa-regular fa-eye"></i> See More Information</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border border-0 mb-4" style="width: 100%;">
+                    <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
+                    <div class="card-body mt-4 p-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex">
+                                <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
+                                <p type="button" class="badge text-bg-warning">Sold Out</p>
+                            </div>
+
+                            <div class="">
+                                <p type="button" class="btn button_event rounded-pill px-2 p-0 m-0">Upcoming</p>
                             </div>
                         </div>
 
@@ -129,7 +189,7 @@
 
                         <form action="">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Yes</button>
+                            <button type="submit" class="btn btn-primary">Yes</button>
                         </form>
 
                     </div>

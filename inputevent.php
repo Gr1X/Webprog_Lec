@@ -41,6 +41,13 @@
                             <span class="mx-2 p-0">My Event</span>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class='bx bxs-user-detail fs-4'></i>
+                            <span class="mx-2 p-0">See participants</span>
+                        </a>
+                    </li>
                     
                     <!-- Profile Icon -->
                     <li class="nav-item dropdown d-flex align-items-center">
