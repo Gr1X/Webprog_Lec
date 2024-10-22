@@ -113,7 +113,7 @@ if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
                             </div>
                         </form>
                         
-                        <p class="text-muted">Don't have an account? <a href="#" class="text-decoration-none">Sign Up now</a></p>
+                        <p class="text-muted">Don't have an account? <a href="registeruser.php" class="text-decoration-none">Sign Up now</a></p>
                     </div>
                 </div>
             </div>
