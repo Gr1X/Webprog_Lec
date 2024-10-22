@@ -20,30 +20,24 @@
             </button>
 
             <!-- Collapse untuk navigasi dan search bar -->
-            <div class="collapse navbar-collapse" id="navbarScroll">
-                <!-- Search Bar -->
-                <form class="input-group mx-3" role="search">
-                    <input class="form-control input_search" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn tombol_search" type="submit"><i class='bx bx-search fw-bold'></i></button>
-                </form>
-
+            <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
                 <!-- Navigasi Tambah Event dan My Event -->
                 <ul class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll">
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="#">
+                        <a class="nav-link d-flex align-items-center" href="inputevent.php">
                             <i class='bx bxs-calendar-plus fs-4'></i>
                             <span class="mx-2 p-0">Tambah Event</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="#">
+                        <a class="nav-link d-flex align-items-center" href="dashboardadmin.php">
                             <i class='bx bxs-calendar-event fs-4'></i>
                             <span class="mx-2 p-0">My Event</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="#">
+                        <a class="nav-link d-flex align-items-center" href="seeparticipant.php">
                             <i class='bx bxs-user-detail fs-4'></i>
                             <span class="mx-2 p-0">See participants</span>
                         </a>

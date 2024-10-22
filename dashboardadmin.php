@@ -36,7 +36,6 @@
                             <span class="mx-2 p-0">Tambah Event</span>
                         </a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link d-flex align-items-center" href="dashboardadmin.php">
                             <i class='bx bxs-calendar-event fs-4'></i>
@@ -45,7 +44,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="#">
+                        <a class="nav-link d-flex align-items-center" href="seeparticipant.php">
                             <i class='bx bxs-user-detail fs-4'></i>
                             <span class="mx-2 p-0">See participants</span>
                         </a>
