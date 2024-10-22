@@ -14,15 +14,17 @@ $stmt3 = $db->prepare($query3);
 $stmt3->execute([$email]);
 $row = $stmt3->fetch(PDO::FETCH_ASSOC);
 
-if(!$row){
-  echo "Email not found
-        <a href='inputRegister.php' class='btn btn-primary me-2'>Register</a>";
-}
-else{
+if (!$row) {
+  // Check Email
+  $_SESSION['error'] = "Email not found.";
+  header("location: login.php");
+  exit();
+} else {
   // Check password
-  if(!password_verify($password, $row['password_akun'])){
-    echo "Wrong Password
-          <a href='inputLogin.php' class='btn btn-primary me-2'>Login</a>";
+  if (!password_verify($password, $row['password_akun'])) {
+      $_SESSION['error'] = "Wrong password.";
+      header("location: login.php");
+      exit();
   }
   else{
     // Login Sukses
