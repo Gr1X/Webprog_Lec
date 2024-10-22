@@ -171,8 +171,8 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
 
                                 <!-- Participants (dummied since it is not in the query) -->
-                                <div class="m-0 p-0 mt-auto border border-0 rounded-2 px-3 py-0 participant_custom">
-                                    <p class="d-flex align-items-center p-0 m-0 text-light">
+                                <div class="m-0 p-0 mt-auto border border-0 rounded-2 px-2 py-0">
+                                    <p class="d-flex align-items-center p-0 m-0 text-dark">
                                         <i class='bx bx-user fs-6 fw-bold me-2'></i> 
                                         <?= isset($totaldaftar['jumlahdaftar']) ? $totaldaftar['jumlahdaftar'] : 0 ?> / <?= $event['max_peserta'] ?>
                                     </p>
@@ -275,7 +275,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                     
                     <form action="" class="d-grid gap-2 py-3">
                         <button type="button" class="btn btn-danger text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
-                        <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</i></button>
+                        <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</i></button>
                     </form>
                 </div>
             </div>
@@ -289,16 +289,8 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                         <!-- Back Button -->
                         <button type="button" class="btn btn-primary button_part" data-bs-toggle="modal" data-bs-target="#cardModal">Back</button>
 
-                        <!-- Search Form -->
-                        <form class="input-group" role="search" style="width: 300px;">
-                            <input class="form-control input_search" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn tombol_search" type="submit">
-                                <i class='bx bx-search fw-bold'></i>
-                            </button>
-                        </form>
-
                         <!-- Export Button -->
-                        <button type="button" class="btn btn-primary button_part">Export</button>
+                        <button type="button" class="btn btn-primary d-flex align-items-center button_part justify-content-between">Export<i class='bx bx-spreadsheet text-end fs-4'></i></button>
                     </div>
 
                     <!-- Participants Table -->
@@ -314,7 +306,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </td>
                                     <td>
-                                        <button class="btn-delete">
+                                        <button class="btn-delete" data-bs-toggle="modal" data-bs-target="#deletePar">
                                             <i class='bx bx-trash fs-5'></i>
                                         </button>
                                     </td>
@@ -328,7 +320,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                         </div>
                                     </td>
                                     <td>
-                                        <button class="btn-delete">
+                                        <button class="btn-delete" data-bs-toggle="modal" data-bs-target="#deletePar">
                                             <i class='bx bx-trash fs-5'></i>
                                         </button>
                                     </td>
@@ -339,7 +331,28 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
+
+        <!-- Modal Delete Data Participant-->
+        <div class="modal fade border border-0" id="deletePar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+                <div class="modal-content border border-0 text-center p-3">
+                    <div class="mx-3">
+                        <i class='bx bx-error text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2' ></i>
+                    </div>
+                    <p class="fw-semibold mt-3 fs-4">Removing Event</p>
+                    <div class="text-center fs-6">
+                        Are you sure you want to remove your event? All of your data will be permanently removed. This action cannot be undone.
+                    </div>
+                    
+                    <form action="" class="d-grid gap-2 py-3">
+                        <button type="button" class="btn btn-danger text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
+                        <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+    
 </body>
 
 </html>
