@@ -74,3 +74,18 @@ VALUES
 (4, 'Art Workshop', 'databes4.jpg', 'Hands-on painting workshop', 'art', '2024-11-10', '13:00 - 16:00', 'Di Bandung', 50, 'closed'),
 (5, 'Education Seminar', 'databes5.jpg', 'Learning made fun', 'education', '2024-11-15', '09:00 - 12:00', 'Di Surabaya', 100, 'open'),
 (6, 'Sports Championship', 'databes6.jpg', 'Cheer for your favorite teams!', 'sports', '2024-11-20', '15:00 - 18:00', 'Di Bali', 1000, 'open');
+
+-- If status & register
+-- Registered jika open dan sudah register (walaupun sudah penuh)
+-- Register jika open dan belum register
+-- Ilang jika closed dan (penuh dan belum daftar)
+
+-- Udah penuh > cek udah daftar atau belum
+-- open > cek udah daftar atau belum
+-- close > cek udah daftar atau belum
+
+SELECT e.id_event, nama_event, foto_event, kategori, tanggal_event, max_peserta, tanggal_event, waktu_event, deskripsi, lokasi_event
+FROM listevent AS e
+LEFT JOIN registerke AS r ON r.id_event = e.id_event
+WHERE id_akun = 1
+GROUP BY e.id_event ORDER BY tanggal_event ASC;

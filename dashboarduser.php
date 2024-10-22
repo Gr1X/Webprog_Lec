@@ -176,11 +176,17 @@ $registeredEvents = array_column($registers, 'id_event');
                                 </div>
 
                                 <!-- Participants (dummied since it is not in the query) -->
-                                <div class="m-0 p-0 mt-auto border border-0 rounded-2 px-3 py-0 participant_custom">
-                                    <p class="d-flex align-items-center p-0 m-0 text-dark">
-                                        <i class='bx bx-user fs-6 fw-bold me-2'></i> 
-                                        <?= isset($totaldaftar['jumlahdaftar']) ? $totaldaftar['jumlahdaftar'] : 0 ?> / <?= $event['max_peserta'] ?>
-                                    </p>
+                                <div class="m-0 p-0 mt-auto border border-0 rounded-2 px-2 py-0">
+                                  <?php if($event['status_event'] === 'open'){ ?>
+                                      <p class="d-flex align-items-center p-0 m-0 text-dark">
+                                          <i class='bx bx-user fs-6 fw-bold me-2'></i> 
+                                          <?= isset($totaldaftar['jumlahdaftar']) ? $totaldaftar['jumlahdaftar'] : 0 ?> / <?= $event['max_peserta'] ?>
+                                      </p>
+                                  <?php }else{?>
+                                      <p class="d-flex align-items-center p-0 m-0 text-dark">
+                                          <i class='bx bx-user fs-6 fw-bold me-2'></i>- / - 
+                                      </p>
+                                  <?php }?>
                                 </div>
                             </div>
 
@@ -226,23 +232,23 @@ $registeredEvents = array_column($registers, 'id_event');
                                     </div>
 
                                     <?php
-                                    if ($event['status_event'] == 'open') {
-                                        // Check if the user is registered for this event
-                                        if (!($totaldaftar['jumlahdaftar'] >= $event['max_peserta'])) {
-                                            if (in_array($event['id_event'], $registeredEvents)) {
-                                                // User is already registered
-                                                ?>
-                                                <div class="mx-3">
-                                                    <button type="button" class="btn button_register rounded-pill px-4" disabled>Registered</button>
-                                                </div>
-                                                <?php
-                                            } else {
-                                                // User is not registered, show the register button
-                                                ?>
-                                                <div class="mx-3">
-                                                    <button type="button" class="btn button_register rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalRegister<?= $event['id_event'] ?>">Register</button>
-                                                </div>
-                                                <?php
+                                    if (in_array($event['id_event'], $registeredEvents)){
+                                        if($event['status_event'] == 'open'){
+                                            ?>
+                                            <div class="mx-3">
+                                                <button type="button" class="btn button_register rounded-pill px-4" disabled>Registered</button>
+                                            </div>
+                                            <?php
+                                        }
+                                    }
+                                    else{
+                                        if (!($totaldaftar['jumlahdaftar'] >= $event['max_peserta'])){
+                                            if ($event['status_event'] == 'open'){
+                                              ?>
+                                              <div class="mx-3">
+                                                  <button type="button" class="btn button_register rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalRegister<?= $event['id_event'] ?>">Register</button>
+                                              </div>
+                                              <?php
                                             }
                                         }
                                     }

@@ -172,10 +172,16 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
 
                                 <!-- Participants (dummied since it is not in the query) -->
                                 <div class="m-0 p-0 mt-auto border border-0 rounded-2 px-2 py-0">
-                                    <p class="d-flex align-items-center p-0 m-0 text-dark">
-                                        <i class='bx bx-user fs-6 fw-bold me-2'></i> 
-                                        <?= isset($totaldaftar['jumlahdaftar']) ? $totaldaftar['jumlahdaftar'] : 0 ?> / <?= $event['max_peserta'] ?>
-                                    </p>
+                                  <?php if($event['status_event'] === 'open'){ ?>
+                                      <p class="d-flex align-items-center p-0 m-0 text-dark">
+                                          <i class='bx bx-user fs-6 fw-bold me-2'></i> 
+                                          <?= isset($totaldaftar['jumlahdaftar']) ? $totaldaftar['jumlahdaftar'] : 0 ?> / <?= $event['max_peserta'] ?>
+                                      </p>
+                                  <?php }else{?>
+                                      <p class="d-flex align-items-center p-0 m-0 text-dark">
+                                          <i class='bx bx-user fs-6 fw-bold me-2'></i>- / - 
+                                      </p>
+                                  <?php }?>
                                 </div>
                             </div>
 
@@ -238,10 +244,10 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                             </button>
                                         </form>
 
-                                        <button type="button" class="btn button_register rounded-pill px-4 d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#modalDelete">Delete<i class='bx bxs-trash align-self-center ms-2' ></i></button>
+                                        <button type="button" class="btn button_register rounded-pill px-4 d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#modalDelete<?= $event['id_event']?>">Delete<i class='bx bxs-trash align-self-center ms-2' ></i></button>
                                     </div>
                                 </div>
-
+                                
 
                                 <div class="mb-4">
                                     <!-- Date -->
@@ -256,30 +262,28 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                     </div>
                 </div>
 
+                <!-- Modal Delete Data-->
+                <div class="modal fade border border-0" id="modalDelete<?= $event['id_event']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+                        <div class="modal-content border border-0 text-center p-3">
+                            <div class="mx-3">
+                                <i class='bx bx-error text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2' ></i>
+                            </div>
+                                <p class="fw-semibold mt-3 fs-4">Removing Event</p>
+                            <div class="text-center fs-6">
+                                Are you sure you want to remove your event? All of your data will be permanently removed. This action cannot be undone.
+                            </div>
+                                                
+                            <form action="deleteevent.php" method="post"class="d-grid gap-2 py-3">
+                                <input type="hidden" name="id_event" value="<?= $event['id_event'] ?>">
+                                <button type="submit" class="btn btn-danger text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
+                                <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <?php endforeach; ?>
             </div>
-
-            
-
-        <!-- Modal Delete Data-->
-        <div class="modal fade border border-0" id="modalDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
-                <div class="modal-content border border-0 text-center p-3">
-                    <div class="mx-3">
-                        <i class='bx bx-error text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2' ></i>
-                    </div>
-                    <p class="fw-semibold mt-3 fs-4">Removing Event</p>
-                    <div class="text-center fs-6">
-                        Are you sure you want to remove your event? All of your data will be permanently removed. This action cannot be undone.
-                    </div>
-                    
-                    <form action="" class="d-grid gap-2 py-3">
-                        <button type="button" class="btn btn-danger text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
-                        <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-toggle="modal" data-bs-dismiss="modal">Cancel</i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
 
         <!-- ModalParticipant -->
         <div class="modal fade border border-0" id="modalParticipant" tabindex="-1" aria-hidden="true">

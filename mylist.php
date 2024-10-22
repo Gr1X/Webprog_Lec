@@ -1,3 +1,42 @@
+<?php
+session_start();
+require_once('db.php');
+
+$id_akun = $_SESSION['id_akun'];
+$username = $_SESSION['username'];
+$keyword = isset($_POST['keyword']) ? trim($_POST['keyword']) : '';
+
+// Base query
+$query16 = "SELECT e.id_event, nama_event, foto_event, kategori, tanggal_event, max_peserta, tanggal_event, waktu_event, deskripsi, lokasi_event
+            FROM listevent AS e
+            LEFT JOIN registerke AS r ON r.id_event = e.id_event";
+
+// Tambahkan kondisi jika keyword ada
+if (!empty($keyword)) {
+    $query16 .= " WHERE nama_event LIKE :keyword AND r.id_akun = :id_akun";
+} else {
+    $query16 .= " WHERE r.id_akun = :id_akun";
+}
+
+// Tambahkan bagian akhir query
+$query16 .= " GROUP BY e.id_event ORDER BY tanggal_event ASC";
+
+// Persiapkan dan jalankan query
+$stmt16 = $db->prepare($query16);
+
+// Bind parameter jika ada keyword
+if (!empty($keyword)) {
+    $stmt16->bindValue(':keyword', '%' . $keyword . '%');
+}
+
+// Bind id_akun parameter in both cases
+$stmt16->bindValue(':id_akun', $id_akun);
+
+// Execute the query
+$stmt16->execute();
+$events = $stmt16->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,8 +61,8 @@
             <!-- Collapse untuk navigasi dan search bar -->
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <!-- Search Bar -->
-                <form class="input-group mx-3" role="search">
-                    <input class="form-control input_search" type="search" placeholder="Search" aria-label="Search">
+                <form action="mylist.php" method="post" class="input-group mx-3" role="search">
+                    <input class="form-control input_search" type="text" name="keyword" placeholder="Search" aria-label="Search">
                     <button class="btn tombol_search" type="submit"><i class='bx bx-search fw-bold'></i></button>
                 </form>
 
@@ -60,63 +99,80 @@
     </nav>
 
     <div class="mt-5 pt-5 mx-3">
-        <div class="row gap-3 d-flex justify-content-center">
-
-            <!-- itu img/ diubah -> uploads/ (ini masih pakei dummy) -->
-            <div class="col-5 card card_book m-0 p-0 text-white" style="background-image: url('img/<?php echo "christmas.jpg"; ?>');">
-                <div class="card-header card-header border border-0">
-                    Your Registration Event
-                </div>
-                <div class="card-body p-4 pt-2">
-                    <!-- Tulisan Ini ga berubah -->
-                    <p class="card-title m-0">Event</p>
-                    <div class="d-flex justify-content-between">
-                        <!-- Nama Event -->
-                        <h2 class="card-text align-self-center"><?php  echo "Event Name" ?></h2>
-                        <div class="text-center">
-                            <!-- Date -->
-                            <p class="p-0 m-0"><?php echo "22 October 2024"; ?></p>
-                            <!-- Time -->
-                            <h2><?php echo "18.00 - 19.00"; ?></h2>
-                        </div>
+        <?php foreach ($events as $event): ?>
+            <div class="row my-3 gap-3 d-flex justify-content-center">
+                <div class="col-5 card card_book m-0 p-0 text-white" style="background-image: url('uploads/<?php echo htmlspecialchars($event['foto_event']); ?>');">
+                    <div class="card-header card-header border border-0">
+                        Your Registration Event
                     </div>
-                    <div class="d-flex justify-content-between">
-                        <div class="">
-                            <!-- Date -->
-                            <p class="card-text m-0 my-2 d-flex"><i class='bx bx-calendar-alt align-self-center fs-4 me-3'></i><?php echo "21 October 2024"; ?></p>
-                            <!-- Time -->
-                            <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-time align-self-center fs-4 me-3'></i><?php echo "17.00 - 19.00"?></p>
-                            <!-- Location -->
-                            <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-map align-self-center fs-4 me-3'></i><?php echo "Gelora Bung Jebret" ?></p>
+                    <div class="card-body p-4 pt-2">
+                        <p class="card-title m-0">Event</p>
+                        <div class="d-flex justify-content-between">
+                            <!-- Nama Event -->
+                            <h2 class="card-text align-self-center"><?php echo htmlspecialchars($event['nama_event']); ?></h2>
+                            <div class="text-center">
+                                <!-- Tanggal Event -->
+                                <p class="p-0 m-0"><?php echo date('d F Y', strtotime($event['tanggal_event'])); ?></p>
+                                <!-- Waktu Event -->
+                                <h2><?php echo htmlspecialchars($event['waktu_event']); ?></h2>
+                            </div>
                         </div>
-                        <div class="d-flex align-items-end">
-                            <button href="#" class="btn tombol_book" data-bs-toggle="modal" data-bs-target="#modalDeleteRegis">Cancel Book Registration</button>
+                        <div class="d-flex justify-content-between">
+                            <div class="">
+                                <!-- Kategori -->
+                                <p class="card-text m-0 my-2 d-flex">
+                                    <i class='bx bx-category-alt align-self-center fs-4 me-3'></i>
+                                    <?php 
+                                    if($event['kategori'] == 'education'){
+                                      echo 'Education';
+                                    }else if($event['kategori'] == 'art'){
+                                      echo 'Art';
+                                    }else if($event['kategori'] == 'music'){
+                                      echo 'Music';
+                                    }else if($event['kategori'] == 'sports'){
+                                      echo 'Sports';
+                                    }else if($event['kategori'] == 'technology'){
+                                      echo 'Technology';
+                                    }
+                                    ?>
+                                </p>
+                                <!-- Lokasi -->
+                                <p class="card-text m-0 my-2 d-flex">
+                                    <i class='bx bxs-map align-self-center fs-4 me-3'></i>
+                                    <?php echo htmlspecialchars($event['lokasi_event']); ?>
+                                </p>
+                            </div>
+                            <div class="d-flex align-items-end">
+                                <button href="#" class="btn tombol_book" data-bs-toggle="modal" data-bs-target="#modalDeleteRegis<?= $event['id_event'] ?>">Cancel Book Registration</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- Modal Delete Data-->
-    <div class="modal fade border border-0" id="modalDeleteRegis" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
-            <div class="modal-content border border-0 text-center p-3">
-                <div class="mx-3">
-                    <i class='bx bx-error text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2' ></i>
+            <!-- Modal Delete Data-->
+            <div class="modal fade border border-0" id="modalDeleteRegis<?= $event['id_event'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+                    <div class="modal-content border border-0 text-center p-3">
+                        <div class="mx-3">
+                            <i class='bx bx-error text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2' ></i>
+                        </div>
+                        <p class="fw-semibold mt-3 fs-4">Cancel Event</p>
+                        <div class="text-center fs-6">
+                            Are you sure you want to remove your Booked Event? All of your data will be permanently removed. This action cannot be undone.
+                        </div>
+                        
+                        <!-- Delete Data -->
+                        <form action="deleteregisterke.php" method="post" class="d-grid gap-2 py-3"> 
+                            <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
+                            <input type="hidden" name="id_event" value="<?= $event['id_event'] ?>">
+                            <button type="submit" class="btn btn-danger text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
+                            <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</i></button>
+                        </form>
+                    </div>
                 </div>
-                <p class="fw-semibold mt-3 fs-4">Cancel Event</p>
-                <div class="text-center fs-6">
-                    Are you sure you want to remove your Booked Event? All of your data will be permanently removed. This action cannot be undone.
-                </div>
-                
-                <!-- Delete Data -->
-                <form action="" class="d-grid gap-2 py-3">
-                    <button type="button" class="btn btn-danger text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
-                    <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</i></button>
-                </form>
             </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </body>
 </html>
