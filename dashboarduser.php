@@ -228,20 +228,22 @@ $registeredEvents = array_column($registers, 'id_event');
                                     <?php
                                     if ($event['status_event'] == 'open') {
                                         // Check if the user is registered for this event
-                                        if (in_array($event['id_event'], $registeredEvents)) {
-                                            // User is already registered
-                                            ?>
-                                            <div class="mx-3">
-                                                <button type="button" class="btn button_register rounded-pill px-4" disabled>Registered</button>
-                                            </div>
-                                            <?php
-                                        } else {
-                                            // User is not registered, show the register button
-                                            ?>
-                                            <div class="mx-3">
-                                                <button type="button" class="btn button_register rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalRegister<?= $event['id_event'] ?>">Register</button>
-                                            </div>
-                                            <?php
+                                        if (!($totaldaftar['jumlahdaftar'] >= $event['max_peserta'])) {
+                                            if (in_array($event['id_event'], $registeredEvents)) {
+                                                // User is already registered
+                                                ?>
+                                                <div class="mx-3">
+                                                    <button type="button" class="btn button_register rounded-pill px-4" disabled>Registered</button>
+                                                </div>
+                                                <?php
+                                            } else {
+                                                // User is not registered, show the register button
+                                                ?>
+                                                <div class="mx-3">
+                                                    <button type="button" class="btn button_register rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalRegister<?= $event['id_event'] ?>">Register</button>
+                                                </div>
+                                                <?php
+                                            }
                                         }
                                     }
                                     ?>
