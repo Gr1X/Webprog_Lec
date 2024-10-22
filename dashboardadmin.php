@@ -4,16 +4,32 @@ require_once('db.php');
 
 $id_akun = $_SESSION['id_akun'];
 $username = $_SESSION['username'];
+$keyword = isset($_POST['keyword']) ? trim($_POST['keyword']) : '';
 
+// Base query
 $query5 = "SELECT e.id_event, nama_event, foto_event, status_event, kategori, tanggal_event, max_peserta
            FROM listevent AS e
-           LEFT JOIN registerke AS r ON r.id_event = e.id_event
-           GROUP BY e.id_event
-           ORDER BY tanggal_event ASC";
+           LEFT JOIN registerke AS r ON r.id_event = e.id_event";
 
-$stmt5 = $db->prepare(query: $query5);
+// Tambahkan kondisi jika keyword ada
+if (!empty($keyword)) {
+    $query5 .= " WHERE nama_event LIKE :keyword";
+}
+
+// Tambahkan bagian akhir query
+$query5 .= " GROUP BY e.id_event ORDER BY tanggal_event ASC";
+
+// Persiapkan dan jalankan query
+$stmt5 = $db->prepare($query5);
+
+// Bind parameter jika ada keyword
+if (!empty($keyword)) {
+    $stmt5->bindValue(':keyword', '%' . $keyword . '%');
+}
+
 $stmt5->execute();
 $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 
 
@@ -42,8 +58,8 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
             <!-- Collapse untuk navigasi dan search bar -->
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <!-- Search Bar -->
-                <form class="input-group mx-3" role="search">
-                    <input class="form-control input_search" type="search" placeholder="Search" aria-label="Search">
+                <form action="dashboardadmin.php" method="post" class="input-group mx-3" role="search">
+                    <input class="form-control input_search" type="text" name="keyword" placeholder="Search" aria-label="Search">
                     <button class="btn tombol_search" type="submit"><i class='bx bx-search fw-bold'></i></button>
                 </form>
 
