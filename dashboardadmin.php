@@ -262,6 +262,65 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                 </div>
             </div>
         </div>
+
+        <!-- ModalParticipant -->
+        <div class="modal fade border border-0" id="modalParticipant" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg border-0">
+                <div class="modal-content border-0 p-4">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <!-- Back Button -->
+                        <button type="button" class="btn btn-primary button_part" data-bs-toggle="modal" data-bs-target="#cardModal">Back</button>
+
+                        <!-- Search Form -->
+                        <form class="input-group" role="search" style="width: 300px;">
+                            <input class="form-control input_search" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn tombol_search" type="submit">
+                                <i class='bx bx-search fw-bold'></i>
+                            </button>
+                        </form>
+
+                        <!-- Export Button -->
+                        <button type="button" class="btn btn-primary button_part">Export</button>
+                    </div>
+
+                    <!-- Participants Table -->
+                    <div class="table-responsive">
+                        <table class="table table-borderless align-middle">
+                            <tbody>
+                                <!-- Participant Row -->
+                                <tr>
+                                    <td>
+                                        <div class="participant-row">
+                                            <p class="participant-name">Gregorius Frederico</p>
+                                            <p class="participant-email">gregorius.frederico.student@umn.ac.id</p>  
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn-delete">
+                                            <i class='bx bx-trash fs-5'></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Duplicate the row for more participants -->
+                                <tr>
+                                    <td>
+                                        <div class="participant-row">
+                                            <p class="participant-name">Gregorius Frederico</p>
+                                            <p class="participant-email">gregorius.frederico.student@umn.ac.id</p>  
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <button class="btn-delete">
+                                            <i class='bx bx-trash fs-5'></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
