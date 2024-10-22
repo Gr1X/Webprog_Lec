@@ -69,7 +69,7 @@
 
                     <p class="fw-semibold mt-3 fs-4">Enter Company Password</p>
 
-                    <form action=".."  method="post">
+                    <form action="cekpasswordadmin.php"  method="post">
                         <div class="text-center fs-6">
                             <p class="">Please Enter the passkey to register as admin.</p>
                             <div class="input-group flex-nowrap mb-2">
