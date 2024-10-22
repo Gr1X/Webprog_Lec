@@ -36,11 +36,18 @@
                             <span class="mx-2 p-0">Tambah Event</span>
                         </a>
                     </li>
-                    
+
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="#">
+                        <a class="nav-link d-flex align-items-center" href="dashboardadmin.php">
                             <i class='bx bxs-calendar-event fs-4'></i>
                             <span class="mx-2 p-0">My Event</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="#">
+                            <i class='bx bxs-user-detail fs-4'></i>
+                            <span class="mx-2 p-0">See participants</span>
                         </a>
                     </li>
                     
@@ -68,17 +75,88 @@
                     <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
                     <div class="card-body mt-4 p-0">
                         <div class="d-flex justify-content-between">
-                            <h5 class="card-title align-self-center m-0">Chirstmas Street Party</h5>
-                            <button type="button" class="btn button_event rounded-pill">Upcoming</button>
+                            <div class="d-flex">
+                                <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
+                                <!-- Status -->
+                                <p type="button" class="badge text-bg-danger">Closed</p>
+                            </div>
+
+                            <!-- Upcoming Status -->
+                            <div class="">    
+                                <button type="button" class="btn button_event rounded-pill px-2 p-0 m-0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="This Event is Coming Soon">Upcoming</button>
+                            </div>
                         </div>
 
                         <div class="d-flex mt-2">
-                            <div class="d-flex border border-0 rounded-5 px-4 py-1 kategori_tombol">
+                            <!-- Kategori -->
+                            <div class="d-flex border border-0 rounded-5 px-3 py-0 kategori_tombol position-absolute top-0 end-0 m-2">
                                 <p class="align-self-center p-0 m-0">Tradition</p>
                             </div>
-                            <div class="ps-4">
+                            <!-- Button Modal -->
+                            <div class="">
                                 <div class="d-flex justify-content-center pe-4">
-                                    <button type="button" href="#" class="btn btn-primary bg-transparent border border-0 text-muted"><i class="fa-regular fa-eye"></i> See More Information</button>
+                                    <button href="#" class="btn bg-transparent border border-0 text-muted d-flex justify-content-center m-0 p-0" data-bs-toggle="modal" data-bs-target="#cardModal"><i class='bx bxs-cog fs-4 align-self-center me-1'></i>Modify Event Information</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border border-0 mb-4" style="width: 100%;">
+                    <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
+                    <div class="card-body mt-4 p-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex">
+                                <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
+                                <p type="button" class="badge text-bg-primary">Open</p>
+                            </div>
+
+                            <div class="">
+                                <p type="button" class="btn button_event rounded-pill px-2 p-0 m-0">Upcoming</p>
+                            </div>
+                        </div>
+
+                        <div class="d-flex mt-2">
+                            <div class="d-flex border border-0 rounded-5 px-3 py-0 kategori_tombol position-absolute top-0 end-0 m-2">
+                                <p class="align-self-center p-0 m-0">Tradition</p>
+                            </div>
+                            <div class="">
+                                <div class="d-flex justify-content-center pe-4">
+                                    <button href="#" class="btn bg-transparent border border-0 text-muted d-flex justify-content-center m-0 p-0" data-bs-toggle="modal" data-bs-target="#cardModal"><i class='bx bxs-cog fs-4 align-self-center me-1'></i>Modify Event Information</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card border border-0 mb-4" style="width: 100%;">
+                    <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
+                    <div class="card-body mt-4 p-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex">
+                                <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
+                                <!-- Status -->
+                                <p type="button" class="badge text-bg-warning">Sold Out</p>
+                            </div>
+
+                            <!-- Tulisan Upcoming -->
+                            <div class="">
+                                <p type="button" class="btn button_event rounded-pill px-2 p-0 m-0">Upcoming</p>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex mt-2">
+                            <div class="d-flex border border-0 rounded-5 px-3 py-0 kategori_tombol position-absolute top-0 end-0 m-2">
+                                <p class="align-self-center p-0 m-0">Tradition</p>
+                            </div>
+                            <div class="">
+                                <div class="d-flex justify-content-center pe-4">
+                                    <button href="#" class="btn bg-transparent border border-0 text-muted d-flex justify-content-center m-0 p-0" data-bs-toggle="modal" data-bs-target="#cardModal"><i class='bx bxs-cog fs-4 align-self-center me-1'></i>Modify Event Information</button>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +164,97 @@
                 </div>
             </div>
         </div>
+
+    <!-- Modal Event -->
+    <div class="modal fade border border-0" id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal_custom modal-dialog-centered border border-0">
+                <div class="modal-content border border-0 rounded-4">
+                    <img src="img/christmas.jpg" class="card-img-top object-fit-cover border border-0 rounded-top-4" alt="..." style="width: 100%; height: 300px;">
+                    <div class="modal-body p-5 py-3">
+
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex">
+                                <h4 class="modal-title fw-semibold my-2">Christmas Street Party</h4>
+                                <!-- ini buat statusnya di dalem modal untuk open pakae text-bg-primary kalo sold out warning -->
+                                <p class="text-bg-danger border border-0 rounded-2 align-self-center m-0 mx-2 px-2">Closed</p> 
+                            </div>
+
+                            <div class="">
+                                <a type="button" class="btn button_register rounded-pill px-4 d-flex justify-content-between">Event participants<i class='bx bx-group fs-4 align-self-center ps-2'></i></a>
+                            </div>
+
+                        </div>
+                        
+                        <!-- Deskripsi -->
+                        <p class="card-text m-0">
+                            Christmas is an annual festival commemorating the birth of Jesus Christ, 
+                            observed primarily on December 25[a] as a religious and cultural celebration among billions 
+                            of people around the world. A feast central to the liturgical year in Christianity, it follows 
+                            the season of Advent (which begins four Sundays before) or the Nativity Fast, and initiates the season of Christmastide,
+                            which historically in the West lasts twelve days and culminates on Twelfth Night.
+                        </p>
+
+                        <div class="d-flex my-4">
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="btn button_register rounded-pill px-4 d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#modalEdit">Edit<i class='bx bxs-edit-alt align-self-center ms-2' ></i></button>
+                                <button type="button" class="btn button_register rounded-pill px-4 d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#modalDelete">Delete<i class='bx bxs-trash align-self-center ms-2' ></i></button>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-4">
+                            <!-- Date -->
+                            <p class="card-text m-0 my-2 d-flex"><i class='bx bx-calendar-alt align-self-center fs-4 me-3'></i>21 October 2024</p>
+                            <!-- Waktu -->
+                            <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-time align-self-center fs-4 me-3'></i>17.00 - 19.00</p>
+                            <!-- Location -->
+                            <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-map align-self-center fs-4 me-3'></i>Gelora Bung Jebret</p>
+                        </div>
+                    </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Modal Delete Data-->
+    <div class="modal fade border border-0" id="modalDelete" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+            <div class="modal-content border border-0 text-center p-3">
+                <div class="mx-3">
+                    <i class='bx bx-error text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2' ></i>
+                </div>
+                <p class="fw-semibold mt-3 fs-4">Removing Event</p>
+                <div class="text-center fs-6">
+                    Are you sure you want to remove your event? All of your data will be permanently removed. This action cannot be undone.
+                </div>
+                
+                <form action="" class="d-grid gap-2 py-3">
+                    <button type="button" class="btn btn-danger text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
+                    <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+     <!-- Modal Edit Data-->
+     <div class="modal fade border border-0" id="modalEdit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+            <div class="modal-content border border-0 text-center p-3">
+                <div class="mx-3">
+                    <i class='bx bx-error text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2' ></i>
+                </div>
+                <p class="fw-semibold mt-3 fs-4">Edit Data</p>
+                <div class="text-center fs-6">
+                    Are you sure you want to remove your event? All of your data will be permanently removed. This action cannot be undone.
+                </div>
+                
+                <form action="" class="d-grid gap-2 py-3">
+                    <button type="button" class="btn btn-danger text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
+                    <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+ </div>
 </body>
 
 </html>

@@ -136,7 +136,7 @@
                             </div>
                             <div class="ps-4">
                                 <div class="d-flex justify-content-center pe-4">
-                                    <button href="#" class="btn bg-transparent border border-0 text-muted" data-bs-toggle="modal" data-bs-target="#cardModal"><i class="fa-regular fa-eye"></i> See More Information</button>
+                                    <button href="#" class="btn bg-transparent border border-0 text-muted" data-bs-toggle="modal" data-bs-target="#cardModalEvent"><i class="fa-regular fa-eye"></i> See More Information</button>
                                 </div>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
         </div>
 
       <!-- Modal Event -->
-        <div class="modal fade border border-0" id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
+        <div class="modal fade border border-0" id="cardModalEvent" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
             <div class="modal-dialog modal_custom modal-dialog-centered border border-0">
                 <div class="modal-content border border-0 rounded-4">
                     <img src="img/christmas.jpg" class="card-img-top object-fit-cover border border-0 rounded-top-4" alt="..." style="width: 100%; height: 300px;">

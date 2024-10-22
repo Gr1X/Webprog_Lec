@@ -26,13 +26,11 @@ body {
 .button_event {
     color: #B88EE5; 
     border-color: #B88EE5;
-    border-width: 2px;
 }
 
 .button_event:hover {
     border-color: #B88EE5;
     color: #B88EE5;
-    border-width: 2px;
 }
 
 /* Tombol kategori styling */
