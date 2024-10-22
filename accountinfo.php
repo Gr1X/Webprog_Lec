@@ -30,7 +30,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="#">Account Settings</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger d-flex justify-content-between" href="#">Log Out<i class='bx bx-log-out fs-4 align-self-center' ></i></a></li>
+                            <li><a class="dropdown-item text-danger d-flex justify-content-between" href="logout.php">Log Out<i class='bx bx-log-out fs-4 align-self-center' ></i></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -41,17 +41,17 @@
     <div class="container mt-5 pt-5">
         <div class="row">
             <!-- Kolom Kiri untuk Navigasi -->
-            <div class="col-md-3 left-column">
+            <div class="col-md-3 left-column mt-3">
                 <a href="dashboarduser.php" class="d-flex align-items-center text-dark mb-3 text-decoration-none">
-                    <i class='bx bx-left-arrow-alt align-self-center fs-4 text-decoration-none'></i>
-                    <p class="mb-0">Back to dashboard</p>
+                    <i class='bx bx-left-arrow-alt text-decoration-none align-self-center fs-3'></i>
+                    <p class="mb-0 align-self-center fs-3">Back to dashboard</p>
                 </a>
-                <ul class="list-unstyled">
+                <ul class="list-unstyled ms-4">
                     <li>
-                        <a href="accountview.php" class="text-decoration-none">View Account</a>
+                        <a href="accountinfo.php" class="text-dark text-decoration-none">Account Information</a>
                     </li>
                     <li>
-                        <a href="accountinfo.php" class="text-decoration-none">Account Information</a>
+                        <a href="accountview.php" class="text-dark text-decoration-none">View Account</a>
                     </li>
                 </ul>
             </div>
