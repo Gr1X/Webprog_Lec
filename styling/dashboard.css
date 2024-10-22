@@ -22,6 +22,13 @@ body {
     box-shadow: none; /* Menghilangkan shadow default */
 }
 
+.part_search {
+    border: 2px solid #B88EE5; 
+    border-radius: 10px; 
+    flex-grow: 1; 
+    max-width: 250px;
+}
+
 /* Tombol Event Styling */
 .button_event {
     color: #B88EE5; 
