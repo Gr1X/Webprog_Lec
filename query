@@ -61,3 +61,12 @@ WHERE r.id_event = ?;
 -- 2. Jika belum regis & sudah penuh  > Tombol regis di disabled          -- Pakai COUNT -- Status Closed
 -- 3. JIka sudah regis                > Tombol Regis menjadi un-register
 
+
+INSERT INTO listevent (id_event, nama_event, foto_event, deskripsi, kategori, tanggal_event, waktu_event, lokasi_event, max_peserta, status_event)
+VALUES
+(1, 'Fan Meetup', 'databes1.jpg', 'Ketemu dengan Gadiel yuk!!', 'art', '2024-10-30', '09:00 - 11:00', 'Di UMN', 30, 'open'),
+(2, 'Music Fest', 'databes2.jpg', 'Live music with popular bands!', 'music', '2024-11-01', '18:00 - 22:00', 'Di Jakarta', 500, 'open'),
+(3, 'Tech Expo', 'databes3.jpg', 'Explore the latest in tech!', 'technology', '2024-11-05', '10:00 - 17:00', 'Di UMN', 200, 'open'),
+(4, 'Art Workshop', 'databes4.jpg', 'Hands-on painting workshop', 'art', '2024-11-10', '13:00 - 16:00', 'Di Bandung', 50, 'closed'),
+(5, 'Education Seminar', 'databes5.jpg', 'Learning made fun', 'education', '2024-11-15', '09:00 - 12:00', 'Di Surabaya', 100, 'open'),
+(6, 'Sports Championship', 'databes6.jpg', 'Cheer for your favorite teams!', 'sports', '2024-11-20', '15:00 - 18:00', 'Di Bali', 1000, 'open');
