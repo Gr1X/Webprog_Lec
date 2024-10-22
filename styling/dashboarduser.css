@@ -25,17 +25,12 @@ body {
 /* Tombol Event Styling */
 .button_event {
     color: #B88EE5; 
-    border-color: #B88EE5;
-    font-size: 0.8rem; 
-    padding: 0.25rem 0.75rem; 
-    border-radius: 20px; /* Membuat tombol menjadi lebih oval */
+    border-color: #B88EE5; 
 }
 
 .button_event:hover {
     border-color: #B88EE5;
     color: #B88EE5;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
 }
 
 /* Tombol kategori styling */
@@ -144,3 +139,15 @@ button.btn {
     background-color: #B88EE5 !important; /* Tambahkan !important jika masih tidak berubah */
 }
 
+/* Menimpa gaya btn-success */
+.button_custom {
+    background-color: #B88EE5 !important; /* Warna yang Anda inginkan */
+    color: white !important; /* Warna teks */
+    border: none !important;
+}
+
+/* Mengubah warna saat di-hover */
+.button_custom:hover {
+    background-color: #a073d1 !important; /* Warna saat di-hover */
+    color: white !important;
+}

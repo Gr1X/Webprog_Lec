@@ -133,3 +133,7 @@ h1 {
     font-weight: bold;
     text-decoration: none;
 }
+
+.button_custom{
+    background-color: #9A6CC5;
+}
