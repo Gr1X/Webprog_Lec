@@ -72,7 +72,7 @@
                 <div class="col-md-7 p-5 shadow-xl">
                     <div class="card-body p-0 text-center">
                         <div class="overlay mb-4">
-                            <h5 class="card-title fw-bold mt-5">Register Admin Account</h5>
+                            <h3 class="card-title fw-bold mt-5">Register Admin Account</h3>
                             <p class="card-text text-muted">Hello, Enter your data for registration</p>
                         </div>
 

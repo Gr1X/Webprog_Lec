@@ -86,7 +86,7 @@ if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
                 <div class="col-md-7 p-5 shadow-xl">
                     <div class="card-body p-0 text-center">
                         <div class="overlay mb-4">
-                            <h5 class="card-title fw-bold mt-5">Login</h5>
+                            <h3 class="card-title fw-bold mt-5">Login Account</h3>
                             <p class="card-text text-muted">Hello, Enter your details to sign in to your account</p>
                         </div>
 

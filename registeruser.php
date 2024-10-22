@@ -50,7 +50,7 @@
 
                         <p class="text-muted">Already have an Account? <a href="login.php" class="text-decoration-none">Login</a></p>
                         <p class="m-0">
-                            <button type="button" class="btn btn_admin p-0 pb-1" data-bs-toggle="modal" data-bs-target="#titleModal">
+                            <button type="button" class="btn bg-transparent border border-0 text-dark p-0 mt-2" data-bs-toggle="modal" data-bs-target="#adminModal">
                                 Register as Admin
                             </button>
                         </p>
@@ -60,28 +60,27 @@
             </div>
         </div>
 
-        <div class="modal fade border border-0" id="titleModal" tabindex="-1" aria-labelledby="titleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered border border-0">
-                <div class="modal-content">
-                    <div class="modal-header modal_header shadow-sm">
-                        <h1 class="modal-title fs-5 text-light" id="titleModalLabel">Register As Admin</h1>
+        <div class="modal fade border border-0" id="adminModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+                <div class="modal-content border border-0 text-center p-3">
+                    <div class="mx-3">
+                        <i class='bx bxs-buildings fw-bold text-start bg-light border border-0 rounded-3 p-3 shadow-sm fs-1' ></i>
                     </div>
-                    
-                    <!-- input judul -->
-                    <form action="registeradmin.php" method="post">
-                        <div class="modal-body">
-                            <div class="input-group d-block">
-                                <p>Please enter the company password to register.</p>
-                                <div class="">
-                                    <label class="form-label">Enter the Password</label>
-                                    <input type="password" class="form-control bg-light" required name="judul_tabel" id="exampleDropdownFormEmail1" placeholder="Password">
-                                </div>
+
+                    <p class="fw-semibold mt-3 fs-4">Enter Company Password</p>
+
+                    <form action=".."  method="post">
+                        <div class="text-center fs-6">
+                            <p class="">Please Enter the passkey to register as admin.</p>
+                            <div class="input-group flex-nowrap mb-2">
+                                <!-- Edit Nama -->
+                                <input type="text" class="form-control" name="adminPass" placeholder="Enter the passkey" aria-label="Username" aria-describedby="addon-wrapping">
                             </div>
                         </div>
-                        
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger fw-semibold shadow-sm" data-bs-dismiss="modal" aria-label="Close"><i class='bx bx-x fw-bold fs-5'></i></button>
-                            <button type="submit" class="btn btn-success fw-semibold shadow-sm"><i class='bx bx-check fw-bold fs-5'></i></button>
+                            
+                        <div class="d-grid gap-2 py-3">
+                            <button type="submit" class="btn tombol_custom text-center m-0 p-0 py-2 shadow-sm" style="background-color: #ff0059; color: white; border: none;">Confirm</button>
+                            <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</button>
                         </div>
                     </form>
                 </div>
