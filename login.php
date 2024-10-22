@@ -90,6 +90,15 @@ if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
                             <p class="card-text text-muted">Hello, Enter your details to sign in to your account</p>
                         </div>
 
+                        <!-- Alert buat login -->
+                        <?php 
+                        if (isset($_SESSION['error'])): ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?= $_SESSION['error']; ?>
+                            </div>
+                            <?php unset($_SESSION['error']); ?>
+                        <?php endif; ?>
+
                         <form action="loginproses.php" method="post">
                             <div class="d-flex border rounded mb-3">
                                 <i class='bx bx-user text-center align-self-center fs-4 p-2'></i>
@@ -104,7 +113,7 @@ if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
                             </div>
                         </form>
                         
-                        <p class="text-muted">Don't have an account? <a href="#" class="text-decoration-none">Sign Up now</a></p>
+                        <p class="text-muted">Don't have an account? <a href="registeruser.php" class="text-decoration-none">Sign Up now</a></p>
                     </div>
                 </div>
             </div>
