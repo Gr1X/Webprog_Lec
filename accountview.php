@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styling/accountview.css"> <!-- Kode CSS yang ditambahkan -->
+    <link rel="stylesheet" href="styling/accountview.css">
 </head>
 <body>
     <nav class="navbar fixed-top navbar-expand-lg px-4 py-2 shadow">
@@ -56,21 +56,23 @@
             </div>
 
             <!-- Kolom Kanan untuk Detail Akun -->
-            <div class="col-md-9 right-column">
+            <div class="col-md-9 right-column ">
                 <!-- Judul Account -->
-                <h1>Account</h1>
-                <p class="text-muted mt-2 m-0">Account Details</p>
+                <h1 class="mt-4">Account</h1>
+                <h6 class="text-muted mt-4">Account Details</h6>
 
-                <div class="ms-4">
+                <div class="ms-4 mt-2">
                     <!-- Detail Akun -->
                     <div class="account-details">
                         <div class="">
-                            <h2 class="fw-semibold pb-1">KayooH23</h2>
+                            <h2 class="fw-semibold pb-1 pt-2 m-0 p-0">KayooH23</h2>
                             <h4 class="text-secondary pb-4 m-0">Calvin Jomok</h4>
-                            <p class="fw-semibold">MarinirJawa23@gmail.com</p>
+                            <h5 class="">MarinirJawa23@gmail.com</h5>
                         </div>
                     </div>
                 </div>
+
+                <hr class='mb-1' style="width: 100%; height: 2px; background-color: black; border: none;" />
 
                 <!-- Change Details -->
                 <div class="change_details">
@@ -82,32 +84,20 @@
                         <div class="details-list pt-1">
                             <ul class="list-unstyled">
                                 <li class="">
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted p-0" data-bs-toggle="modal" data-bs-target="#userNameModal">
+                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted p-0" data-bs-toggle="modal" data-bs-target="#usernameModal">
                                         Change My Username
                                     </button>
                                 </li>
     
-                                <li class="">
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted p-0" data-bs-toggle="modal" data-bs-target="#firstNameModal">
-                                        Change My Firstname
-                                    </button>
-                                </li>
-    
                                 <li>
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted p-0" data-bs-toggle="modal" data-bs-target="#lastNameModal">
-                                        Change My Lastname
-                                    </button>
-                                </li>
-    
-                                <li>
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark fw-semibold p-0" data-bs-toggle="modal" data-bs-target="#passwordModal">
-                                        Reset My Password
-                                    </button>
-                                </li>
-                    
-                                <li>
-                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark fw-semibold p-0" data-bs-toggle="modal" data-bs-target="#emailModal">
+                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted p-0" data-bs-toggle="modal" data-bs-target="#emailModal">
                                         Change My Email
+                                    </button>
+                                </li>
+
+                                <li>
+                                    <button type="button" class="btn btn-primary bg-transparent border border-0 text-dark text-muted p-0" data-bs-toggle="modal" data-bs-target="#passwordModal">
+                                        Reset My Password
                                     </button>
                                 </li>
                             </ul>
@@ -116,6 +106,96 @@
                 </div>
             </div>
         </div>
+    </div>
+
+
+    <!-- Modal ganti nama Username -->
+    <div class="modal fade border border-0" id="usernameModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+            <div class="modal-content border border-0 text-center p-3">
+                <div class="mx-3">
+                    <i class='bx bx-rename fw-bold text-start bg-light border border-0 rounded-3 p-3 shadow-sm fs-1' ></i>
+                </div>
+
+                <p class="fw-semibold mt-3 fs-4">Change Username</p>
+
+                <form action=".."  method="post">
+                    <div class="text-center fs-6">
+                        <p class="">Please make sure your username was correct before submitted.</p>
+                        <div class="input-group flex-nowrap mb-2">
+                            <!-- Edit Nama -->
+                            <input type="text" class="form-control" name="gantiNama" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                        
+                    <div class="d-grid gap-2 py-3">
+                        <button type="submit" class="btn tombol_custom text-center m-0 p-0 py-2 shadow-sm" style="background-color: #B88EE5; color: white; border: none;">Confirm</button>
+                        <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+             </div>
+         </div>
+    </div>
+
+    <!-- Modal ganti Email -->
+    <div class="modal fade border border-0" id="emailModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+            <div class="modal-content border border-0 text-center p-3">
+                <div class="mx-3">
+                    <i class='bx bxs-envelope-open fw-bold text-start bg-light border border-0 rounded-3 p-3 shadow-sm fs-1' ></i>
+                </div>
+
+                <p class="fw-semibold mt-3 fs-4">Change Email</p>
+
+                <form action="#"  method="post">
+                    <div class="text-center fs-6">
+                        <p class="">Please make sure your email was correct before submitted.</p>
+                        <div class="input-group flex-nowrap mb-2">
+                            <!-- Edit Email -->
+                            <input type="email" class="form-control" name="gantiNama" placeholder="Email" aria-label="Username" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                        
+                    <div class="d-grid gap-2 py-3">
+                        <button type="submit" class="btn text-center m-0 p-0 py-2 shadow-sm" style="background-color: #B88EE5; color: white; border: none;">Confirm</button>
+                        <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+             </div>
+         </div>
+    </div>
+
+    <!-- Modal ganti Password-->
+    <div class="modal fade border border-0" id="passwordModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+            <div class="modal-content border border-0 text-center p-3">
+                <div class="mx-3">
+                    <i class='bx bxs-lock fw-bold text-start bg-light border border-0 rounded-3 p-3 shadow-sm fs-1' ></i>
+                </div>
+
+                <p class="fw-semibold mt-3 fs-4">Change Password</p>
+
+                <form action=".."  method="post">
+                    <div class="text-center fs-6">
+                        <p class="">Please make sure your Password was correct before submitted.</p>
+                        <div class="input-group flex-nowrap mb-2">
+                            <!-- Edit Passsword -->
+                            <input type="password" class="form-control" name="gantiNama" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
+                        </div>
+
+                        <div class="input-group flex-nowrap mb-2">
+                            <!-- Edit Re-Passsword -->
+                            <input type="password" class="form-control" name="gantiNama" placeholder="Re-Enter Passsword" aria-label="Username" aria-describedby="addon-wrapping">
+                        </div>
+                    </div>
+                        
+                    <div class="d-grid gap-2 py-3">
+                        <button type="submit" class="btn tombol_custom text-center m-0 p-0 py-2 shadow-sm" style="background-color: #B88EE5; color: white; border: none;">Confirm</button>
+                        <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+             </div>
+         </div>
     </div>
 
 </body>

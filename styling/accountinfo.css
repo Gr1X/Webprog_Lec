@@ -90,3 +90,41 @@ h1 {
     white-space: nowrap; /* Mencegah teks memotong baris */
 }
 
+/* Menghilangkan outline dan shadow saat tombol accordion berada di focus */
+.accordion-button:focus {
+    outline: none;
+    box-shadow: none;
+    backdrop-filter: blur(11px) saturate(180%);
+    -webkit-backdrop-filter: blur(11px) saturate(180%);
+    background-color: rgba(184, 142, 229, 0.53);
+    border-radius: 5px;
+}
+
+/* Menyesuaikan efek hover */
+.accordion-button:hover {
+    background-color: none; /* Contoh warna latar belakang baru saat hover */
+    color: #000; /* Ubah warna teks jika diperlukan */
+    box-shadow: none; /* Hilangkan shadow jika ada */
+    backdrop-filter: blur(11px) saturate(180%);
+    -webkit-backdrop-filter: blur(11px) saturate(180%);
+    background-color: rgba(184, 142, 229, 0.53);
+    border-radius: 5px;
+}
+
+/* Saat accordion terbuka */
+.accordion-button:not(.collapsed) { /* Ubah warna latar belakang saat accordion terbuka */
+    backdrop-filter: blur(11px) saturate(180%);
+    -webkit-backdrop-filter: blur(11px) saturate(180%);
+    background-color: rgba(184, 142, 229, 0.53);
+    border-radius: 5px;
+}
+
+/* Saat accordion tertutup */
+.accordion-button.collapsed {
+    background-color: none; /* Warna saat tertutup */
+}
+
+.accordion-button {
+    transition: background-color 0.3s ease, color 0.3s ease; /* Efek transisi yang halus */
+}
+

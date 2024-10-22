@@ -39,59 +39,76 @@
     </nav>
 
     <div class="container mt-5 pt-5">
-        <div class="row">
-            <!-- Kolom Kiri untuk Navigasi -->
-            <div class="col-md-3 left-column mt-3">
-                <a href="dashboarduser.php" class="d-flex align-items-center text-dark mb-3 text-decoration-none">
-                    <i class='bx bx-left-arrow-alt text-decoration-none align-self-center fs-3'></i>
-                    <p class="mb-0 align-self-center fs-3">Back to dashboard</p>
-                </a>
-                <ul class="list-unstyled ms-4">
-                    <li>
-                        <a href="accountinfo.php" class="text-dark text-decoration-none">Account Information</a>
-                    </li>
-                    <li>
-                        <a href="accountview.php" class="text-dark text-decoration-none">View Account</a>
-                    </li>
-                </ul>
+    <div class="row">
+        <!-- Kolom Kiri untuk Navigasi -->
+        <div class="col-md-3 col-12 left-column mt-3">
+            <a href="dashboarduser.php" class="d-flex align-items-center text-dark mb-3 text-decoration-none">
+                <i class='bx bx-left-arrow-alt text-decoration-none align-self-center fs-3'></i>
+                <p class="mb-0 align-self-center fs-3">Back to dashboard</p>
+            </a>
+            <ul class="list-unstyled ms-4">
+                <li>
+                    <a href="accountinfo.php" class="text-dark text-decoration-none">Account Information</a>
+                </li>
+                <li>
+                    <a href="accountview.php" class="text-dark text-decoration-none">View Account</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Kolom Kanan untuk Detail Akun -->
+        <div class="col-md-9 col-12 right-column">
+            <!-- Judul Account -->
+            <h1 class="mt-4">Account</h1>
+            <h6 class="text-muted mt-4">Account Details</h6>
+
+            <div class="ms-4 mt-2">
+                <!-- Detail Akun -->
+                <div class="account-details">
+                    <div class="">
+                        <h2 class="fw-semibold pb-1 pt-2 m-0 p-0">KayooH23</h2>
+                        <h4 class="text-secondary pb-4 m-0">Calvin Jomok</h4>
+                        <h6 class="fs-5">MarinirJawa23@gmail.com</h6>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class='mb-1' style="width: 100%; height: 2px; background-color: black; border: none;" />
+
+            <div class="d-flex ms-2 mt-2">
+                <a href="accountview.php" class="p-0 m-0 text-decoration-none text-dark">Manage Account</a>
+                <i class='bx bx-chevron-right align-self-center'></i>
             </div>
 
-            <!-- Kolom Kanan untuk Detail Akun -->
-            <div class="col-md-9 right-column">
-                <!-- Judul Account -->
-                <h1>Account</h1>
-                <p class="text-muted mt-2">Account Details</p>
-
-                <div class="ms-4 mt-4">
-                    <!-- Detail Akun -->
-                    <div class="account-details">
-                        <div class="">
-                            <h2 class="fw-semibold pb-1">KayooH23</h2>
-                            <h4 class="text-secondary pb-4 m-0">Calvin Jomok</h4>
-                            <p class="fw-semibold">MarinirJawa23@gmail.com</p>
+            <!-- History Event Register -->
+            <div class="history">
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                        <h6 class="text-muted mt-4">Activity history</h6>
+                        <button class="accordion-button collapsed py-2 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            <h4>History Event Register</h4>
+                        </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <div class="history-list">
+                                    <a href="#">Ado Music Concert</a>
+                                    <p>9 April 2025, Stadion Utama Gelora Bung Karno</p>
+                                    <a href="#">Art Exhibition - Vincent Van Gogh</a>
+                                    <p>28 Juli 2025, Stadion Utama Gelora Bung Karno</p>
+                                    <a href="#">Art Exhibition - Vincent Van Gogh</a>
+                                    <p>28 Juli 2025, Stadion Utama Gelora Bung Karno</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
-                </div>
-
-                <!-- History Event Register -->
-                <div class="history">
-                    <h4>History Event Register</h4>
-                    <p class="text-muted">You've been registered to</p>
-
-                    <div class="history-list">
-                        <a href="#">Ado Music Concert</a>
-                        <p>9 April 2025, Stadion Utama Gelora Bung Karno</p>
-
-                        <a href="#">Art Exhibition - Vincent Van Gogh</a>
-                        <p>28 Juli 2025, Stadion Utama Gelora Bung Karno</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-<!-- Modal Example, optional -->
-<!-- Modals for account editing can remain the same -->
+
 </body>
 </html>
