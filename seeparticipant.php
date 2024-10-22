@@ -1,3 +1,35 @@
+<?php
+session_start();
+require_once('db.php');
+
+$id_akun = $_SESSION['id_akun'];
+$username = $_SESSION['username'];
+$keyword = isset($_POST['keyword']) ? trim($_POST['keyword']) : '';
+
+// Base query
+$query6 = "SELECT id_akun, username, email
+           FROM account AS a
+           WHERE akses_akun = 'user'";
+
+// Jika keyword ada, tambahkan kondisi untuk mencari berdasarkan username
+if (!empty($keyword)) {
+    $query6 .= " AND username LIKE :keyword";
+}
+
+// Persiapkan statement
+$stmt6 = $db->prepare($query6);
+
+// Jika keyword ada, bind value untuk pencarian
+if (!empty($keyword)) {
+    $stmt6->bindValue(':keyword', '%' . $keyword . '%');
+}
+
+// Jalankan query
+$stmt6->execute();
+$accounts = $stmt6->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +44,7 @@
 </head>
 
 <body>
-<nav class="navbar fixed-top navbar-expand-lg bg-light px-4 py-2">
+    <nav class="navbar fixed-top navbar-expand-lg bg-light px-4 py-2">
         <div class="container-fluid d-flex justify-content-between py-2">
             <a class="navbar-brand fst-italic" href="#">Pandawara.</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,8 +54,8 @@
             <!-- Collapse untuk navigasi dan search bar -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
                 <!-- Search Bar -->
-                <form class="input-group mx-3" role="search">
-                    <input class="form-control input_search" type="search" placeholder="Search" aria-label="Search">
+                <form action="seeparticipant.php" method="post" class="input-group mx-3" role="search">
+                    <input class="form-control input_search" type="text" name="keyword" placeholder="Search" aria-label="Search">
                     <button class="btn tombol_search" type="submit"><i class='bx bx-search fw-bold'></i></button>
                 </form>
 
@@ -67,50 +99,55 @@
 
     <div class="container">
         <div class="row p-0 m-0">
-            <div class="col-4 mt-5 pt-5">
-                <div class="card m-0 p-0">
-                    <div class="card-header">
-                        User History
-                    </div>
-            
-                    <div class="card-body">
-                        <h5 class="card-title"><?php echo "Username"; ?></h5>
-                        <p class="card-text text-secondary"><?php echo "Username@gmail.com"; ?></p>
-                    </div>
-            
-                    <div class="">
-                        <div class="accordion accordion-flush border border-0 rounded-bottom-3" id="accordionFlushActivity1">
-                            <div class="accordion-item border border-0 rounded-bottom-3">
-                                <h2 class="accordion-header border border-0 rounded-bottom-3">
-                                    <!-- Collapse Accordion (di databstarget angka nya harus diset tiap card beda, terserah mau pake angka atau yang lain) -->
-                                <button class="accordion-button collapsed mb-2 accord_custom" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    Activity Log
-                                </button>
-                                </h2>
-                                <!-- Collapse Accordion (di id anggka nya harus diset tiap card beda) -->
-                                <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionFlushActivity1">
-                                    <table class="table text-center">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-start" scope="col"><?php echo "Event"; ?></th>
-                                                <th scope="col"><?php echo "Date"; ?></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td class="text-start" scope="row"><?php echo "Meet Up Moo-deng"; ?></td>
-                                                <td><?php echo "19 October 2024"; ?></td>                                            
-                                            </tr>
-                                        </tbody>
-                                    </table>
+            <?php foreach ($accounts as $account): ?>
+                <div class="col-4 mt-5 pt-5">
+                    <div class="card m-0 p-0">
+                        <div class="card-header">
+                            User History
+                        </div>
+                
+                        <div class="card-body">
+                            <!-- Tampilkan Username dan Email -->
+                            <h5 class="card-title"><?= htmlspecialchars($account['username']); ?></h5>
+                            <p class="card-text text-secondary"><?= htmlspecialchars($account['email']); ?></p>
+                        </div>
+                
+                        <div class="">
+                            <div class="accordion accordion-flush border border-0 rounded-bottom-3" id="accordionFlushActivity<?= $account['id_akun']; ?>">
+                                <div class="accordion-item border border-0 rounded-bottom-3">
+                                    <h2 class="accordion-header border border-0 rounded-bottom-3">
+                                        <!-- Unique ID untuk setiap account -->
+                                        <button class="accordion-button collapsed mb-2 accord_custom" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $account['id_akun']; ?>" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            Activity Log
+                                        </button>
+                                    </h2>
+                                    <!-- Unique ID untuk collapsible -->
+                                    <div id="collapse<?= $account['id_akun']; ?>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushActivity<?= $account['id_akun']; ?>">
+                                        <table class="table text-center">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-start" scope="col">Event</th>
+                                                    <th scope="col">Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- Dummy data untuk Activity Log -->
+                                                <tr>
+                                                    <td class="text-start" scope="row">Meet Up Moo-deng</td>
+                                                    <td>19 October 2024</td>                                            
+                                                </tr>
+                                                <!-- Anda dapat menambahkan data activity log nyata di sini -->
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>   
+            <?php endforeach; ?>
+        </div>
     </div>
-    
     
 </body>
 </html>
