@@ -75,23 +75,20 @@
                     <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
                     <div class="card-body mt-4 p-0">
                         <div class="d-flex justify-content-between">
-                            <div class="d-flex">
-                                <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
-                                <!-- Status -->
-                                <p type="button" class="badge text-bg-danger">Closed</p>
+                            <h5 class="card-title m-0">Christmas Street Party</h5>
+                            <p type="button" class="btn btn-danger rounded-pill px-3 p-0 m-0">Closed</p>
+                        </div>
+                        
+                        <div class="d-flex gap-1 mt-2">    
+                            <!-- Kategori -->
+                            <div class="d-flex border border-0 rounded-2 px-3 py-0 kategori_tombol">
+                                <p class="align-self-center p-0 m-0">Tradition</p>
                             </div>
-
                             <!-- Upcoming Status -->
-                            <div class="">    
-                                <button type="button" class="btn button_event rounded-pill px-2 p-0 m-0" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="This Event is Coming Soon">Upcoming</button>
-                            </div>
+                            <button type="button" class="btn button_event rounded-2 px-3 p-0 m-0">Upcoming</button>
                         </div>
 
                         <div class="d-flex mt-2">
-                            <!-- Kategori -->
-                            <div class="d-flex border border-0 rounded-5 px-3 py-0 kategori_tombol position-absolute top-0 end-0 m-2">
-                                <p class="align-self-center p-0 m-0">Tradition</p>
-                            </div>
                             <!-- Button Modal -->
                             <div class="">
                                 <div class="d-flex justify-content-center pe-4">
@@ -103,25 +100,27 @@
                 </div>
             </div>
 
+            <!-- Card Gambar Event -->
             <div class="col-md-4">
                 <div class="card border border-0 mb-4" style="width: 100%;">
                     <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
                     <div class="card-body mt-4 p-0">
                         <div class="d-flex justify-content-between">
-                            <div class="d-flex">
-                                <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
-                                <p type="button" class="badge text-bg-primary">Open</p>
+                            <h5 class="card-title m-0">Christmas Street Party</h5>
+                            <p type="button" class="btn btn-danger rounded-pill px-3 p-0 m-0">Sold Out</p>
+                        </div>
+                        
+                        <div class="d-flex gap-1 mt-2">    
+                            <!-- Kategori -->
+                            <div class="d-flex border border-0 rounded-2 px-3 py-0 kategori_tombol">
+                                <p class="align-self-center p-0 m-0">Tradition</p>
                             </div>
-
-                            <div class="">
-                                <p type="button" class="btn button_event rounded-pill px-2 p-0 m-0">Upcoming</p>
-                            </div>
+                            <!-- Upcoming Status -->
+                            <button type="button" class="btn button_event rounded-2 px-3 p-0 m-0">Upcoming</button>
                         </div>
 
                         <div class="d-flex mt-2">
-                            <div class="d-flex border border-0 rounded-5 px-3 py-0 kategori_tombol position-absolute top-0 end-0 m-2">
-                                <p class="align-self-center p-0 m-0">Tradition</p>
-                            </div>
+                            <!-- Button Modal -->
                             <div class="">
                                 <div class="d-flex justify-content-center pe-4">
                                     <button href="#" class="btn bg-transparent border border-0 text-muted d-flex justify-content-center m-0 p-0" data-bs-toggle="modal" data-bs-target="#cardModal"><i class='bx bxs-cog fs-4 align-self-center me-1'></i>Modify Event Information</button>
@@ -132,28 +131,27 @@
                 </div>
             </div>
 
+            <!-- Card Gambar Event -->
             <div class="col-md-4">
                 <div class="card border border-0 mb-4" style="width: 100%;">
                     <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
                     <div class="card-body mt-4 p-0">
                         <div class="d-flex justify-content-between">
-                            <div class="d-flex">
-                                <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
-                                <!-- Status -->
-                                <p type="button" class="badge text-bg-warning">Sold Out</p>
+                            <h5 class="card-title m-0">Christmas Street Party</h5>
+                            <p type="button" class="btn btn-primary rounded-pill px-3 p-0 m-0">Open</p>
+                        </div>
+                        
+                        <div class="d-flex gap-1 mt-2">    
+                            <!-- Kategori -->
+                            <div class="d-flex border border-0 rounded-2 px-3 py-0 kategori_tombol">
+                                <p class="align-self-center p-0 m-0">Tradition</p>
                             </div>
-
-                            <!-- Tulisan Upcoming -->
-                            <div class="">
-                                <p type="button" class="btn button_event rounded-pill px-2 p-0 m-0">Upcoming</p>
-                            </div>
-
+                            <!-- Upcoming Status -->
+                            <button type="button" class="btn button_event rounded-2 px-3 p-0 m-0">Upcoming</button>
                         </div>
 
                         <div class="d-flex mt-2">
-                            <div class="d-flex border border-0 rounded-5 px-3 py-0 kategori_tombol position-absolute top-0 end-0 m-2">
-                                <p class="align-self-center p-0 m-0">Tradition</p>
-                            </div>
+                            <!-- Button Modal -->
                             <div class="">
                                 <div class="d-flex justify-content-center pe-4">
                                     <button href="#" class="btn bg-transparent border border-0 text-muted d-flex justify-content-center m-0 p-0" data-bs-toggle="modal" data-bs-target="#cardModal"><i class='bx bxs-cog fs-4 align-self-center me-1'></i>Modify Event Information</button>
@@ -163,7 +161,6 @@
                     </div>
                 </div>
             </div>
-        </div>
 
     <!-- Modal Event -->
     <div class="modal fade border border-0" id="cardModal" tabindex="-1" aria-labelledby="cardModalLabel" aria-hidden="true">
@@ -195,8 +192,8 @@
                         </p>
 
                         <div class="d-flex my-4">
-                            <div class="d-flex justify-content-center">
-                                <button type="button" class="btn button_register rounded-pill px-4 d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#modalEdit">Edit<i class='bx bxs-edit-alt align-self-center ms-2' ></i></button>
+                            <div class="d-flex justify-content-center gap-2">
+                                <a href="editevent.php" class="btn button_register rounded-pill px-4 d-flex justify-content-between">Edit<i class='bx bxs-edit-alt align-self-center ms-2' ></i></a>
                                 <button type="button" class="btn button_register rounded-pill px-4 d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#modalDelete">Delete<i class='bx bxs-trash align-self-center ms-2' ></i></button>
                             </div>
                         </div>
