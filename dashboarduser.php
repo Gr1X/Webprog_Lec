@@ -30,9 +30,15 @@
 
                 <!-- Navigasi Tambah Event dan My Event -->
                 <ul class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll">
-                
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="#">
+                        <a class="nav-link d-flex align-items-center" href="dashboarduser.php">
+                            <i class='bx bxs-home fs-4'></i>
+                            <span class="mx-2 p-0">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="mylist.php">
                             <i class='bx bxs-inbox fs-4'></i>
                             <span class="mx-2 p-0">My List</span>
                         </a>
@@ -46,7 +52,7 @@
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="accountinfo.php">Account Settings</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger d-flex justify-content-between" href="#">Log Out<i class='bx bx-log-out fs-4 align-self-center' ></i></a></li>
+                            <li><a class="dropdown-item text-danger d-flex justify-content-between" href="logout.php">Log Out<i class='bx bx-log-out fs-4 align-self-center' ></i></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -61,83 +67,23 @@
                 <div class="card border border-0 mb-4" style="width: 100%;">
                     <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
                     <div class="card-body mt-4 p-0">
-                        <div class="d-flex justify-content-between">
+                        <div class="d-flex gap-2 mb-3">
+                            <h5 class="card-title m-0 align-self-center">Christmas Street Party</h5>
+                            <p type="button" class="btn btn-danger rounded-2 px-3 py-0 m-0">Closed</p>
+                        </div>
+
+                        <div class="d-flex gap-1 align-items-center">    
+                        <!-- Kategori Event -->
+                            <div class="d-flex border border-0 rounded-2 px-3 py-0 kategori_tombol">
+                                <p class="align-self-center p-0 m-0"><?php echo "Tradisional"; ?></p>
+                            </div>
+                        <!-- Upcoming Status hanya jika event kurang dari 1 minggu -->
+                            <button type="button" class="btn button_event rounded-2 px-3 py-0 m-0">Upcoming</button>
+                        </div>
+
+                        <div class="">
                             <div class="d-flex">
-                                <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
-                                <p type="button" class="badge text-bg-danger">Closed</p>
-                            </div>
-
-                            <div class="">
-                                <p type="button" class="btn button_event rounded-pill px-2 p-0 m-0">Upcoming</p>
-                            </div>
-                        </div>
-
-                        <div class="d-flex mt-2">
-                            <div class="d-flex border border-0 rounded-5 px-4 py-1 kategori_tombol">
-                                <p class="align-self-center p-0 m-0">Tradition</p>
-                            </div>
-                            <div class="ps-4">
-                                <div class="d-flex justify-content-center pe-4">
-                                    <button href="#" class="btn bg-transparent border border-0 text-muted" data-bs-toggle="modal" data-bs-target="#cardModal"><i class="fa-regular fa-eye"></i> See More Information</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card border border-0 mb-4" style="width: 100%;">
-                    <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
-                    <div class="card-body mt-4 p-0">
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex">
-                                <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
-                                <p type="button" class="badge text-bg-primary">Open</p>
-                            </div>
-
-                            <div class="">
-                                <p type="button" class="btn button_event rounded-pill p-0 px-2 m-0">Upcoming</p>
-                            </div>
-                        </div>
-
-                        <div class="d-flex mt-2">
-                            <div class="d-flex border border-0 rounded-5 px-4 py-1 kategori_tombol">
-                                <p class="align-self-center p-0 m-0">Tradition</p>
-                            </div>
-                            <div class="ps-4">
-                                <div class="d-flex justify-content-center pe-4">
-                                    <button href="#" class="btn bg-transparent border border-0 text-muted" data-bs-toggle="modal" data-bs-target="#cardModal"><i class="fa-regular fa-eye"></i> See More Information</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4">
-                <div class="card border border-0 mb-4" style="width: 100%;">
-                    <img src="img/christmas.jpg" class="card-img-top border border-0 rounded-3" alt="...">
-                    <div class="card-body mt-4 p-0">
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex">
-                                <h5 class="card-title align-self-center m-0">Christmas Street Party</h5>
-                                <p type="button" class="badge text-bg-warning">Sold Out</p>
-                            </div>
-
-                            <div class="">
-                                <p type="button" class="btn button_event rounded-pill px-2 p-0 m-0">Upcoming</p>
-                            </div>
-                        </div>
-
-                        <div class="d-flex mt-2">
-                            <div class="d-flex border border-0 rounded-5 px-4 py-1 kategori_tombol">
-                                <p class="align-self-center p-0 m-0">Tradition</p>
-                            </div>
-                            <div class="ps-4">
-                                <div class="d-flex justify-content-center pe-4">
-                                    <button href="#" class="btn bg-transparent border border-0 text-muted" data-bs-toggle="modal" data-bs-target="#cardModal"><i class="fa-regular fa-eye"></i> See More Information</button>
-                                </div>
+                                <button href="#" class="btn bg-transparent border border-0 text-muted m-0" data-bs-toggle="modal" data-bs-target="#cardModal"><i class="fa-regular fa-eye"></i> See More Information</button>
                             </div>
                         </div>
                     </div>
@@ -151,7 +97,10 @@
                 <div class="modal-content border border-0 rounded-4">
                     <img src="img/christmas.jpg" class="card-img-top object-fit-cover border border-0 rounded-top-4" alt="..." style="width: 100%; height: 300px;">
                     <div class="modal-body p-5 py-3">
-                        <h4 class="modal-title fw-semibold my-2">Christmas Street Party</h4>
+                        <div class="d-flex">
+                            <h4 class="modal-title fw-semibold my-2">Christmas Street Party</h4>
+                            <p class="text-bg-danger border border-0 rounded-2 align-self-center m-0 mx-2 px-2">Closed</p>
+                        </div>
                         <p class="card-text m-0">
                             Christmas is an annual festival commemorating the birth of Jesus Christ, 
                             observed primarily on December 25[a] as a religious and cultural celebration among billions 
@@ -179,20 +128,21 @@
 
         <!-- Modal Confirm Data-->
         <div class="modal fade border border-0" id="modalRegister" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered border border-0">
-                <div class="modal-content border border-0">
-                    <div class="modal-body text-center fs-3 modal_register text-light rounded-top-2 shadow">
-                        Are You Sure Want to Register?
+            <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+                <div class="modal-content border border-0 text-center p-3">
+                    <div class="mx-3">
+                        <i class='bx bx-user-check text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2' ></i>
                     </div>
-
-                    <div class="modal-footer">
-
-                        <form action="">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Yes</button>
-                        </form>
-
+                    <p class="fw-semibold mt-3 fs-4">Register Event</p>
+                    <div class="text-center fs-6">
+                        Are you sure you want to Register to this event? All of your data will be added to the list. This action can be canceled.
                     </div>
+                    
+                    <!-- Modal Confirm Submit Regis -->
+                    <form action="" class="d-grid gap-2 py-3">
+                        <button type="button" class="btn button_custom text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
+                        <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</button>
+                    </form>
                 </div>
             </div>
         </div>
