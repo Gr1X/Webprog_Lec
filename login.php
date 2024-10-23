@@ -25,11 +25,11 @@ if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
 </head>
 
 <body class="d-flex justify-content-center align-items-center min-vh-100 ">
-    <div class="d-flex justify-content-center shadow">
-        <div class="card login-card border-0 shadow-lg rounded-4" style="max-width: 1200px;">
-            <div class="row g-0 border border-0 rounded-4">
-                <div class="col-md-5 border border-0 rounded-4">
-                    <div class="background-card border border-0 rounded-4 rounded-end-0">
+    <div class="d-flex justify-content-center rounded-start-4 shadow">
+        <div class="card login-card border-0 shadow-lg rounded-start-4" style="max-width: 1200px;">
+            <div class="row g-0 border border-0">
+                <div class="col-md-5 border border-0 rounded-start-4">
+                    <div class="background-card border border-0 rounded-start-4">
                         <div class="z-1 mt-auto">
                             <p class="fs-1 m-0">Welcome to Waravent</p>
                             <p class="fs-6">Group Pandawara</p>
