@@ -98,81 +98,77 @@ $events = $stmt16->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </nav>
 
-    <div class="mt-5 pt-5 mx-3">
-        <?php foreach ($events as $event): ?>
-            <div class="row my-3 gap-3 d-flex justify-content-center">
-                <div class="col-5 card card_book m-0 p-0 text-white" style="background-image: url('uploads/<?php echo htmlspecialchars($event['foto_event']); ?>');">
-                    <div class="card-header card-header border border-0">
-                        Your Registration Event
-                    </div>
-                    <div class="card-body p-4 pt-2">
-                        <p class="card-title m-0">Event</p>
-                        <div class="d-flex justify-content-between">
-                            <!-- Nama Event -->
-                            <h2 class="card-text align-self-center"><?php echo htmlspecialchars($event['nama_event']); ?></h2>
-                            <div class="text-center">
-                                <!-- Tanggal Event -->
-                                <p class="p-0 m-0"><?php echo date('d F Y', strtotime($event['tanggal_event'])); ?></p>
-                                <!-- Waktu Event -->
-                                <h2><?php echo htmlspecialchars($event['waktu_event']); ?></h2>
-                            </div>
+    <div class="mt-5 pt-5 mx-5">
+        <div class="row my-3 mx-3">
+            <?php foreach ($events as $event): ?>
+                <div class="col-md-6 mb-3">
+                    <div class="card card_book text-white m-0 p-0" style="background-image: url('uploads/<?php echo htmlspecialchars($event['foto_event']); ?>');">
+                        <div class="card-header border-0">
+                            Your Registration Event
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <div class="">
-                                <!-- Kategori -->
-                                <p class="card-text m-0 my-2 d-flex">
-                                    <i class='bx bx-category-alt align-self-center fs-4 me-3'></i>
-                                    <?php 
-                                    if($event['kategori'] == 'education'){
-                                      echo 'Education';
-                                    }else if($event['kategori'] == 'art'){
-                                      echo 'Art';
-                                    }else if($event['kategori'] == 'music'){
-                                      echo 'Music';
-                                    }else if($event['kategori'] == 'sports'){
-                                      echo 'Sports';
-                                    }else if($event['kategori'] == 'technology'){
-                                      echo 'Technology';
-                                    }
-                                    ?>
-                                </p>
-                                <!-- Lokasi -->
-                                <p class="card-text m-0 my-2 d-flex">
-                                    <i class='bx bxs-map align-self-center fs-4 me-3'></i>
-                                    <?php echo htmlspecialchars($event['lokasi_event']); ?>
-                                </p>
+                        <div class="card-body p-4 pt-2">
+                            <p class="card-title m-0">Event</p>
+                            <div class="d-flex justify-content-between">
+                                <h2 class="card-text align-self-center"><?php echo htmlspecialchars($event['nama_event']); ?></h2>
+                                <div class="text-center">
+                                    <p class="p-0 m-0"><?php echo date('d F Y', strtotime($event['tanggal_event'])); ?></p>
+                                    <h2><?php echo htmlspecialchars($event['waktu_event']); ?></h2>
+                                </div>
                             </div>
-                            <div class="d-flex align-items-end">
-                                <button href="#" class="btn tombol_book" data-bs-toggle="modal" data-bs-target="#modalDeleteRegis<?= $event['id_event'] ?>">Cancel Book Registration</button>
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <p class="card-text m-0 my-2 d-flex">
+                                        <i class='bx bx-category-alt align-self-center fs-4 me-3'></i>
+                                        <?php 
+                                        if($event['kategori'] == 'education'){
+                                            echo 'Education';
+                                        } else if($event['kategori'] == 'art'){
+                                            echo 'Art';
+                                        } else if($event['kategori'] == 'music'){
+                                            echo 'Music';
+                                        } else if($event['kategori'] == 'sports'){
+                                            echo 'Sports';
+                                        } else if($event['kategori'] == 'technology'){
+                                            echo 'Technology';
+                                        }
+                                        ?>
+                                    </p>
+                                    <p class="card-text m-0 my-2 d-flex">
+                                        <i class='bx bxs-map align-self-center fs-4 me-3'></i>
+                                        <?php echo htmlspecialchars($event['lokasi_event']); ?>
+                                    </p>
+                                </div>
+                                <div class="d-flex align-items-end">
+                                    <button class="btn tombol_book" data-bs-toggle="modal" data-bs-target="#modalDeleteRegis<?= $event['id_event'] ?>">Cancel Book Registration</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Modal Delete Data-->
-            <div class="modal fade border border-0" id="modalDeleteRegis<?= $event['id_event'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
-                    <div class="modal-content border border-0 text-center p-3">
-                        <div class="mx-3">
-                            <i class='bx bx-error text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2' ></i>
+                <!-- Modal Delete Data-->
+                <div class="modal fade border border-0" id="modalDeleteRegis<?= $event['id_event'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+                        <div class="modal-content border border-0 text-center p-3">
+                            <div class="mx-3">
+                                <i class='bx bx-error text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2'></i>
+                            </div>
+                            <p class="fw-semibold mt-3 fs-4">Cancel Event</p>
+                            <div class="text-center fs-6">
+                                Are you sure you want to remove your Booked Event? All of your data will be permanently removed. This action cannot be undone.
+                            </div>
+                            <form action="deleteregisterke.php" method="post" class="d-grid gap-2 py-3"> 
+                                <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
+                                <input type="hidden" name="id_event" value="<?= $event['id_event'] ?>">
+                                <button type="submit" class="btn btn-danger text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
+                                <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</button>
+                            </form>
                         </div>
-                        <p class="fw-semibold mt-3 fs-4">Cancel Event</p>
-                        <div class="text-center fs-6">
-                            Are you sure you want to remove your Booked Event? All of your data will be permanently removed. This action cannot be undone.
-                        </div>
-                        
-                        <!-- Delete Data -->
-                        <form action="deleteregisterke.php" method="post" class="d-grid gap-2 py-3"> 
-                            <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
-                            <input type="hidden" name="id_event" value="<?= $event['id_event'] ?>">
-                            <button type="submit" class="btn btn-danger text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
-                            <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</i></button>
-                        </form>
                     </div>
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
+
 </body>
 </html>
