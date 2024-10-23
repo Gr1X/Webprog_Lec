@@ -29,7 +29,7 @@
                 <div class="col-md-7 p-5 shadow-xl">
                     <div class="card-body p-0 text-center">
                         <div class="overlay mb-4">
-                            <h3 class="card-title fw-bold mt-5">Register Account</h3>
+                            <h3 class="card-title fw-bold mt-5">Register User Account</h3>
                             <p class="card-text text-muted">Hello, Enter set your account for registration</p>
                         </div>
 

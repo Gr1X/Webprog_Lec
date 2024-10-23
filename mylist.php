@@ -102,7 +102,7 @@ $events = $stmt16->fetchAll(PDO::FETCH_ASSOC);
         <div class="row my-3 mx-3">
             <?php foreach ($events as $event): ?>
                 <div class="col-md-6 mb-3">
-                    <div class="card card_book text-white m-0 p-0" style="background-image: url('uploads/<?php echo htmlspecialchars($event['foto_event']); ?>');">
+                    <div class="card card_book text-white m-0 p-0 shadow-lg" style="background-image: url('uploads/<?php echo htmlspecialchars($event['foto_event']); ?>');">
                         <div class="card-header border-0">
                             Your Registration Event
                         </div>

@@ -1,5 +1,27 @@
 @import url('https://fonts.cdnfonts.com/css/coolvetica-2');
 
+
+@media (max-width: 991.98px) {
+    /* Untuk layar di bawah ukuran large (lg) */
+    .input_search {
+        width: 100%;
+    }
+    .tombol_search {
+        width: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    /* Untuk layar di bawah ukuran medium (md) */
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+    }
+}
+
+
 body {
     font-family: 'Coolvetica', sans-serif;
 }

@@ -40,7 +40,7 @@
         width: 100%;
         height: 50%;
         background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
-        border-radius: 10px;
+        border-radius: 0px 0px 0px 16px;
     }
 
 
@@ -96,6 +96,9 @@
                         </form>
                         
                         <p class="text-muted">Already have an Account? <a href="login.php" class="text-decoration-none">Login</a></p>
+                        <p type="button" class="btn bg-transparent border border-0 text-dark p-0 mt-2" data-bs-toggle="modal" data-bs-target="#adminModal">
+                            Register as Admin
+                        </p>
                     </div>
                 </div>
             </div>

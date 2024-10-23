@@ -47,58 +47,62 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg bg-light px-4 py-2">
-        <div class="container-fluid d-flex justify-content-between py-2">
-            <a class="navbar-brand fst-italic" href="#">Pandawara.</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+<nav class="navbar fixed-top navbar-expand-lg bg-light px-4 py-2">
+    <div class="container-fluid">
+        <a class="navbar-brand fst-italic" href="#">Pandawara.</a>
 
-            <!-- Collapse untuk navigasi dan search bar -->
-            <div class="collapse navbar-collapse" id="navbarScroll">
-                <!-- Search Bar -->
-                <form action="dashboardadmin.php" method="post" class="input-group mx-3" role="search">
-                    <input class="form-control input_search" type="text" name="keyword" placeholder="Search" aria-label="Search">
-                    <button class="btn tombol_search" type="submit"><i class='bx bx-search fw-bold'></i></button>
-                </form>
+        <!-- Tombol navbar-toggler -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <!-- Navigasi Tambah Event dan My Event -->
-                <ul class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll">
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="inputevent.php">
-                            <i class='bx bxs-calendar-plus fs-4'></i>
-                            <span class="mx-2 p-0">Tambah Event</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="dashboardadmin.php">
-                            <i class='bx bxs-calendar-event fs-4'></i>
-                            <span class="mx-2 p-0">My Event</span>
-                        </a>
-                    </li>
+        <!-- Collapse untuk navigasi dan search bar -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
+            <!-- Search Bar -->
+            <form action="dashboardadmin.php" method="post" class="input-group mb-3 mb-lg-0" role="search">
+                <input class="form-control input_search" type="text" name="keyword" placeholder="Search" aria-label="Search">
+                <button class="btn tombol_search" type="submit"><i class='bx bx-search fw-bold'></i></button>
+            </form>
 
-                    <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="seeparticipant.php">
-                            <i class='bx bxs-user-detail fs-4'></i>
-                            <span class="mx-2 p-0">See participants</span>
-                        </a>
-                    </li>
-                    
-                    <!-- Profile Icon -->
-                    <li class="nav-item dropdown d-flex align-items-center">
-                        <a class="text-decoration-none align-self-center mt-auto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class='bx bxs-user-circle fs-1 text-dark'></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="accountview.php">Account Settings</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger d-flex justify-content-between" href="logout.php">Log Out<i class='bx bx-log-out fs-4 align-self-center' ></i></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+            <!-- Navigasi Tambah Event dan My Event -->
+            <ul class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll">
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" href="inputevent.php">
+                        <i class='bx bxs-calendar-plus fs-4'></i>
+                        <span class="mx-2 p-0">Tambah Event</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" href="dashboardadmin.php">
+                        <i class='bx bxs-calendar-event fs-4'></i>
+                        <span class="mx-2 p-0">My Event</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link d-flex align-items-center" href="seeparticipant.php">
+                        <i class='bx bxs-user-detail fs-4'></i>
+                        <span class="mx-2 p-0">See participants</span>
+                    </a>
+                </li>
+
+                <!-- Profile Icon -->
+                <li class="nav-item dropdown d-flex align-items-center">
+                    <a class="text-decoration-none align-self-center mt-auto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class='bx bxs-user-circle fs-1 text-dark'></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="accountview.php">Account Settings</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-danger d-flex justify-content-between" href="logout.php">Log Out<i class='bx bx-log-out fs-4 align-self-center'></i></a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
+
 
     <div class="container mt-5 pt-5">
         <div class="row">
@@ -141,9 +145,9 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                 <div class="col-md-4">
                     <div class="card border border-0 mb-4" style="width: 100%;">
                         <!-- Gambar Event -->
-                        <img src="uploads/<?= $event['foto_event'] ?>" class="card-img-top border border-0 rounded-3" alt="...">
+                        <img src="uploads/<?= $event['foto_event'] ?>" class="card-img-top border border-0 rounded-3 shadow-sm" alt="...">
                         
-                        <div class="card-body mt-4 p-0">
+                        <div class="card-body mt-4 px-2 pt-1 pb-2">
                             <div class="d-flex gap-2 mb-3">
                                 <!-- Nama Event -->
                                 <h5 class="card-title m-0 align-self-center"><?= $event['nama_event'] ?></h5>
