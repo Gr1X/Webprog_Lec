@@ -320,7 +320,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                 <button type="button" class="btn btn-primary button_part" data-bs-toggle="modal" data-bs-target="#cardModal">Back</button>
 
                                 <!-- Export Button -->
-                                <button type="button" class="btn btn-primary d-flex align-items-center button_part justify-content-between">
+                                <button type="submit" class="btn btn-primary d-flex align-items-center button_part justify-content-between">
                                     Export<i class='bx bx-spreadsheet text-end fs-4'></i>
                                 </button>
                             </div>
