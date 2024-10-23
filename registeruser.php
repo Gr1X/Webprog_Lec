@@ -112,7 +112,9 @@
     
     if (alertElement) {
         // Tambahkan kelas "show" untuk memunculkan alert
-        alertElement.classList.add('show');
+        setTimeout(function() {
+            alertElement.classList.add('show');
+        }, 100);
 
         // Sembunyikan alert setelah 3 detik
         setTimeout(function() {

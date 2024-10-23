@@ -93,7 +93,7 @@ body {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* Warna overlay, 0.5 opacity membuat gambar lebih gelap */
     z-index: 1; /* Pastikan overlay berada di atas gambar latar belakang */
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 /* Untuk memastikan konten berada di atas gambar dan overlay */
@@ -103,3 +103,19 @@ body {
     color: white; /* Pastikan teks tetap terlihat di atas gambar yang lebih gelap */
 }
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #d9d9d9d9;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
