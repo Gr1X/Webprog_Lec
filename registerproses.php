@@ -35,6 +35,8 @@ else {
     $result = $db->prepare($query2);
     $result->execute([$username, $email, $en_password, $akses]);
 
+    $_SESSION['registered'] = "Your Account Successfully Added.";
+
     header('Location: login.php');
     exit();
   }

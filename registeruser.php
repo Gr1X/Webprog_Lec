@@ -104,6 +104,7 @@
         </div>
         <?php unset($_SESSION['error']); ?>
     <?php endif; ?>
+
 </body>
 <script>
     document.addEventListener("DOMContentLoaded", function() {

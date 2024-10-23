@@ -76,6 +76,20 @@ if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
         </div>
         <?php unset($_SESSION['error']); ?>
     <?php endif; ?>
+
+    <?php  if (isset($_SESSION['registered'])): ?>
+        <div class="alert bg-light border border-0 rounded-4 shadow-lg px-5 py-3 position-absolute top-0 start-50 translate-middle-x mt-3" data-bs-backdrop="static" role="alert">
+            <div class="d-flex">
+                <i class='bx bxs-megaphone bg-primary text-light border border-0 rounded-circle p-2 fs-4 fw-bold'></i>
+                <h4 class="align-self-center fw-semibold m-0 p-0 ms-2 text-muted"><?= $_SESSION['registered']; ?></h4>
+            </div>
+            <div class="text-start mt-3 ms-2">
+                <p class="m-0 p-0 text-muted">Your account has succesfully created, now input to login.</p>
+            </div>
+        </div>
+        <?php unset($_SESSION['registered']); ?>
+    <?php endif; ?>
+
 </body>
 
     <script>
