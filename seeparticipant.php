@@ -89,7 +89,7 @@ $accounts = $stmt6->fetchAll(PDO::FETCH_ASSOC);
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="accountinfo.php">Account Settings</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger d-flex justify-content-between" href="#">Log Out<i class='bx bx-log-out fs-4 align-self-center' ></i></a></li>
+                            <li><a class="dropdown-item text-danger d-flex justify-content-between" href="logout.php">Log Out<i class='bx bx-log-out fs-4 align-self-center' ></i></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -99,53 +99,71 @@ $accounts = $stmt6->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="container">
         <div class="row p-0 m-0">
-            <?php foreach ($accounts as $account): ?>
-                <div class="col-4 mt-5 pt-5">
-                    <div class="card m-0 p-0">
-                        <div class="card-header">
-                            User History
-                        </div>
-                
-                        <div class="card-body">
-                            <!-- Tampilkan Username dan Email -->
-                            <h5 class="card-title"><?= htmlspecialchars($account['username']); ?></h5>
-                            <p class="card-text text-secondary"><?= htmlspecialchars($account['email']); ?></p>
-                        </div>
-                
-                        <div class="">
-                            <div class="accordion accordion-flush border border-0 rounded-bottom-3" id="accordionFlushActivity<?= $account['id_akun']; ?>">
-                                <div class="accordion-item border border-0 rounded-bottom-3">
-                                    <h2 class="accordion-header border border-0 rounded-bottom-3">
-                                        <!-- Unique ID untuk setiap account -->
-                                        <button class="accordion-button collapsed mb-2 accord_custom" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $account['id_akun']; ?>" aria-expanded="false" aria-controls="flush-collapseOne">
-                                            Activity Log
-                                        </button>
-                                    </h2>
-                                    <!-- Unique ID untuk collapsible -->
-                                    <div id="collapse<?= $account['id_akun']; ?>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushActivity<?= $account['id_akun']; ?>">
-                                        <table class="table text-center">
-                                            <thead>
+        <?php foreach ($accounts as $account): 
+            // Query to get the history of events a user registered for
+            $query22 = "SELECT e.nama_event, h.tanggal_daftar 
+                        FROM histori AS h
+                        JOIN listevent AS e ON e.id_event = h.id_event
+                        WHERE h.id_akun = ?";
+                              
+            $stmt22 = $db->prepare($query22);
+            $stmt22->execute([$account['id_akun']]);
+            $historidaftar = $stmt22->fetchAll(PDO::FETCH_ASSOC);
+        ?>
+            <div class="col-4 mt-5 pt-5">
+                <div class="card m-0 p-0">
+                    <div class="card-header">
+                        User History
+                    </div>
+            
+                    <div class="card-body">
+                        <!-- Display Username and Email -->
+                        <h5 class="card-title"><?= htmlspecialchars($account['username']); ?></h5>
+                        <p class="card-text text-secondary"><?= htmlspecialchars($account['email']); ?></p>
+                    </div>
+            
+                    <div class="">
+                        <div class="accordion accordion-flush border border-0 rounded-bottom-3" id="accordionFlushActivity<?= $account['id_akun']; ?>">
+                            <div class="accordion-item border border-0 rounded-bottom-3">
+                                <h2 class="accordion-header border border-0 rounded-bottom-3">
+                                    <!-- Unique ID for each account's accordion -->
+                                    <button class="accordion-button collapsed mb-2 accord_custom" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $account['id_akun']; ?>" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        Activity Log
+                                    </button>
+                                </h2>
+                                <!-- Unique ID for collapsible -->
+                                <div id="collapse<?= $account['id_akun']; ?>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushActivity<?= $account['id_akun']; ?>">
+                                    <table class="table text-center">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-start" scope="col">Event</th>
+                                                <th scope="col">Date</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Check if the user has any registered events -->
+                                            <?php if (!empty($historidaftar)): ?>
+                                                <?php foreach ($historidaftar as $history): ?>
+                                                    <tr>
+                                                        <!-- Display event name and registration date -->
+                                                        <td class="text-start" scope="row"><?= htmlspecialchars($history['nama_event']); ?></td> 
+                                                        <td><?= htmlspecialchars($history['tanggal_daftar']); ?></td>                                             
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            <?php else: ?>
                                                 <tr>
-                                                    <th class="text-start" scope="col">Event</th>
-                                                    <th scope="col">Date</th>
+                                                    <td colspan="2" class="text-muted">No events registered</td>
                                                 </tr>
-                                            </thead>
-                                            <tbody>
-                                                <!-- Dummy data untuk Activity Log -->
-                                                <tr>
-                                                    <td class="text-start" scope="row">Meet Up Moo-deng</td>
-                                                    <td>19 October 2024</td>                                            
-                                                </tr>
-                                                <!-- Anda dapat menambahkan data activity log nyata di sini -->
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                            <?php endif; ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            <?php endforeach; ?>
+            </div>
+        <?php endforeach; ?>
         </div>
     </div>
     

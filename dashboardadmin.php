@@ -221,14 +221,31 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="d-flex">
                                         <h4 class="modal-title fw-semibold my-2"><?= $event['nama_event'] ?></h4>
                                         <!-- ini buat statusnya di dalem modal untuk open pakae text-bg-primary kalo sold out warning -->
-                                        <p class="<?= $event['status_event'] === 'open' ? 'text-bg-success' : 'text-bg-danger' ?> border border-0 rounded-2 align-self-center m-0 mx-2 px-2">
-                                            <?= ucfirst($event['status_event']) ?>
-                                        </p> 
+                                        <p class="border border-0 rounded-2 align-self-center m-0 mx-2 px-2
+                                        <?php 
+                                            if ($totaldaftar['jumlahdaftar'] >= $event['max_peserta']) {
+                                                echo 'text-bg-secondary';
+                                            } else {
+                                                echo $event['status_event'] === 'open' ? 'text-bg-success' : 'text-bg-danger';
+                                            }
+                                        ?> 
+                                        ">
+                                        <?php 
+                                            if ($totaldaftar['jumlahdaftar'] >= $event['max_peserta']) {
+                                                echo 'Sold Out';
+                                            } else {
+                                                echo ucfirst($event['status_event']);
+                                            }
+                                        ?>
+                                        </p>
+                                        
                                     </div>
-
+                                    
+                                    <?php if($event['status_event'] == 'open'){?>
                                     <div class="">
                                         <a type="button" class="btn button_register rounded-pill px-4 d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#modalParticipant<?= $event['id_event']?>">Event participants<i class='bx bx-group fs-4 align-self-center ps-2'></i></a>
                                     </div>
+                                    <?php } ?>
 
                                 </div>
                                 

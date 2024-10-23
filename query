@@ -33,6 +33,7 @@ CREATE TABLE histori(
   id_histori INT auto_increment,
   id_akun INT NOT NULL,
   id_event INT NOT NULL,
+  tanggal_daftar DATE NOT NULL,
   PRIMARY KEY (id_histori),
   FOREIGN KEY (id_akun) REFERENCES account(id_akun),
   FOREIGN KEY (id_event) REFERENCES listevent(id_event));
