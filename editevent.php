@@ -63,9 +63,9 @@ list($waktu_mulai, $waktu_selesai) = explode(' - ', $waktu_event);
                             <i class='bx bxs-user-circle fs-1 text-dark'></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Account Settings</a></li>
+                            <li><a class="dropdown-item" href="accountinfo.php">Account Settings</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger d-flex justify-content-between" href="#">Log Out<i class='bx bx-log-out fs-4 align-self-center'></i></a></li>
+                            <li><a class="dropdown-item text-danger d-flex justify-content-between" href="logout.php">Log Out<i class='bx bx-log-out fs-4 align-self-center'></i></a></li>
                         </ul>
                     </li>
                 </ul>
@@ -81,8 +81,14 @@ list($waktu_mulai, $waktu_selesai) = explode(' - ', $waktu_event);
 
             <!-- Upload Photo -->
             <div class="upload-photo">
-                <input type="file" name="foto_event" style="display:none;" id="eventImage">
+                <input type="file" name="foto_event" style="display:none;" id="eventImage" onchange="previewImage(event)">
                 <label for="eventImage" style="cursor: pointer;">+ Select Photo to Upload</label>
+            </div>
+
+            <!-- Preview Photo -->
+            <h2 class="text-center" for="eventImage">Preview</h2>
+            <div class="upload-photo">
+                <img id="imagePreview" src="#" alt="Your Event Image" style="display: none; max-width: 100%; height: auto;" />
             </div>
             
             <!-- Event Name -->
@@ -160,6 +166,19 @@ list($waktu_mulai, $waktu_selesai) = explode(' - ', $waktu_event);
         document.querySelector('form').addEventListener('submit', function(event) {
             console.log('Form is being submitted');
         });
+
+        function previewImage(event) {
+        var input = event.target; // Mengambil elemen input yang memicu event
+        var reader = new FileReader();
+
+        reader.onload = function() {
+            var preview = document.getElementById('imagePreview');
+            preview.src = reader.result; // Menetapkan hasil baca sebagai sumber gambar
+            preview.style.display = 'block'; // Menampilkan gambar
+        };
+
+        reader.readAsDataURL(input.files[0]); // Membaca file gambar
+    }
     </script>
 
 </body>

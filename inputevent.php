@@ -64,9 +64,15 @@
 
         <form action="inputeventproses.php" method="post" enctype="multipart/form-data">
             <div class="upload-photo">
-                <input type="file" required name="foto_event" style="display:none;" id="eventImage">
+                <input type="file" required name="foto_event" style="display:none;" id="eventImage" onchange="previewImage(event)">
                 <label for="eventImage" style="cursor: pointer;">+ Select Photo to Upload</label>
             </div>
+
+            <h2 class="text-center" for="eventImage">Preview</h2>
+            <div class="upload-photo">
+                <img id="imagePreview" src="#" alt="Your Event Image" style="display: none; max-width: 100%; height: auto;" />
+            </div>
+
             <div class="form-group">
                 <label for="location">Event Name</label>
                 <input type="text" required name="nama_event" id="" placeholder="Event Name">
@@ -112,4 +118,19 @@
 
     </div>
 </body>
+
+<script>
+    function previewImage(event) {
+        var input = event.target;
+        var reader = new FileReader();
+
+        reader.onload = function() {
+            var preview = document.getElementById('imagePreview');
+            preview.src = reader.result;
+            preview.style.display = 'block';  // Menampilkan gambar
+        };
+
+        reader.readAsDataURL(input.files[0]);  // Membaca file gambar
+    }
+</script>
 </html>
