@@ -119,13 +119,24 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                     // Cek apakah event kurang dari 7 hari
                     $isUpcoming = ($daysRemaining >= 0 && $daysRemaining <= 7);
 
-                    $query14 = "SELECT id_event, COUNT(id_akun) AS jumlahdaftar
+                    $query14 = "SELECT id_event, COUNT(r.id_akun) AS jumlahdaftar
                     FROM registerke AS r
                     WHERE id_event = ?";
 
                     $stmt14 = $db->prepare($query14);
                     $stmt14->execute([$event['id_event']]);
                     $totaldaftar = $stmt14->fetch(PDO::FETCH_ASSOC);
+
+                    // ======================================== //
+
+                    $query20 = "SELECT id_event, r.id_akun, username, email
+                                FROM registerke AS r
+                                JOIN account AS a ON a.id_akun = r.id_akun
+                                WHERE id_event = ?";
+
+                    $stmt20 = $db->prepare($query20);
+                    $stmt20->execute([$event['id_event']]);
+                    $viewparticipants = $stmt20->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 <div class="col-md-4">
                     <div class="card border border-0 mb-4" style="width: 100%;">
@@ -216,7 +227,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                     </div>
 
                                     <div class="">
-                                        <a type="button" class="btn button_register rounded-pill px-4 d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#modalParticipant">Event participants<i class='bx bx-group fs-4 align-self-center ps-2'></i></a>
+                                        <a type="button" class="btn button_register rounded-pill px-4 d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#modalParticipant<?= $event['id_event']?>">Event participants<i class='bx bx-group fs-4 align-self-center ps-2'></i></a>
                                     </div>
 
                                 </div>
@@ -282,79 +293,84 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                     </div>
                 </div>
+
+                <!-- ModalParticipant -->
+                <div class="modal fade border border-0" id="modalParticipant<?= $event['id_event']?>" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg border-0">
+                        <div class="modal-content border-0 p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <!-- Back Button -->
+                                <button type="button" class="btn btn-primary button_part" data-bs-toggle="modal" data-bs-target="#cardModal">Back</button>
+
+                                <!-- Export Button -->
+                                <button type="button" class="btn btn-primary d-flex align-items-center button_part justify-content-between">
+                                    Export<i class='bx bx-spreadsheet text-end fs-4'></i>
+                                </button>
+                            </div>
+                            
+                            <!-- Participants Table -->
+                            <div class="table-responsive">
+                                <table class="table table-borderless align-middle">
+                                    <tbody>
+                                    <!-- Loop through participants -->
+                                    <?php if($totaldaftar['jumlahdaftar'] != 0){
+                                          foreach ($viewparticipants as $participant): ?>
+                                          <tr>
+                                              <td>
+                                                  <div class="participant-row">
+                                                      <p class="participant-name"><?= htmlspecialchars($participant['username']) ?></p>
+                                                      <p class="participant-email"><?= htmlspecialchars($participant['email']) ?></p>  
+                                                  </div>
+                                              </td>
+                                              <td>
+                                                  <!-- Delete Button triggers the specific delete modal -->
+                                                  <button class="btn-delete" data-bs-toggle="modal" data-bs-target="#deleteParticipant<?= $participant['id_akun'] ?>">
+                                                      <i class='bx bx-trash fs-5'></i>
+                                                  </button>
+                                              </td>
+                                          </tr>
+                                    <?php endforeach;
+                                    } else { ?>
+                                          <p> Belum ada participant di event ini</p>
+                                    <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <?php foreach ($viewparticipants as $participant): ?>
+                <!-- Modal Delete Data Participant -->
+                <div class="modal fade border border-0" id="deleteParticipant<?= $participant['id_akun'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+                        <div class="modal-content border border-0 text-center p-3">
+                            <div class="mx-3">
+                                <i class='bx bx-error text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2'></i>
+                            </div>
+                            <p class="fw-semibold mt-3 fs-4">Removing Participant</p>
+                            <div class="text-center fs-6">
+                                Are you sure you want to remove this participant? This action cannot be undone.
+                            </div>
+                                                          
+                            <!-- Form to delete the participant -->
+                            <form action="deleteuserregister.php" method="post" class="d-grid gap-2 py-3">
+                                <input type="hidden" name="id_event" value="<?= $event['id_event'] ?>">
+                                <input type="hidden" name="id_akun" value="<?= $participant['id_akun'] ?>">
+                                <button type="submit" class="btn btn-danger text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
+                                <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+
                 <?php endforeach; ?>
             </div>
 
-        <!-- ModalParticipant -->
-        <div class="modal fade border border-0" id="modalParticipant" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg border-0">
-                <div class="modal-content border-0 p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <!-- Back Button -->
-                        <button type="button" class="btn btn-primary button_part" data-bs-toggle="modal" data-bs-target="#cardModal">Back</button>
+        
 
-                        <!-- Export Button -->
-                        <button type="button" class="btn btn-primary d-flex align-items-center button_part justify-content-between">Export<i class='bx bx-spreadsheet text-end fs-4'></i></button>
-                    </div>
-
-                    <!-- Participants Table -->
-                    <div class="table-responsive">
-                        <table class="table table-borderless align-middle">
-                            <tbody>
-                                <!-- Participant Row -->
-                                <tr>
-                                    <td>
-                                        <div class="participant-row">
-                                            <p class="participant-name">Gregorius Frederico</p>
-                                            <p class="participant-email">gregorius.frederico.student@umn.ac.id</p>  
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <button class="btn-delete" data-bs-toggle="modal" data-bs-target="#deletePar">
-                                            <i class='bx bx-trash fs-5'></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                                <!-- Duplicate the row for more participants -->
-                                <tr>
-                                    <td>
-                                        <div class="participant-row">
-                                            <p class="participant-name">Gregorius Frederico</p>
-                                            <p class="participant-email">gregorius.frederico.student@umn.ac.id</p>  
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <button class="btn-delete" data-bs-toggle="modal" data-bs-target="#deletePar">
-                                            <i class='bx bx-trash fs-5'></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modal Delete Data Participant-->
-        <div class="modal fade border border-0" id="deletePar" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
-                <div class="modal-content border border-0 text-center p-3">
-                    <div class="mx-3">
-                        <i class='bx bx-error text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2' ></i>
-                    </div>
-                    <p class="fw-semibold mt-3 fs-4">Removing Event</p>
-                    <div class="text-center fs-6">
-                        Are you sure you want to remove your event? All of your data will be permanently removed. This action cannot be undone.
-                    </div>
-                    
-                    <form action="" class="d-grid gap-2 py-3">
-                        <button type="button" class="btn btn-danger text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
-                        <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</i></button>
-                    </form>
-                </div>
-            </div>
-        </div>
+        
     </div>
     
 </body>
