@@ -1,3 +1,13 @@
+<?php
+require_once('db.php');
+session_start();
+
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
+$id_akun = $_SESSION['id_akun'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,9 +75,8 @@
                     <!-- Detail Akun -->
                     <div class="account-details">
                         <div class="">
-                            <h2 class="fw-semibold pb-1 pt-2 m-0 p-0">KayooH23</h2>
-                            <h4 class="text-secondary pb-4 m-0">Calvin Jomok</h4>
-                            <h5 class="">MarinirJawa23@gmail.com</h5>
+                            <h2 class="fw-semibold pb-1 pt-2 m-0 p-0"><?php echo $username ?></h2>
+                            <h5 class=""><?php echo $email ?></h5>
                         </div>
                     </div>
                 </div>
@@ -119,12 +128,13 @@
 
                 <p class="fw-semibold mt-3 fs-4">Change Username</p>
 
-                <form action=".."  method="post">
+                <form action="ubahusername.php" method="post">
+                    <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
                     <div class="text-center fs-6">
                         <p class="">Please make sure your username was correct before submitted.</p>
                         <div class="input-group flex-nowrap mb-2">
                             <!-- Edit Nama -->
-                            <input type="text" class="form-control" name="gantiNama" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="text" required class="form-control" name="newusername" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
                         </div>
                     </div>
                         
@@ -147,12 +157,13 @@
 
                 <p class="fw-semibold mt-3 fs-4">Change Email</p>
 
-                <form action="#"  method="post">
+                <form action="ubahemail.php" method="post">
+                    <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
                     <div class="text-center fs-6">
                         <p class="">Please make sure your email was correct before submitted.</p>
                         <div class="input-group flex-nowrap mb-2">
                             <!-- Edit Email -->
-                            <input type="email" class="form-control" name="gantiNama" placeholder="Email" aria-label="Username" aria-describedby="addon-wrapping">
+                            <input type="email" required class="form-control" name="newemail" placeholder="Email" aria-label="Username" aria-describedby="addon-wrapping">
                         </div>
                     </div>
                         
@@ -175,28 +186,52 @@
 
                 <p class="fw-semibold mt-3 fs-4">Change Password</p>
 
-                <form action=".."  method="post">
+                <form action="ubahpassword.php" method="post">
+                    <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
                     <div class="text-center fs-6">
-                        <p class="">Please make sure your Password was correct before submitted.</p>
+                        <p class="">Please make sure your Password is correct before submitting.</p>
+
                         <div class="input-group flex-nowrap mb-2">
-                            <!-- Edit Passsword -->
-                            <input type="password" class="form-control" name="gantiNama" placeholder="Password" aria-label="Username" aria-describedby="addon-wrapping">
+                            <!-- Password -->
+                            <input type="password" required class="form-control" id="password" name="password" placeholder="Password" aria-label="Password">
                         </div>
 
                         <div class="input-group flex-nowrap mb-2">
-                            <!-- Edit Re-Passsword -->
-                            <input type="password" class="form-control" name="gantiNama" placeholder="Re-Enter Passsword" aria-label="Username" aria-describedby="addon-wrapping">
+                            <!-- Re-Enter Password -->
+                            <input type="password" required class="form-control" id="repassword" name="repassword" placeholder="Re-Enter Password" aria-label="Re-Enter Password">
                         </div>
                     </div>
-                        
+
                     <div class="d-grid gap-2 py-3">
-                        <button type="submit" class="btn tombol_custom text-center m-0 p-0 py-2 shadow-sm" style="background-color: #B88EE5; color: white; border: none;">Confirm</button>
+                        <button type="submit" id="submitBtn" class="btn tombol_custom text-center m-0 p-0 py-2 shadow-sm" 
+                                style="background-color: #B88EE5; color: white; border: none;" disabled>
+                            Confirm
+                        </button>
                         <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</button>
                     </div>
                 </form>
              </div>
          </div>
     </div>
-
 </body>
 </html>
+
+<script>
+    // Get the password fields and the submit button
+    const password = document.getElementById('password');
+    const repassword = document.getElementById('repassword');
+    const submitBtn = document.getElementById('submitBtn');
+
+    // Function to check if passwords match and are filled
+    function checkPasswords() {
+        if (password.value !== "" && repassword.value !== "" && password.value === repassword.value) {
+            submitBtn.disabled = false; // Enable the submit button
+        } else {
+            submitBtn.disabled = true; // Disable the submit button
+        }
+    }
+
+    // Add event listeners to password fields
+    password.addEventListener('input', checkPasswords);
+    repassword.addEventListener('input', checkPasswords);
+</script>

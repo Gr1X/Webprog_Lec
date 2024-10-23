@@ -1,3 +1,13 @@
+<?php
+require_once('db.php');
+session_start();
+
+$username = $_SESSION['username'];
+$email = $_SESSION['email'];
+$id_akun = $_SESSION['id_akun'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,9 +76,8 @@
                 <!-- Detail Akun -->
                 <div class="account-details">
                     <div class="">
-                        <h2 class="fw-semibold pb-1 pt-2 m-0 p-0">KayooH23</h2>
-                        <h4 class="text-secondary pb-4 m-0">Calvin Jomok</h4>
-                        <h6 class="fs-5">MarinirJawa23@gmail.com</h6>
+                        <h2 class="fw-semibold pb-1 pt-2 m-0 p-0"><?php echo $username ?></h2>
+                        <h5 class=""><?php echo $email ?></h5>
                     </div>
                 </div>
             </div>
