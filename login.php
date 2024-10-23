@@ -21,55 +21,8 @@ if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styling/login.css">
 </head>
-<style>
-    @import url('https://fonts.cdnfonts.com/css/coolvetica-2');
-
-    body {
-        font-family: 'Coolvetica', sans-serif;
-        background-image: url('img/bg.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
-
-    .background-card {
-        background: url('img/bg.jpg') no-repeat center center;
-        background-size: cover;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        text-align: center;
-        padding: 20px;
-        position: relative; /* Tambahkan ini untuk memungkinkan penggunaan ::after */
-    }
-
-    .background-card::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 50%;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
-        border-radius: 10px;
-    }
-
-
-    .button_login {
-        background-color: #6f42c1;
-        border-color: #6f42c1;
-        color: white;
-    }
-
-    .button_login:hover {
-        background-color: #5a3799;
-        border-color: #5a3799;
-    }
-
-</style>
 
 <body class="d-flex justify-content-center align-items-center min-vh-100 ">
     <div class="d-flex justify-content-center shadow">
@@ -89,15 +42,6 @@ if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
                             <h3 class="card-title fw-bold mt-5">Login Account</h3>
                             <p class="card-text text-muted">Hello, Enter your details to sign in to your account</p>
                         </div>
-
-                        <!-- Alert buat login -->
-                        <?php 
-                        if (isset($_SESSION['error'])): ?>
-                            <div class="alert alert-danger" role="alert">
-                                <?= $_SESSION['error']; ?>
-                            </div>
-                            <?php unset($_SESSION['error']); ?>
-                        <?php endif; ?>
 
                         <form action="loginproses.php" method="post">
                             <div class="d-flex border rounded mb-3">
@@ -119,5 +63,41 @@ if(isset($_SESSION['id_akun']) && isset($_SESSION['akses_akun'])){
             </div>
         </div>
     </div>
+                        
+    <?php  if (isset($_SESSION['error'])): ?>
+        <div class="alert bg-light border border-0 rounded-4 shadow-lg px-5 py-3 position-absolute top-0 start-50 translate-middle-x mt-3" data-bs-backdrop="static" role="alert">
+            <div class="d-flex">
+                <i class='bx bx-x bg-danger text-light border border-0 rounded-circle p-1 fs-4 fw-bold'></i>
+                <h4 class="align-self-center fw-semibold m-0 p-0 ms-2 text-muted"><?= $_SESSION['error']; ?></h4>
+            </div>
+            <div class="text-start mt-3 ms-2">
+                <p class="m-0 p-0 text-muted">Please try again and make sure your password was correct before submited.</p>
+            </div>
+        </div>
+        <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
 </body>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Cek apakah elemen alert ada di halaman
+            var alertElement = document.querySelector('.alert');
+
+            if (alertElement) {
+                // Tambahkan kelas "show" untuk memunculkan alert
+                alertElement.classList.add('show');
+
+                // Sembunyikan alert setelah 3 detik
+                setTimeout(function() {
+                    alertElement.classList.add('hide');
+                }, 3000); // 3 detik (3000 ms)
+
+                // Hapus elemen alert dari DOM setelah animasi selesai
+                setTimeout(function() {
+                    alertElement.remove();
+                }, 3500); // Tambahkan jeda untuk memastikan animasi selesai
+            }
+        });
+    </script>
+
 </html>
