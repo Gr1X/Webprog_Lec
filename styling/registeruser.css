@@ -2,7 +2,7 @@
 
 body {
     font-family: 'Coolvetica', sans-serif;
-    background: url('../img/bg.jpg');
+    background-image: url('../img/bg.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -18,7 +18,7 @@ body {
     color: white;
     text-align: center;
     padding: 20px;
-    position: relative; /* Tambahkan ini untuk memungkinkan penggunaan ::after */
+    position: relative;
 }
 
 .background-card::after {
@@ -29,7 +29,7 @@ body {
     width: 100%;
     height: 50%;
     background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0));
-    border-radius: 10px;
+    border-radius: 0px 0px 0px 16px;
 }
 
 
@@ -44,6 +44,27 @@ body {
     border-color: #5a3799;
 }
 
-.modal_header{
-    background-color: #5a3799;
+/* Awalnya alert berada di luar layar (di atas) dan tidak terlihat */
+.alert {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateY(-100%) translateX(-50%);
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
+
+/* Ketika alert aktif, geser ke posisi yang diinginkan dan tampilkan */
+.alert.show {
+    transform: translateY(0) translateX(-50%);
+    opacity: 1;
+}
+
+/* Ketika alert disembunyikan, geser kembali ke atas */
+.alert.hide {
+    transform: translateY(-100%) translateX(-50%);
+    opacity: 0;
+}
+
+  
+  
