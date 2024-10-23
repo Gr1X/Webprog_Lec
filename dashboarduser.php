@@ -135,7 +135,7 @@ $registeredEvents = array_column($registers, 'id_event');
                 <div class="col-md-4">
                     <div class="card border border-0 mb-4" style="width: 100%;">
                         <!-- Gambar Event -->
-                        <img src="uploads/<?= $event['foto_event'] ?>" class="card-img-top border border-0 rounded-3" alt="...">
+                        <img src="uploads/<?= $event['foto_event'] ?>" class="card-img-top border border-0 rounded-3 shadow-sm" alt="...">
                         
                         <div class="card-body mt-4 p-0">
                             <div class="d-flex gap-2 mb-3">
