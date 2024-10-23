@@ -201,7 +201,6 @@ button.btn {
     background-color: #8729EB;
     border: none;
     color: white;
-    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -216,4 +215,24 @@ button.btn {
 .button_part{
     margin-left:10px;
     width: 100px;
+}
+
+.button_part{
+    color: #fff;
+    background-color: #B88EE5;
+}
+
+.button_part:hover{
+    color: #fff;
+    background-color: #9A6CC5;
+}
+
+.button_export{
+    color: #fff;
+    background-color: #B88EE5;
+}
+
+.button_export:hover{
+    color: #fff;
+    background-color: #9A6CC5;
 }

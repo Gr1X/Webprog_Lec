@@ -103,19 +103,31 @@ body {
     color: white; /* Pastikan teks tetap terlihat di atas gambar yang lebih gelap */
 }
 
+/* Untuk seluruh halaman */
+html, body {
+    overflow-y: auto;
+}
+
+/* Kustomisasi scrollbar */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 12px;  /* Lebar scrollbar */
 }
 
 ::-webkit-scrollbar-track {
-    background: #d9d9d9d9;
+    background: #f1f1f1;  /* Warna lintasan scrollbar */
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
+    background: #888;  /* Warna penggeser */
+    border-radius: 10px;  /* Membuat sudut penggeser bulat */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: #555;  /* Warna penggeser saat dihover */
+}
+
+/* Kustomisasi di Firefox */
+body {
+    scrollbar-width: thin; /* Lebih tipis di Firefox */
+    scrollbar-color: #888 #f1f1f1; /* Thumb dan Track di Firefox */
 }

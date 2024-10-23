@@ -65,11 +65,15 @@
         <form action="inputeventproses.php" method="post" enctype="multipart/form-data">
             <div class="upload-photo">
                 <input type="file" required name="foto_event" style="display:none;" id="eventImage" onchange="previewImage(event)">
-                <label for="eventImage" style="cursor: pointer;">+ Select Photo to Upload</label>
+                <label class="d-flex justify-content-center" for="eventImage" style="cursor: pointer;">
+                    <i class='bx bx-image-add fs-1 mt-auto' ></i> 
+                    <p class="m-0 p-0 align-self-center">Select Photo to Upload</p>
+                </label>
             </div>
 
             <h2 class="text-center" for="eventImage">Preview</h2>
             <div class="upload-photo">
+                <p id="imagePlaceholder" class="text-center d-flex justify-content-center align-self-center m-0 p-0">No image selected yet.</p>
                 <img id="imagePreview" src="#" alt="Your Event Image" style="display: none; max-width: 100%; height: auto;" />
             </div>
 
@@ -121,16 +125,24 @@
 
 <script>
     function previewImage(event) {
-        var input = event.target;
-        var reader = new FileReader();
+    var input = event.target;
+    var reader = new FileReader();
 
-        reader.onload = function() {
-            var preview = document.getElementById('imagePreview');
-            preview.src = reader.result;
-            preview.style.display = 'block';  // Menampilkan gambar
-        };
+    reader.onload = function() {
+        var preview = document.getElementById('imagePreview');
+        var placeholder = document.getElementById('imagePlaceholder');
+        
+        if (placeholder) {
+            placeholder.style.visibility = 'hidden'; 
+        }
 
-        reader.readAsDataURL(input.files[0]);  // Membaca file gambar
-    }
+        preview.src = reader.result;
+        preview.style.display = 'block';
+    };
+
+    reader.readAsDataURL(input.files[0]);
+}
+
 </script>
+
 </html>

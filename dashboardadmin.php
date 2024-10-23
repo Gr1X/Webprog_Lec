@@ -200,7 +200,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                             </div>
 
-                            <div class="d-flex mt-2">
+                            <div class="d-flex mt-3">
                                 <!-- Button Modal -->
                                 <div class="">
                                     <div class="d-flex justify-content-center pe-4">
@@ -257,37 +257,42 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                 <p class="card-text m-0">
                                     <?= $event['deskripsi'] ?>
                                 </p>
-
-                                <div class="d-flex my-4">
-                                    <div class="d-flex justify-content-center gap-2">
-                                        <form action="editevent.php" method="POST" class="d-inline">
-                                            <input type="hidden" name="id_event" value="<?= $event['id_event'] ?>">
-                                            <input type="hidden" name="nama_event" value="<?= $event['nama_event'] ?>">
-                                            <input type="hidden" name="foto_event" value="<?= $event['foto_event'] ?>">
-                                            <input type="hidden" name="deskripsi" value="<?= $event['deskripsi'] ?>">
-                                            <input type="hidden" name="kategori" value="<?= $event['kategori'] ?>">
-                                            <input type="hidden" name="tanggal_event" value="<?= $event['tanggal_event'] ?>">
-                                            <input type="hidden" name="waktu_event" value="<?= $event['waktu_event'] ?>">
-                                            <input type="hidden" name="lokasi_event" value="<?= $event['lokasi_event'] ?>">
-                                            <input type="hidden" name="max_peserta" value="<?= $event['max_peserta'] ?>">
-                                            <input type="hidden" name="status_event" value="<?= $event['status_event'] ?>">
-                                            <button type="submit" class="btn button_register rounded-pill px-4 d-flex justify-content-between">Edit
-                                                <i class='bx bxs-edit-alt align-self-center ms-2'></i>
-                                            </button>
-                                        </form>
-
-                                        <button type="button" class="btn button_register rounded-pill px-4 d-flex justify-content-between" data-bs-toggle="modal" data-bs-target="#modalDelete<?= $event['id_event']?>">Delete<i class='bx bxs-trash align-self-center ms-2' ></i></button>
-                                    </div>
-                                </div>
                                 
+                                <hr style="height:2px;"/>
 
                                 <div class="mb-4">
                                     <!-- Date -->
                                     <p class="card-text m-0 my-2 d-flex"><i class='bx bx-calendar-alt align-self-center fs-4 me-3'></i><?= $event['tanggal_event'] ?></p>
                                     <!-- Waktu -->
-                                    <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-time align-self-center fs-4 me-3'></i><?= $event['waktu_event'] ?></p>
+                                    <p class="card-text m-0 d-flex"><i class='bx bxs-time align-self-center fs-4 me-3'></i><?= $event['waktu_event'] ?></p>
                                     <!-- Location -->
-                                    <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-map align-self-center fs-4 me-3'></i><?= $event['lokasi_event'] ?></p>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-map align-self-center fs-4 me-3'></i><?= $event['lokasi_event'] ?></p>
+                                        <div class="d-flex justify-content-between">
+                                            <div class="d-flex">
+                                                <div class="d-flex justify-content-center gap-2">
+                                                    <form action="editevent.php" method="POST" class="d-inline">
+                                                        <input type="hidden" name="id_event" value="<?= $event['id_event'] ?>">
+                                                        <input type="hidden" name="nama_event" value="<?= $event['nama_event'] ?>">
+                                                        <input type="hidden" name="foto_event" value="<?= $event['foto_event'] ?>">
+                                                        <input type="hidden" name="deskripsi" value="<?= $event['deskripsi'] ?>">
+                                                        <input type="hidden" name="kategori" value="<?= $event['kategori'] ?>">
+                                                        <input type="hidden" name="tanggal_event" value="<?= $event['tanggal_event'] ?>">
+                                                        <input type="hidden" name="waktu_event" value="<?= $event['waktu_event'] ?>">
+                                                        <input type="hidden" name="lokasi_event" value="<?= $event['lokasi_event'] ?>">
+                                                        <input type="hidden" name="max_peserta" value="<?= $event['max_peserta'] ?>">
+                                                        <input type="hidden" name="status_event" value="<?= $event['status_event'] ?>">
+                                                        <button type="submit" class="btn button_register rounded-pill px-4 d-flex justify-content-between">Edit
+                                                            <i class='bx bxs-edit-alt align-self-center ms-2'></i>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <button type="button" class="btn button_register rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalDelete<?= $event['id_event']?>">Delete<i class='bx bxs-trash align-self-center ms-2' ></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -317,14 +322,16 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
 
                 <!-- ModalParticipant -->
                 <div class="modal fade border border-0" id="modalParticipant<?= $event['id_event']?>" tabindex="-1" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-lg border-0">
+                    <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable border-0">
                         <div class="modal-content border-0 p-4">
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <!-- Back Button -->
-                                <button type="button" class="btn btn-primary button_part" data-bs-toggle="modal" data-bs-target="#cardModal">Back</button>
+                                <button type="button" class="btn button_export button_part d-flex align-items-center justify-content-between" data-bs-toggle="modal" data-bs-target="#cardModal"><i class='bx bx-arrow-back fs-4'></i>Back</button>
+                                    
+                                <h1 class="text-center">Participants List</h1>
 
                                 <!-- Export Button -->
-                                <button type="submit" class="btn btn-primary d-flex align-items-center button_part justify-content-between">
+                                <button type="button" class="btn d-flex align-items-center button_part justify-content-between " data-bs-toggle="modal" data-bs-target="#downloadParticipant">
                                     Export<i class='bx bx-spreadsheet text-end fs-4'></i>
                                 </button>
                             </div>
@@ -338,14 +345,14 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                           foreach ($viewparticipants as $participant): ?>
                                           <tr>
                                               <td>
-                                                  <div class="participant-row">
-                                                      <p class="participant-name"><?= htmlspecialchars($participant['username']) ?></p>
-                                                      <p class="participant-email"><?= htmlspecialchars($participant['email']) ?></p>  
+                                                  <div class="participant-row border border-0 rounded-5">
+                                                      <p class="participant-name  d-flex align-items-center fs-6"><i class='bx bx-user-circle p-1 bg-warning fs-4 border border-0 rounded-circle me-2'></i><?= htmlspecialchars($participant['username']) ?></p>
+                                                      <p class="participant-email fs-6"><?= htmlspecialchars($participant['email']) ?></p>  
                                                   </div>
                                               </td>
                                               <td>
                                                   <!-- Delete Button triggers the specific delete modal -->
-                                                  <button class="btn-delete" data-bs-toggle="modal" data-bs-target="#deleteParticipant<?= $participant['id_akun'] ?>">
+                                                  <button class="btn-delete border border-0 rounded-5 py-4" data-bs-toggle="modal" data-bs-target="#deleteParticipant<?= $participant['id_akun'] ?>">
                                                       <i class='bx bx-trash fs-5'></i>
                                                   </button>
                                               </td>
@@ -388,12 +395,29 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
 
                 <?php endforeach; ?>
             </div>
-
-        
-
-        
+            
+            <!-- Modal Download Excel -->
+            <div class="modal fade border border-0" id="downloadParticipant" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
+                    <div class="modal-content border border-0 text-center p-3">
+                        <div class="mx-3">
+                            <i class='bx bx-file text-center bg-light border border-0 rounded-circle p-3 shadow-sm fs-2'></i>
+                        </div>
+                        <p class="fw-semibold mt-3 fs-4">Export Participant</p>
+                        <div class="text-center fs-6">
+                            Are you sure you want to export data participant? This file format is xlsx.
+                        </div>
+                                                          
+                        <!-- Form to download the participant -->
+                        <form action="" method="post" class="d-grid gap-2 py-3">
+                            <button type="submit" class="btn button_export text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
+                            <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+               
     </div>
-    
 </body>
 
 </html>

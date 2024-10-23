@@ -98,7 +98,7 @@ $accounts = $stmt6->fetchAll(PDO::FETCH_ASSOC);
     </nav>
 
     <div class="container">
-        <div class="row p-0 m-0">
+        <div class="row p-0 m-0 mt-5 pt-5">
         <?php foreach ($accounts as $account): 
             // Query to get the history of events a user registered for
             $query22 = "SELECT e.nama_event, h.tanggal_daftar 
@@ -110,7 +110,7 @@ $accounts = $stmt6->fetchAll(PDO::FETCH_ASSOC);
             $stmt22->execute([$account['id_akun']]);
             $historidaftar = $stmt22->fetchAll(PDO::FETCH_ASSOC);
         ?>
-            <div class="col-4 mt-5 pt-5">
+            <div class="col-4 mb-4">
                 <div class="card m-0 p-0">
                     <div class="card-header">
                         User History
