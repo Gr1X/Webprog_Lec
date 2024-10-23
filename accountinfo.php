@@ -5,6 +5,16 @@ session_start();
 $username = $_SESSION['username'];
 $email = $_SESSION['email'];
 $id_akun = $_SESSION['id_akun'];
+$akses_akun = $_SESSION['akses_akun'];
+
+$query26 = "SELECT id_akun, nama_event, tanggal_event, lokasi_event, tanggal_daftar
+            FROM histori AS h
+            JOIN listevent AS e ON e.id_event = h.id_event
+            WHERE id_akun = ?";
+            
+$stmt26 = $db->prepare($query26);
+$stmt26->execute([$id_akun]);
+$historyuser = $stmt26->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -52,7 +62,7 @@ $id_akun = $_SESSION['id_akun'];
     <div class="row">
         <!-- Kolom Kiri untuk Navigasi -->
         <div class="col-md-3 col-12 left-column mt-3">
-            <a href="dashboarduser.php" class="d-flex align-items-center text-dark mb-3 text-decoration-none">
+            <a href="<?= ($akses_akun === 'user') ? 'dashboarduser.php' : 'dashboardadmin.php'; ?>" class="d-flex align-items-center text-dark mb-3 text-decoration-none">
                 <i class='bx bx-left-arrow-alt text-decoration-none align-self-center fs-3'></i>
                 <p class="mb-0 align-self-center fs-3">Back to dashboard</p>
             </a>
@@ -89,31 +99,46 @@ $id_akun = $_SESSION['id_akun'];
                 <i class='bx bx-chevron-right align-self-center'></i>
             </div>
 
+            <?php if($akses_akun == 'user'){ ?>
             <!-- History Event Register -->
             <div class="history">
                 <div class="accordion accordion-flush" id="accordionFlushExample">
                     <div class="accordion-item">
                         <h2 class="accordion-header">
-                        <h6 class="text-muted mt-4">Activity history</h6>
-                        <button class="accordion-button collapsed py-2 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            <h4>History Event Register</h4>
-                        </button>
+                            <h6 class="text-muted mt-4">Activity history</h6>
+                            <button class="accordion-button collapsed py-2 px-4" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                <h4>History Event Register</h4>
+                            </button>
                         </h2>
                         <div id="flush-collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionFlushExample">
                             <div class="accordion-body">
                                 <div class="history-list">
-                                    <a href="#">Ado Music Concert</a>
-                                    <p>9 April 2025, Stadion Utama Gelora Bung Karno</p>
-                                    <a href="#">Art Exhibition - Vincent Van Gogh</a>
-                                    <p>28 Juli 2025, Stadion Utama Gelora Bung Karno</p>
-                                    <a href="#">Art Exhibition - Vincent Van Gogh</a>
-                                    <p>28 Juli 2025, Stadion Utama Gelora Bung Karno</p>
+                                    <!-- Loop through the event history from the query -->
+                                    <?php foreach ($historyuser as $history): ?>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <!-- Display event name, event date, and location -->
+                                                <i><?= htmlspecialchars($history['nama_event']); ?></i>
+                                                <p><?= htmlspecialchars($history['tanggal_event']); ?>, <?= htmlspecialchars($history['lokasi_event']); ?></p>
+                                            </div>
+                                            <!-- Display registration date on the right -->
+                                            <div class="text-muted">
+                                                <small>Registered on: <?= htmlspecialchars($history['tanggal_daftar']); ?></small>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                    <?php endforeach; ?>
+                                    <!-- If there's no history -->
+                                    <?php if (empty($historyuser)): ?>
+                                        <p>No event registration history available.</p>
+                                    <?php endif; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <?php } ?>
         </div>
     </div>
 </div>

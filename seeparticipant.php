@@ -137,7 +137,7 @@ $accounts = $stmt6->fetchAll(PDO::FETCH_ASSOC);
                                         <thead>
                                             <tr>
                                                 <th class="text-start" scope="col">Event</th>
-                                                <th scope="col">Date</th>
+                                                <th scope="col">Registered On</th>
                                             </tr>
                                         </thead>
                                         <tbody>
