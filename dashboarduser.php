@@ -208,61 +208,67 @@ $registeredEvents = array_column($registers, 'id_event');
                         <div class="modal-content border border-0 rounded-4">
                             <img src="uploads/<?= $event['foto_event'] ?>" class="card-img-top object-fit-cover border border-0 rounded-top-4" alt="..." style="width: 100%; height: 300px;">
                             <div class="modal-body p-5 py-3">
-
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex">
-                                        <h4 class="modal-title fw-semibold my-2"><?= $event['nama_event'] ?></h4>
+                                        <h4 class="modal-title fw-semibold my-2 m-0 align-self-center"><?= $event['nama_event'] ?></h4>
                                         <!-- ini buat statusnya di dalem modal untuk open pakae text-bg-primary kalo sold out warning -->
                                         <p class="<?= $event['status_event'] === 'open' ? 'text-bg-success' : 'text-bg-danger' ?> border border-0 rounded-2 align-self-center m-0 mx-2 px-2">
                                             <?= ucfirst($event['status_event']) ?>
                                         </p> 
                                     </div>
+
+                                    <div class="">
+                                        <div class="d-flex my-4">
+                                            <div class="d-flex justify-content-center gap-2">
+                                                <div class="d-flex border border-0 rounded-5 px-4 py-1 kategori_tombol">
+                                                    <p class="align-self-center p-0 m-0"><?= ucfirst($event['kategori']) ?></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+            
                                 
                                 <!-- Deskripsi -->
                                 <p class="card-text m-0">
                                     <?= $event['deskripsi'] ?>
                                 </p>
-
-                                <div class="d-flex my-4">
-                                    <div class="d-flex justify-content-center gap-2">
-                                        <div class="d-flex border border-0 rounded-5 px-4 py-1 kategori_tombol">
-                                            <p class="align-self-center p-0 m-0">Tradition</p>
-                                        </div>
-                                    </div>
-
-                                    <?php
-                                    if (in_array($event['id_event'], $registeredEvents)){
-                                        if($event['status_event'] == 'open'){
-                                            ?>
-                                            <div class="mx-3">
-                                                <button type="button" class="btn button_register rounded-pill px-4" disabled>Registered</button>
-                                            </div>
-                                            <?php
-                                        }
-                                    }
-                                    else{
-                                        if (!($totaldaftar['jumlahdaftar'] >= $event['max_peserta'])){
-                                            if ($event['status_event'] == 'open'){
-                                              ?>
-                                              <div class="mx-3">
-                                                  <button type="button" class="btn button_register rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalRegister<?= $event['id_event'] ?>">Register</button>
-                                              </div>
-                                              <?php
-                                            }
-                                        }
-                                    }
-                                    ?>
-                                </div>
-
+                                
+                                <hr style="height: 2px;"/>
 
                                 <div class="mb-4">
                                     <!-- Date -->
                                     <p class="card-text m-0 my-2 d-flex"><i class='bx bx-calendar-alt align-self-center fs-4 me-3'></i><?= $event['tanggal_event'] ?></p>
                                     <!-- Waktu -->
-                                    <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-time align-self-center fs-4 me-3'></i><?= $event['waktu_event'] ?></p>
+                                    <p class="card-text m-0 d-flex"><i class='bx bxs-time align-self-center fs-4 me-3'></i><?= $event['waktu_event'] ?></p>
                                     <!-- Location -->
-                                    <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-map align-self-center fs-4 me-3'></i><?= $event['lokasi_event'] ?></p>
+                                     <div class="d-flex justify-content-between">
+                                         <p class="card-text m-0 my-2 d-flex"><i class='bx bxs-map align-self-center fs-4 me-3'></i><?= $event['lokasi_event'] ?></p>
+                                        <div class="">
+                                            <?php
+                                            if (in_array($event['id_event'], $registeredEvents)){
+                                                if($event['status_event'] == 'open'){
+                                                    ?>
+                                                    <div class="mx-3">
+                                                        <button type="button" class="btn button_register rounded-pill px-4" disabled>Registered</button>
+                                                    </div>
+                                                    <?php
+                                                }
+                                            }
+                                            else{
+                                                if (!($totaldaftar['jumlahdaftar'] >= $event['max_peserta'])){
+                                                    if ($event['status_event'] == 'open'){
+                                                    ?>
+                                                    <div class="mx-3">
+                                                        <button type="button" class="btn button_register rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalRegister<?= $event['id_event'] ?>">Register Event</button>
+                                                    </div>
+                                                    <?php
+                                                    }
+                                                }
+                                            }
+                                            ?>
+                                        </div>
+                                     </div>
                                 </div>
                             </div>
                         </div>
