@@ -164,7 +164,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                     $stmt20->execute([$event['id_event']]);
                     $viewparticipants = $stmt20->fetchAll(PDO::FETCH_ASSOC);
                 ?>
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-6">
                     <div class="card border border-0 mb-4" style="width: 100%;">
                         <!-- Gambar Event -->
                         <img src="uploads/<?= htmlspecialchars($event['foto_event'], ENT_QUOTES, 'UTF-8') ?>" class="card-img-top border border-0 rounded-3 shadow-sm" alt="...">
@@ -241,7 +241,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                     <div class="modal-dialog modal_custom modal-dialog-centered border border-0">
                         <div class="modal-content border border-0 rounded-4">
                             <img src="uploads/<?= htmlspecialchars($event['foto_event'], ENT_QUOTES, 'UTF-8') ?>" class="card-img-top object-fit-cover border border-0 rounded-top-4" alt="..." style="width: 100%; height: 300px;">
-                            <div class="modal-body p-5 py-3">
+                            <div class="modal-body p-4 py-3">
 
                                 <div class="d-flex justify-content-between">
                                     <div class="d-flex">

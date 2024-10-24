@@ -26,35 +26,51 @@ $link = htmlspecialchars($link, ENT_QUOTES, 'UTF-8');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styling/accountview.css">
+    <link rel="stylesheet" href="styling/accountview.css?v=1.0">
 </head>
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg px-4 py-2 shadow">
-        <div class="container-fluid d-flex justify-content-between py-2">
-            <a class="navbar-brand fst-italic" href="#">Pandawara.</a>
+    <nav class="navbar navbar-expand-lg navbar-light px-4 py-2 fixed-top" style="background-color: #B88EE5; color: white;">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand fst-italic pt-sm-3 pt-md-3 pt-lg-0" href="#">Pandawara.</a>
+            <!-- Tombol navbar-toggler -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- Collapse untuk navigasi dan search bar -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
-
-                <ul class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll">
-                    <!-- Profile Icon -->
+                    <!-- Profile Dropdown -->
                     <li class="nav-item dropdown d-flex align-items-center">
-                        <a class="text-decoration-none align-self-center mt-auto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class='bx bxs-user-circle fs-1 text-white'></i>
+                        <!-- Icon Profil (tombol) -->
+                        <a class="text-decoration-none align-self-center mt-auto profile-trigger" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class='bx bxs-user-circle fs-1 text-dark'></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Account Settings</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item text-danger d-flex justify-content-between" href="logout.php">Log Out<i class='bx bx-log-out fs-4 align-self-center' ></i></a></li>
+                            
+                        <!-- Isi Dropdown -->
+                        <ul class="dropdown-menu dropdown-menu-end m-0 p-0" id="profileDropdownMenu" aria-labelledby="navbarDropdown">
+                            <li class="nav-item">
+                                <a class="dropdown-item d-flex m-0 px-md-0 px-lg-2 text-light icon-link" href="accountview.php">
+                                <i class='bx bxs-cog fs-4 align-self-center'></i>
+                                <span class="mx-2 p-0">Account Settings</span>
+                                </a>
+                            </li>
+
+                            <li><hr class="dropdown-divider m-0 p-0"></li>
+
+                            <li class="nav-item">
+                                <a class="dropdown-item text-danger d-flex m-0 px-md-0 px-lg-2 icon-link" href="logout.php">
+                                    <i class='bx bx-log-out fs-4 align-self-center'></i>
+                                    <span class="mx-2 p-0">Log Out</span>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
 
     <div class="container mt-5 pt-5">
         <div class="row">
