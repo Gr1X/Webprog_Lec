@@ -21,5 +21,7 @@ $query11 = "INSERT INTO histori(id_akun, id_event, tanggal_daftar)
 $stmt11 = $db->prepare($query11);
 $stmt11->execute([$id_akun, $id_event, $formattedDate]);
 
+session_start();
+$_SESSION['log'] = "Your has been register successfully.";
 
 header('location: dashboarduser.php');

@@ -317,5 +317,48 @@ $registeredEvents = array_column($registers, 'id_event');
         </div>
     </div>
 
+    <?php  if (isset($_SESSION['log'])): ?>
+        <!-- Toast untuk notifikasi -->
+        <div aria-live="polite" aria-atomic="true" class="position-relative">
+            <!-- Toast Container di kanan bawah -->
+            <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toastPlacement">
+                <div class="toast shadow-lg" id="myToast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+                 <!-- Toast header -->
+                    <div class="toast-header text-light border border-0" style="background-color: #9A6CC5;">
+                        <i class='bx bxs-megaphone rounded me-2'></i>
+                        <strong class="me-auto">Notification</strong>
+                        <button type="button" class="btn-close custom-close " data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                    <!-- Custom toast body -->
+                    <div class="toast-body fs-6 rounded-bottom-2 text-dark" 
+                        style="background: rgba(154, 108, 197, 0.35); 
+                                border-radius: 0 0 5px 5px; 
+                                box-shadow: 0 4px 50px rgba(0, 0, 0, 0.1); 
+                                backdrop-filter: blur(0.2px); 
+                                -webkit-backdrop-filter: blur(0.2px); 
+                                border: 1px solid rgba(154, 108, 197, 0.1); 
+                            ">
+                            <?php echo $_SESSION['log']; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php unset($_SESSION['log']); ?>
+    <?php endif; ?>
+
 </body>
+
+<script>
+   document.addEventListener('DOMContentLoaded', function () {
+    // Inisialisasi Toast dengan opsi autohide: false
+    var myToastEl = document.getElementById('myToast');
+    var myToast = new bootstrap.Toast(myToastEl, {
+        autohide: false  // Atur menjadi true jika ingin toast otomatis hilang
+    });
+
+    // Tampilkan toast
+    myToast.show();
+});
+</script>
+
 </html>
