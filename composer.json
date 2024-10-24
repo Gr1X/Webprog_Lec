@@ -1,0 +1,19 @@
+{
+    "name": "dominico/webprog_lec",
+    "description": "UTS Webprog",
+    "autoload": {
+        "psr-4": {
+            "Dominico\\WebprogLec\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dominico",
+            "email": "toni8ahia@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "phpoffice/phpspreadsheet": "dev-master"
+    }
+}

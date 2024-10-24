@@ -409,8 +409,9 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                             Are you sure you want to export data participant? This file format is xlsx.
                         </div>
                                                           
-                        <!-- Form to download the participant -->
-                        <form action="" method="post" class="d-grid gap-2 py-3">
+                        <!-- Form untuk download participant -->
+                        <form action="exportparticipant.php" method="post" class="d-grid gap-2 py-3">
+                            <input type="hidden" name="id_event" value="<?= $event['id_event'] ?>">
                             <button type="submit" class="btn button_export text-center m-0 p-0 py-2 shadow-sm">Confirm</button>
                             <button type="button" class="btn border text-center m-0 p-0 py-2 shadow-sm" data-bs-dismiss="modal">Cancel</button>
                         </form>
