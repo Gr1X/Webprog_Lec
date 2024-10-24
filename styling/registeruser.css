@@ -32,16 +32,31 @@ body {
     border-radius: 0px 0px 0px 16px;
 }
 
-
 .button_login {
     background-color: #6f42c1;
     border-color: #6f42c1;
     color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .button_login:hover {
     background-color: #5a3799;
     border-color: #5a3799;
+}
+
+.form-control {
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+}
+
+.form-control:focus {
+    border-color: #6f42c1;
+    box-shadow: none;
 }
 
 .alert {
@@ -58,11 +73,106 @@ body {
     opacity: 1;
 }
 
-
 .alert.hide {
     transform: translateY(-100%) translateX(-50%);
     opacity: 0;
 }
 
-  
-  
+/* Responsiveness for smaller screens */
+@media (max-width: 575.98px) { /* Extra small (xs) */
+    .background-card {
+        display: none; /* Hide the background on small screens */
+    }
+
+    .card-body h3 {
+        font-size: 1.4rem;
+    }
+
+    .card-body p {
+        font-size: 0.9rem;
+    }
+
+    .form-control {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .button_login {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) { /* Small (sm) */
+    .background-card {
+        display: none; /* Background remains hidden on small screens */
+    }
+
+    .card-body h3 {
+        font-size: 1.75rem;
+    }
+
+    .card-body p {
+        font-size: 1rem;
+    }
+
+    .form-control {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .button_login {
+        font-size: 1rem;
+        padding: 12px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) { /* Medium (md) */
+    .background-card {
+        height: 100%;
+    }
+
+
+    .card-body h3 {
+        font-size: 1.85rem;
+    }
+
+    .card-body p {
+        font-size: 1.1rem;
+    }
+
+    .form-control {
+        font-size: 1.05rem;
+        padding: 12px;
+    }
+
+    .button_login {
+        font-size: 1.05rem;
+        padding: 14px;
+    }
+}
+
+@media (min-width: 992px) { /* Large (lg) */
+    .background-card {
+        height: 100%;
+    }
+
+
+    .card-body h3 {
+        font-size: 2rem;
+    }
+
+    .card-body p {
+        font-size: 1.2rem;
+    }
+
+    .form-control {
+        font-size: 1.1rem;
+        padding: 15px;
+    }
+
+    .button_login {
+        font-size: 1.1rem;
+        padding: 16px;
+    }
+}
