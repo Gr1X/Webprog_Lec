@@ -1,8 +1,9 @@
 <?php
 require_once('db.php');
 
-if(isset($_SESSION['username'])){
+if (!isset($_SESSION['username'])) {
   header('location: login.php');
+  exit();
 }
 
 // Fetch the event details for editing (assuming this is fetched from the database)

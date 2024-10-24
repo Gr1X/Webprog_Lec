@@ -2,6 +2,11 @@
 require_once('db.php');
 session_start();
 
+if (!isset($_SESSION['username'])) {
+  header('location: login.php');
+  exit();
+}
+
 $username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8') : '';
 $email = isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email'], ENT_QUOTES, 'UTF-8') : '';
 $id_akun = isset($_SESSION['id_akun']) ? htmlspecialchars($_SESSION['id_akun'], ENT_QUOTES, 'UTF-8') : '';

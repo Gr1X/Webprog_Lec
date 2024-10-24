@@ -2,9 +2,11 @@
 session_start();
 require_once('db.php');
 
-if(isset($_SESSION['username'])){
+if (!isset($_SESSION['username'])) {
   header('location: login.php');
+  exit();
 }
+
 
 $id_akun = $_SESSION['id_akun'];
 $username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8') : '';
