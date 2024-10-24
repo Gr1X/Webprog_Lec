@@ -184,8 +184,7 @@ $events = $stmt16->fetchAll(PDO::FETCH_ASSOC);
     <?php endif; ?>
 
 </body>
-
-
+</html>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var alertElement = document.querySelector('.alert');
@@ -208,4 +207,3 @@ $events = $stmt16->fetchAll(PDO::FETCH_ASSOC);
         }
     });
 </script>
-</html>
