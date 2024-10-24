@@ -289,5 +289,4 @@ $akses_akun = $_SESSION['akses_akun'];
             }, 3700); // Pastikan animasi selesai sebelum elemen dihapus
         }
     });
-
 </script>
