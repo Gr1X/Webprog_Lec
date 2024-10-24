@@ -69,6 +69,8 @@ if($status_event == 'closed'){
   $stmt15->execute([$id_event]);
 }
 
+session_start();
+$_SESSION['log'] = 'Your event has been successfully edited.';
 header('location: dashboardadmin.php');
 ?>
 

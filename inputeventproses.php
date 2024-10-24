@@ -26,6 +26,9 @@ if (in_array($file_ext, $allowed_ext)){
   $stmt4 = $db->prepare($query4);
   $stmt4->execute([$nama_event, $filename ,$deskripsi, $kategori, $tanggal_event, $waktu_event, $lokasi_event, $max_peserta]);
 
+  session_start();
+  $_SESSION['log'] = 'Your event has been successfully added.';
+
   header('location: dashboardadmin.php');
 }
 ?>
