@@ -1,6 +1,10 @@
 <?php
 require_once('db.php');
 
+if(isset($_SESSION['username'])){
+  header('location: login.php');
+}
+
 // Fetch the event details for editing (assuming this is fetched from the database)
 $id_event = htmlspecialchars($_POST['id_event'], ENT_QUOTES, 'UTF-8');
 $nama_event = htmlspecialchars($_POST['nama_event'], ENT_QUOTES, 'UTF-8');

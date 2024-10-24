@@ -2,6 +2,10 @@
 session_start();
 require_once('db.php');
 
+if(isset($_SESSION['username'])){
+  header('location: login.php');
+}
+
 $id_akun = $_SESSION['id_akun'];
 $username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8') : '';
 $keyword = isset($_POST['keyword']) ? trim($_POST['keyword']) : '';
