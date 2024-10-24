@@ -13,5 +13,6 @@ $stmt23 = $db->prepare($query23);
 $stmt23->execute([$newusername, $id_akun]);
 
 $_SESSION['username'] = $newusername;
+$_SESSION['log'] = "Your email successfully changed";
 
 header("location: accountview.php");

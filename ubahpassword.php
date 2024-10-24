@@ -12,5 +12,6 @@ $query25 = "UPDATE account
 
 $stmt25 = $db->prepare($query25);
 $stmt25->execute([$en_password, $id_akun]);
+$_SESSION['log'] = "Your password successfully changed";
 
 header("location: accountview.php");
