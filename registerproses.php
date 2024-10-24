@@ -25,7 +25,12 @@ else {
 
   if($username_ada){
     $_SESSION['error'] = "Username Already Exist.";
-    header('Location: registeruser.php');
+    if($akses == 'user'){
+      header('Location: registeruser.php');
+    }
+    else if($akses == 'admin'){
+      header('Location: registeradmin.php');
+    }
     exit();
   }
   else {

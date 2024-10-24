@@ -100,9 +100,9 @@
                         </form>
                         
                         <p class="text-muted">Already have an Account? <a href="login.php" class="text-decoration-none">Login</a></p>
-                        <p type="button" class="btn bg-transparent border border-0 text-dark p-0 mt-2" data-bs-toggle="modal" data-bs-target="#adminModal">
-                            Register as Admin
-                        </p>
+                        <a href="registeruser.php" class="btn bg-transparent border border-0 text-dark p-0 mt-2">
+                            Register as User
+                        </a>
                     </div>
                 </div>
             </div>
