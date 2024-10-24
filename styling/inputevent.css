@@ -9,6 +9,77 @@ body {
     margin: 0;
 }
 
+@media (max-width: 767.98px) {
+    /* Untuk layar di bawah ukuran medium (md) */
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+    .navbar-nav .nav-link {
+        font-size: 1rem;
+    }
+}
+
+/* Untuk layar kecil (sm) dan menengah (md) */
+@media (max-width: 991.98px) {
+    /* Sembunyikan tombol profil */
+    .profile-trigger {
+        display: none;
+    }
+
+    /* Tampilkan isi dropdown secara langsung */
+    #profileDropdownMenu {
+        display: block; /* Tampilkan isi dropdown langsung */
+        position: static; /* Mengatur dropdown agar tampil sebagai menu biasa */
+        float: none;
+        box-shadow: none; /* Hilangkan shadow */
+        background-color: transparent; /* Hilangkan background dropdown */
+        display: flex;
+        flex-direction: column;
+        border: none;
+    }
+
+    #profileDropdownMenu .dropdown-item {
+        padding-top: 10px;
+        padding-bottom: 10px; /* Menambah padding pada semua item dropdown */
+    }
+
+    #profileDropdownMenu .dropdown-item:hover {
+        background: none;
+    }
+
+    #profileDropdownMenu .dropdown-item.text-danger:hover {
+        color: #ff0059;
+    }
+
+    .dropdown-item {
+        padding: 0px;
+    }
+
+    .dropdown-item ul li a{
+        padding: 0px;
+        margin: 0px;
+        margin-top: 5px;
+    }
+
+    .dropdown-menu hr {
+        border: none;
+        margin: 0; /* Hapus margin jika ada */
+    }
+
+    .dropdown-item:hover {
+        background-color: #f1f1f1;
+    }
+}
+
+/* Pada layar besar (lg ke atas) */
+@media (min-width: 992px) {
+    /* Tampilkan tombol profil */
+    .profile-trigger {
+        display: block;
+    }
+
+}
+
 .navbar_custom {
     border-bottom: 2px solid #B88EE5; /* Mengatur warna dan ketebalan border */
 }
@@ -71,15 +142,6 @@ body {
     color: #fff;
     outline: none; /* Menghilangkan outline biru saat tombol difokuskan */
     box-shadow: none; /* Menghilangkan shadow biru saat tombol ditekan */
-}
-
-/* Pengaturan layout flexbox navbar */
-.navbar {
-    flex-wrap: nowrap; /* Memastikan elemen tidak berpindah baris */
-}
-
-.navbar-nav {
-    gap: 10px; /* Memberi jarak antara item navigasi */
 }
 
 .nav-link {

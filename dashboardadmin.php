@@ -54,10 +54,8 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-<nav class="navbar fixed-top navbar-expand-lg bg-light px-4 py-2">
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4 py-2 fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand fst-italic" href="#">Pandawara.</a>
-
         <!-- Tombol navbar-toggler -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -65,8 +63,10 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- Collapse untuk navigasi dan search bar -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
+            <!-- Logo -->
+            <a class="navbar-brand fst-italic pt-sm-3 pt-md-3 pt-lg-0" href="#">Pandawara.</a>
             <!-- Search Bar -->
-            <form action="dashboardadmin.php" method="post" class="input-group mb-3 mb-lg-0" role="search">
+            <form action="dashboardadmin.php" method="post" class="input-group mx-lg-3 mt-sm-3 mt-md-3 mt-lg-0" role="search">
                 <input class="form-control input_search" type="text" name="keyword" placeholder="Search" aria-label="Search">
                 <button class="btn tombol_search" type="submit"><i class='bx bx-search fw-bold'></i></button>
             </form>
@@ -93,15 +93,30 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                     </a>
                 </li>
 
-                <!-- Profile Icon -->
+                <!-- Profile Dropdown -->
                 <li class="nav-item dropdown d-flex align-items-center">
-                    <a class="text-decoration-none align-self-center mt-auto" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class='bx bxs-user-circle fs-1 text-dark'></i>
+                    <!-- Icon Profil (tombol) -->
+                    <a class="text-decoration-none align-self-center mt-auto profile-trigger" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                         <i class='bx bxs-user-circle fs-1 text-dark'></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="accountview.php">Account Settings</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-danger d-flex justify-content-between" href="logout.php">Log Out<i class='bx bx-log-out fs-4 align-self-center'></i></a></li>
+                        
+                    <!-- Isi Dropdown -->
+                    <ul class="dropdown-menu dropdown-menu-end m-0 p-0" id="profileDropdownMenu" aria-labelledby="navbarDropdown">
+                        <li class="nav-item">
+                            <a class="dropdown-item d-flex m-0 px-md-0 px-lg-2 text-muted icon-link" href="accountview.php">
+                            <i class='bx bxs-cog fs-4 align-self-center'></i>
+                            <span class="mx-2 p-0">Account Settings</span>
+                            </a>
+                        </li>
+
+                        <li><hr class="dropdown-divider m-0 p-0"></li>
+
+                        <li class="nav-item">
+                            <a class="dropdown-item text-danger d-flex m-0 px-md-0 px-lg-2 icon-link" href="logout.php">
+                                <i class='bx bx-log-out fs-4 align-self-center'></i>
+                                <span class="mx-2 p-0">Log Out</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -334,7 +349,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                 <!-- Back Button -->
                                 <button type="button" class="btn button_export button_part d-flex align-items-center justify-content-between" data-bs-toggle="modal" data-bs-target="#cardModal"><i class='bx bx-arrow-back fs-4'></i>Back</button>
                                     
-                                <h1 class="text-center">Participants List</h1>
+                                <h3 class="text-center">Participants List</h3>
 
                                 <!-- Export Button -->
                                 <button type="button" class="btn d-flex align-items-center button_part justify-content-between " data-bs-toggle="modal" data-bs-target="#downloadParticipant">
