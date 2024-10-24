@@ -242,7 +242,6 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                             }
                                         ?>
                                         </p>
-                                        
                                     </div>
                                     
                                     <?php if($event['status_event'] == 'open'){?>
@@ -352,7 +351,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                               </td>
                                               <td>
                                                   <!-- Delete Button triggers the specific delete modal -->
-                                                  <button class="btn-delete border border-0 rounded-5 py-4" data-bs-toggle="modal" data-bs-target="#deleteParticipant<?= $participant['id_akun'] ?>">
+                                                  <button class="btn-delete border border-0 rounded-5 py-4" data-bs-toggle="modal" data-bs-target="#deleteParticipant<?= $participant['id_akun'] ?>dan<?= $event['id_event'] ?>">
                                                       <i class='bx bx-trash fs-5'></i>
                                                   </button>
                                               </td>
@@ -362,6 +361,8 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                                           <p> Belum ada participant di event ini</p>
                                     <?php } ?>
                                     </tbody>
+
+                                    
                                 </table>
                             </div>
                         </div>
@@ -370,7 +371,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
 
                 <?php foreach ($viewparticipants as $participant): ?>
                 <!-- Modal Delete Data Participant -->
-                <div class="modal fade border border-0" id="deleteParticipant<?= $participant['id_akun'] ?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal fade border border-0" id="deleteParticipant<?= $participant['id_akun'] ?>dan<?= $event['id_event']?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered border border-0 modal_kategori">
                         <div class="modal-content border border-0 text-center p-3">
                             <div class="mx-3">
@@ -380,7 +381,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
                             <div class="text-center fs-6">
                                 Are you sure you want to remove this participant? This action cannot be undone.
                             </div>
-                                                          
+                                                                              
                             <!-- Form to delete the participant -->
                             <form action="deleteuserregister.php" method="post" class="d-grid gap-2 py-3">
                                 <input type="hidden" name="id_event" value="<?= $event['id_event'] ?>">

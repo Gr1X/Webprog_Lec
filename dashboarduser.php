@@ -212,9 +212,23 @@ $registeredEvents = array_column($registers, 'id_event');
                                     <div class="d-flex">
                                         <h4 class="modal-title fw-semibold my-2 m-0 align-self-center"><?= $event['nama_event'] ?></h4>
                                         <!-- ini buat statusnya di dalem modal untuk open pakae text-bg-primary kalo sold out warning -->
-                                        <p class="<?= $event['status_event'] === 'open' ? 'text-bg-success' : 'text-bg-danger' ?> border border-0 rounded-2 align-self-center m-0 mx-2 px-2">
-                                            <?= ucfirst($event['status_event']) ?>
-                                        </p> 
+                                        <p class="border border-0 rounded-2 align-self-center m-0 mx-2 px-2
+                                        <?php 
+                                            if ($totaldaftar['jumlahdaftar'] >= $event['max_peserta']) {
+                                                echo 'text-bg-secondary';
+                                            } else {
+                                                echo $event['status_event'] === 'open' ? 'text-bg-success' : 'text-bg-danger';
+                                            }
+                                        ?> 
+                                        ">
+                                        <?php 
+                                            if ($totaldaftar['jumlahdaftar'] >= $event['max_peserta']) {
+                                                echo 'Sold Out';
+                                            } else {
+                                                echo ucfirst($event['status_event']);
+                                            }
+                                        ?>
+                                        </p>
                                     </div>
 
                                     <div class="">
