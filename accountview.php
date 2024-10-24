@@ -218,7 +218,7 @@ $akses_akun = $_SESSION['akses_akun'];
     <?php  if (isset($_SESSION['error'])): 
         $error = $_SESSION['error'];
     ?>
-        <div class="alert bg-light border border-0 rounded-4 shadow-lg px-5 py-3 position-absolute top-0 start-50 translate-middle-x mt-3" data-bs-backdrop="static" role="alert">
+        <div class="alert bg-light border border-0 rounded-4 shadow-lg px-5 py-3 position-absolute top-0 start-50 translate-middle-x mt-3" data-bs-backdrop="static" role="alert" style="z-index: 1200;">
             <div class="d-flex">
                 <i class='bx bx-x bg-danger text-light border border-0 rounded-circle p-1 fs-4 fw-bold'></i>
                 <h4 class="align-self-center fw-semibold m-0 p-0 ms-2 text-muted"><?= $_SESSION['error']; ?></h4>
@@ -235,7 +235,7 @@ $akses_akun = $_SESSION['akses_akun'];
     <?php endif; ?>
 
     <?php  if (isset($_SESSION['log'])): ?>
-        <div class="alert bg-light border border-0 rounded-4 shadow-lg px-5 py-3 position-absolute top-0 start-50 translate-middle-x mt-3" data-bs-backdrop="static" role="alert">
+        <div class="alert bg-light border border-0 rounded-4 shadow-lg px-5 py-3 position-absolute top-0 start-50 translate-middle-x mt-3" data-bs-backdrop="static" role="alert" style="z-index: 1200;">
             <div class="d-flex">
                 <i class='bx bxs-megaphone bg-primary text-light border border-0 rounded-circle p-2 fs-4 fw-bold'></i>
                 <h4 class="align-self-center fw-semibold m-0 p-0 ms-2 text-muted"><?= $_SESSION['log']; ?></h4>
@@ -289,5 +289,4 @@ $akses_akun = $_SESSION['akses_akun'];
             }, 3700); // Pastikan animasi selesai sebelum elemen dihapus
         }
     });
-
 </script>

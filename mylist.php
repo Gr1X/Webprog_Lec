@@ -170,5 +170,40 @@ $events = $stmt16->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 
+    <?php  if (isset($_SESSION['log'])): ?>
+        <div class="alert bg-light border border-0 rounded-4 shadow-lg px-5 py-3 position-absolute top-0 start-50 translate-middle-x mt-3" data-bs-backdrop="static" role="alert" style="z-index: 1200;">
+            <div class="d-flex">
+                <i class='bx bxs-megaphone bg-primary text-light border border-0 rounded-circle p-2 fs-4 fw-bold'></i>
+                <h4 class="align-self-center fw-semibold m-0 p-0 ms-2 text-muted"><?= $_SESSION['log']; ?></h4>
+            </div>
+            <div class="text-start mt-3 ms-2">
+                <p class="m-0 p-0 text-muted">Your account has succesfully created, now input to login.</p>
+            </div>
+        </div>
+        <?php unset($_SESSION['log']); ?>
+    <?php endif; ?>
+
 </body>
 </html>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var alertElement = document.querySelector('.alert');
+        
+        if (alertElement) {
+            // Tambahkan kelas "show" untuk memunculkan alert dengan jeda sedikit lebih lama
+            setTimeout(function() {
+                alertElement.classList.add('show');
+            }, 200); // 0.2 detik (membuat transisi lebih smooth)
+
+            // Sembunyikan alert setelah 3 detik
+            setTimeout(function() {
+                alertElement.classList.add('hide');
+            }, 3200); // Tambahkan 3 detik untuk durasi tampil
+
+            // Hapus elemen alert dari DOM setelah animasi selesai
+            setTimeout(function() {
+                alertElement.remove();
+            }, 3700); // Pastikan animasi selesai sebelum elemen dihapus
+        }
+    });
+</script>

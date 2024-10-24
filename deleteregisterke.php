@@ -10,5 +10,7 @@ $query17 = "DELETE
 
 $stmt17 = $db->prepare($query17);
 $stmt17->execute([$id_akun, $id_event]);
+session_start();
+$_SESSION['log'] = "Your event succesfully deleted from mylist.";
 
 header('location: mylist.php');
