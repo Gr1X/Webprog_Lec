@@ -66,7 +66,7 @@
             <div class="upload-photo">
                 <input type="file" required name="foto_event" style="display:none;" id="eventImage" onchange="previewImage(event)">
                 <label class="d-flex justify-content-center" for="eventImage" style="cursor: pointer;">
-                    <i class='bx bx-image-add fs-1 mt-auto' ></i> 
+                    <i class='bx bx-image-add fs-1 mt-auto'></i> 
                     <p class="m-0 p-0 align-self-center">Select Photo to Upload</p>
                 </label>
             </div>
@@ -78,33 +78,40 @@
             </div>
 
             <div class="form-group">
-                <label for="location">Event Name</label>
-                <input type="text" required name="nama_event" id="" placeholder="Event Name">
+                <label for="nama_event">Event Name</label>
+                <input type="text" required name="nama_event" id="nama_event" placeholder="Event Name">
             </div>
+
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea name="deskripsi" required id="description" placeholder="Share more about your event and let everyone know" maxlength="400"></textarea>
             </div>
+
             <div class="form-group">
                 <label for="location">Location</label>
                 <input type="text" required name="lokasi_event" id="location" placeholder="Specific">
             </div>
+
             <div class="form-group">
                 <label for="event_date">Event Date</label>
                 <input type="date" required name="tanggal_event" id="event_date">
             </div>
+
             <div class="form-group">
                 <label for="event_start_time">Event Start Time</label>
                 <input type="time" required name="waktu_mulai" id="event_start_time">
             </div>
+
             <div class="form-group">
                 <label for="event_end_time">Event End Time</label>
                 <input type="time" required name="waktu_selesai" id="event_end_time">
             </div>
+
             <div class="form-group">
                 <label for="max_participants">Maximum Participants</label>
                 <input type="number" required name="max_peserta" id="max_participants" placeholder="Number">
             </div>
+
             <div class="form-group">
                 <label for="category">Category</label>
                 <select name="kategori" required id="category">
@@ -115,6 +122,7 @@
                     <option value="technology">Technology</option>
                 </select>
             </div>
+
             <div class="form-actions">
                 <button type="submit" class="btn-create">Create Event</button>
             </div>

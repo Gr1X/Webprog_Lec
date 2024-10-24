@@ -2,16 +2,17 @@
 require_once('db.php');
 
 // Fetch the event details for editing (assuming this is fetched from the database)
-$id_event = $_POST['id_event'];
-$nama_event = $_POST['nama_event'];
-$foto_event = $_POST['foto_event'];
-$deskripsi = $_POST['deskripsi'];
-$kategori = $_POST['kategori'];
-$tanggal_event = $_POST['tanggal_event'];
-$waktu_event = $_POST['waktu_event'];
-$lokasi_event = $_POST['lokasi_event'];
-$max_peserta = $_POST['max_peserta'];
-$status_event = $_POST['status_event'];
+$id_event = htmlspecialchars($_POST['id_event'], ENT_QUOTES, 'UTF-8');
+$nama_event = htmlspecialchars($_POST['nama_event'], ENT_QUOTES, 'UTF-8');
+$foto_event = htmlspecialchars($_POST['foto_event'], ENT_QUOTES, 'UTF-8');
+$deskripsi = htmlspecialchars($_POST['deskripsi'], ENT_QUOTES, 'UTF-8');
+$kategori = htmlspecialchars($_POST['kategori'], ENT_QUOTES, 'UTF-8');
+$tanggal_event = htmlspecialchars($_POST['tanggal_event'], ENT_QUOTES, 'UTF-8');
+$waktu_event = htmlspecialchars($_POST['waktu_event'], ENT_QUOTES, 'UTF-8');
+$lokasi_event = htmlspecialchars($_POST['lokasi_event'], ENT_QUOTES, 'UTF-8');
+$max_peserta = htmlspecialchars($_POST['max_peserta'], ENT_QUOTES, 'UTF-8');
+$status_event = htmlspecialchars($_POST['status_event'], ENT_QUOTES, 'UTF-8');
+
 
 // Split the event time by " - "
 list($waktu_mulai, $waktu_selesai) = explode(' - ', $waktu_event);
@@ -77,7 +78,7 @@ list($waktu_mulai, $waktu_selesai) = explode(' - ', $waktu_event);
         <h2>Edit Event</h2>
 
         <form action="editeventproses.php" method="post" enctype="multipart/form-data">
-            <input type="hidden" name="id_event" value="<?= $id_event ?>">
+            <input type="hidden" name="id_event" value="<?= htmlspecialchars($id_event, ENT_QUOTES, 'UTF-8') ?>">
 
             <!-- Upload Photo -->
             <div class="upload-photo">
@@ -90,47 +91,47 @@ list($waktu_mulai, $waktu_selesai) = explode(' - ', $waktu_event);
             <div class="upload-photo">
                 <img id="imagePreview" src="#" alt="Your Event Image" style="display: none; max-width: 100%; height: auto;" />
             </div>
-            
+
             <!-- Event Name -->
             <div class="form-group">
                 <label for="nama_event">Event Name</label>
-                <input type="text" required name="nama_event" id="nama_event" placeholder="Event Name" value="<?= $nama_event ?>">
+                <input type="text" required name="nama_event" id="nama_event" placeholder="Event Name" value="<?= htmlspecialchars($nama_event, ENT_QUOTES, 'UTF-8') ?>">
             </div>
 
             <!-- Description -->
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea name="deskripsi" required id="description" placeholder="Share more about your event" maxlength="400"><?= $deskripsi ?></textarea>
+                <textarea name="deskripsi" required id="description" placeholder="Share more about your event" maxlength="400"><?= htmlspecialchars($deskripsi, ENT_QUOTES, 'UTF-8') ?></textarea>
             </div>
 
             <!-- Location -->
             <div class="form-group">
                 <label for="location">Location</label>
-                <input type="text" required name="lokasi_event" id="location" placeholder="Specific" value="<?= $lokasi_event ?>">
+                <input type="text" required name="lokasi_event" id="location" placeholder="Specific" value="<?= htmlspecialchars($lokasi_event, ENT_QUOTES, 'UTF-8') ?>">
             </div>
 
             <!-- Event Date -->
             <div class="form-group">
                 <label for="event_date">Event Date</label>
-                <input type="date" required name="tanggal_event" id="event_date" value="<?= $tanggal_event ?>">
+                <input type="date" required name="tanggal_event" id="event_date" value="<?= htmlspecialchars($tanggal_event, ENT_QUOTES, 'UTF-8') ?>">
             </div>
 
             <!-- Start Time -->
             <div class="form-group">
                 <label for="event_start_time">Event Start Time</label>
-                <input type="time" required name="waktu_mulai" id="event_start_time" value="<?= $waktu_mulai ?>">
+                <input type="time" required name="waktu_mulai" id="event_start_time" value="<?= htmlspecialchars($waktu_mulai, ENT_QUOTES, 'UTF-8') ?>">
             </div>
 
             <!-- End Time -->
             <div class="form-group">
                 <label for="event_end_time">Event End Time</label>
-                <input type="time" required name="waktu_selesai" id="event_end_time" value="<?= $waktu_selesai ?>">
+                <input type="time" required name="waktu_selesai" id="event_end_time" value="<?= htmlspecialchars($waktu_selesai, ENT_QUOTES, 'UTF-8') ?>">
             </div>
 
             <!-- Maximum Participants -->
             <div class="form-group">
                 <label for="max_participants">Maximum Participants</label>
-                <input type="number" required name="max_peserta" id="max_participants" placeholder="Number" value="<?= $max_peserta ?>">
+                <input type="number" required name="max_peserta" id="max_participants" placeholder="Number" value="<?= htmlspecialchars($max_peserta, ENT_QUOTES, 'UTF-8') ?>">
             </div>
 
             <!-- Category -->

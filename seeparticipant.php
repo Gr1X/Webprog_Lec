@@ -3,7 +3,7 @@ session_start();
 require_once('db.php');
 
 $id_akun = $_SESSION['id_akun'];
-$username = $_SESSION['username'];
+$username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8') : '';
 $keyword = isset($_POST['keyword']) ? trim($_POST['keyword']) : '';
 
 // Base query
@@ -118,21 +118,21 @@ $accounts = $stmt6->fetchAll(PDO::FETCH_ASSOC);
             
                     <div class="card-body">
                         <!-- Display Username and Email -->
-                        <h5 class="card-title"><?= htmlspecialchars($account['username']); ?></h5>
-                        <p class="card-text text-secondary"><?= htmlspecialchars($account['email']); ?></p>
+                        <h5 class="card-title"><?= htmlspecialchars($account['username'], ENT_QUOTES, 'UTF-8'); ?></h5>
+                        <p class="card-text text-secondary"><?= htmlspecialchars($account['email'], ENT_QUOTES, 'UTF-8'); ?></p>
                     </div>
             
                     <div class="">
-                        <div class="accordion accordion-flush border border-0 rounded-bottom-3" id="accordionFlushActivity<?= $account['id_akun']; ?>">
+                        <div class="accordion accordion-flush border border-0 rounded-bottom-3" id="accordionFlushActivity<?= htmlspecialchars($account['id_akun'], ENT_QUOTES, 'UTF-8'); ?>">
                             <div class="accordion-item border border-0 rounded-bottom-3">
                                 <h2 class="accordion-header border border-0 rounded-bottom-3">
                                     <!-- Unique ID for each account's accordion -->
-                                    <button class="accordion-button collapsed mb-2 accord_custom" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= $account['id_akun']; ?>" aria-expanded="false" aria-controls="flush-collapseOne">
+                                    <button class="accordion-button collapsed mb-2 accord_custom" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<?= htmlspecialchars($account['id_akun'], ENT_QUOTES, 'UTF-8'); ?>" aria-expanded="false" aria-controls="flush-collapseOne">
                                         Activity Log
                                     </button>
                                 </h2>
                                 <!-- Unique ID for collapsible -->
-                                <div id="collapse<?= $account['id_akun']; ?>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushActivity<?= $account['id_akun']; ?>">
+                                <div id="collapse<?= htmlspecialchars($account['id_akun'], ENT_QUOTES, 'UTF-8'); ?>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushActivity<?= htmlspecialchars($account['id_akun'], ENT_QUOTES, 'UTF-8'); ?>">
                                     <table class="table text-center">
                                         <thead>
                                             <tr>
@@ -146,8 +146,8 @@ $accounts = $stmt6->fetchAll(PDO::FETCH_ASSOC);
                                                 <?php foreach ($historidaftar as $history): ?>
                                                     <tr>
                                                         <!-- Display event name and registration date -->
-                                                        <td class="text-start" scope="row"><?= htmlspecialchars($history['nama_event']); ?></td> 
-                                                        <td><?= htmlspecialchars($history['tanggal_daftar']); ?></td>                                             
+                                                        <td class="text-start" scope="row"><?= htmlspecialchars($history['nama_event'], ENT_QUOTES, 'UTF-8'); ?></td> 
+                                                        <td><?= htmlspecialchars($history['tanggal_daftar'], ENT_QUOTES, 'UTF-8'); ?></td>                                             
                                                     </tr>
                                                 <?php endforeach; ?>
                                             <?php else: ?>

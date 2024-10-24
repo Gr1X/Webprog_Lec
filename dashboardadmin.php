@@ -2,9 +2,10 @@
 session_start();
 require_once('db.php');
 
-$id_akun = $_SESSION['id_akun'];
-$username = $_SESSION['username'];
-$keyword = isset($_POST['keyword']) ? trim($_POST['keyword']) : '';
+$id_akun = htmlspecialchars($_SESSION['id_akun'], ENT_QUOTES, 'UTF-8');
+$username = htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8');
+$keyword = isset($_POST['keyword']) ? htmlspecialchars(trim($_POST['keyword']), ENT_QUOTES, 'UTF-8') : '';
+
 
 // Base query
 $query5 = "SELECT e.id_event, nama_event, foto_event, status_event, kategori, tanggal_event, max_peserta, tanggal_event, waktu_event, deskripsi, lokasi_event

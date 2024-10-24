@@ -2,10 +2,14 @@
 require_once('db.php');
 session_start();
 
-$username = $_SESSION['username'];
-$email = $_SESSION['email'];
-$id_akun = $_SESSION['id_akun'];
-$akses_akun = $_SESSION['akses_akun'];
+// Mengambil data dari session
+$username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8') : '';
+$email = isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email'], ENT_QUOTES, 'UTF-8') : '';
+$id_akun = isset($_SESSION['id_akun']) ? htmlspecialchars($_SESSION['id_akun'], ENT_QUOTES, 'UTF-8') : '';
+$akses_akun = isset($_SESSION['akses_akun']) ? htmlspecialchars($_SESSION['akses_akun'], ENT_QUOTES, 'UTF-8') : '';
+
+$link = ($akses_akun === 'user') ? 'dashboarduser.php' : 'dashboardadmin.php';
+$link = htmlspecialchars($link, ENT_QUOTES, 'UTF-8');
 
 $query26 = "SELECT id_akun, nama_event, tanggal_event, lokasi_event, tanggal_daftar
             FROM histori AS h
@@ -62,7 +66,7 @@ $historyuser = $stmt26->fetchAll(PDO::FETCH_ASSOC);
     <div class="row">
         <!-- Kolom Kiri untuk Navigasi -->
         <div class="col-md-3 col-12 left-column mt-3">
-            <a href="<?= ($akses_akun === 'user') ? 'dashboarduser.php' : 'dashboardadmin.php'; ?>" class="d-flex align-items-center text-dark mb-3 text-decoration-none">
+            <a href="<?= $link ?>" class="d-flex align-items-center text-dark mb-3 text-decoration-none">
                 <i class='bx bx-left-arrow-alt text-decoration-none align-self-center fs-3'></i>
                 <p class="mb-0 align-self-center fs-3">Back to dashboard</p>
             </a>
@@ -86,8 +90,8 @@ $historyuser = $stmt26->fetchAll(PDO::FETCH_ASSOC);
                 <!-- Detail Akun -->
                 <div class="account-details">
                     <div class="">
-                        <h2 class="fw-semibold pb-1 pt-2 m-0 p-0"><?php echo $username ?></h2>
-                        <h5 class=""><?php echo $email ?></h5>
+                        <h2 class="fw-semibold pb-1 pt-2 m-0 p-0"><?= htmlspecialchars($username, ENT_QUOTES, 'UTF-8'); ?></h2>
+                        <h5 class=""><?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?></h5>
                     </div>
                 </div>
             </div>
@@ -118,12 +122,19 @@ $historyuser = $stmt26->fetchAll(PDO::FETCH_ASSOC);
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div>
                                                 <!-- Display event name, event date, and location -->
-                                                <i><?= htmlspecialchars($history['nama_event']); ?></i>
-                                                <p><?= htmlspecialchars($history['tanggal_event']); ?>, <?= htmlspecialchars($history['lokasi_event']); ?></p>
+                                                <i><?= isset($history['nama_event']) ? htmlspecialchars($history['nama_event'], ENT_QUOTES, 'UTF-8') : 'Unknown Event'; ?></i>
+                                                <p>
+                                                    <?= 
+                                                        isset($history['tanggal_event']) ? htmlspecialchars($history['tanggal_event'], ENT_QUOTES, 'UTF-8') : 'Unknown Date'; 
+                                                    ?>, 
+                                                    <?= 
+                                                        isset($history['lokasi_event']) ? htmlspecialchars($history['lokasi_event'], ENT_QUOTES, 'UTF-8') : 'Unknown Location'; 
+                                                    ?>
+                                                </p>
                                             </div>
                                             <!-- Display registration date on the right -->
                                             <div class="text-muted">
-                                                <small>Registered on: <?= htmlspecialchars($history['tanggal_daftar']); ?></small>
+                                                <small>Registered on: <?= htmlspecialchars($history['tanggal_daftar'], ENT_QUOTES, 'UTF-8'); ?></small>
                                             </div>
                                         </div>
                                         <hr>

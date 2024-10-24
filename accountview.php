@@ -2,10 +2,13 @@
 require_once('db.php');
 session_start();
 
-$username = $_SESSION['username'];
-$email = $_SESSION['email'];
-$id_akun = $_SESSION['id_akun'];
-$akses_akun = $_SESSION['akses_akun'];
+$username = isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8') : '';
+$email = isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email'], ENT_QUOTES, 'UTF-8') : '';
+$id_akun = isset($_SESSION['id_akun']) ? htmlspecialchars($_SESSION['id_akun'], ENT_QUOTES, 'UTF-8') : '';
+$akses_akun = isset($_SESSION['akses_akun']) ? htmlspecialchars($_SESSION['akses_akun'], ENT_QUOTES, 'UTF-8') : '';
+
+$link = ($akses_akun === 'user') ? 'dashboarduser.php' : 'dashboardadmin.php';
+$link = htmlspecialchars($link, ENT_QUOTES, 'UTF-8');
 
 ?>
 
@@ -52,7 +55,7 @@ $akses_akun = $_SESSION['akses_akun'];
         <div class="row">
             <!-- Kolom Kiri untuk Navigasi -->
             <div class="col-md-3 left-column mt-3">
-                <a href="<?= ($akses_akun === 'user') ? 'dashboarduser.php' : 'dashboardadmin.php'; ?>" class="d-flex align-items-center text-dark mb-3 text-decoration-none">
+                <a href="<?= $link ?>" class="d-flex align-items-center text-dark mb-3 text-decoration-none">
                     <i class='bx bx-left-arrow-alt text-decoration-none align-self-center fs-3'></i>
                     <p class="mb-0 align-self-center fs-3">Back to dashboard</p>
                 </a>
@@ -76,8 +79,8 @@ $akses_akun = $_SESSION['akses_akun'];
                     <!-- Detail Akun -->
                     <div class="account-details">
                         <div class="">
-                            <h2 class="fw-semibold pb-1 pt-2 m-0 p-0"><?php echo $username ?></h2>
-                            <h5 class=""><?php echo $email ?></h5>
+                            <h2 class="fw-semibold pb-1 pt-2 m-0 p-0"><?= htmlspecialchars($username, ENT_QUOTES, 'UTF-8'); ?></h2>
+                            <h5 class=""><?= htmlspecialchars($email, ENT_QUOTES, 'UTF-8'); ?></h5>
                         </div>
                     </div>
                 </div>
@@ -130,7 +133,7 @@ $akses_akun = $_SESSION['akses_akun'];
                 <p class="fw-semibold mt-3 fs-4">Change Username</p>
 
                 <form action="ubahusername.php" method="post">
-                    <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
+                    <input type="hidden" name="id_akun" value="<?= htmlspecialchars($id_akun, ENT_QUOTES, 'UTF-8') ?>">
                     <div class="text-center fs-6">
                         <p class="">Please make sure your username was correct before submitted.</p>
                         <div class="input-group flex-nowrap mb-2">
@@ -159,7 +162,7 @@ $akses_akun = $_SESSION['akses_akun'];
                 <p class="fw-semibold mt-3 fs-4">Change Email</p>
 
                 <form action="ubahemail.php" method="post">
-                    <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
+                    <input type="hidden" name="id_akun" value="value="<?= htmlspecialchars($id_akun, ENT_QUOTES, 'UTF-8') ?>">
                     <div class="text-center fs-6">
                         <p class="">Please make sure your email was correct before submitted.</p>
                         <div class="input-group flex-nowrap mb-2">
@@ -188,7 +191,7 @@ $akses_akun = $_SESSION['akses_akun'];
                 <p class="fw-semibold mt-3 fs-4">Change Password</p>
 
                 <form action="ubahpassword.php" method="post">
-                    <input type="hidden" name="id_akun" value="<?= $id_akun ?>">
+                    <input type="hidden" name="id_akun" value="<?= htmlspecialchars($id_akun, ENT_QUOTES, 'UTF-8') ?>">
                     <div class="text-center fs-6">
                         <p class="">Please make sure your Password is correct before submitting.</p>
 
@@ -221,7 +224,7 @@ $akses_akun = $_SESSION['akses_akun'];
         <div class="alert bg-light border border-0 rounded-4 shadow-lg px-5 py-3 position-absolute top-0 start-50 translate-middle-x mt-3" data-bs-backdrop="static" role="alert" style="z-index: 1200;">
             <div class="d-flex">
                 <i class='bx bx-x bg-danger text-light border border-0 rounded-circle p-1 fs-4 fw-bold'></i>
-                <h4 class="align-self-center fw-semibold m-0 p-0 ms-2 text-muted"><?= $_SESSION['error']; ?></h4>
+                <h4 class="align-self-center fw-semibold m-0 p-0 ms-2 text-muted"><?= isset($_SESSION['error']) ? htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8') : ''; ?></h4>
             </div>
             <div class="text-start mt-3 ms-2">
                 <?php if($error == 'Email Already Exist.'){?>
@@ -238,7 +241,7 @@ $akses_akun = $_SESSION['akses_akun'];
         <div class="alert bg-light border border-0 rounded-4 shadow-lg px-5 py-3 position-absolute top-0 start-50 translate-middle-x mt-3" data-bs-backdrop="static" role="alert" style="z-index: 1200;">
             <div class="d-flex">
                 <i class='bx bxs-megaphone bg-primary text-light border border-0 rounded-circle p-2 fs-4 fw-bold'></i>
-                <h4 class="align-self-center fw-semibold m-0 p-0 ms-2 text-muted"><?= $_SESSION['log']; ?></h4>
+                <h4 class="align-self-center fw-semibold m-0 p-0 ms-2 text-muted"><?= isset($_SESSION['error']) ? htmlspecialchars($_SESSION['error'], ENT_QUOTES, 'UTF-8') : ''; ?></h4>
             </div>
             <div class="text-start mt-3 ms-2">
                 <p class="m-0 p-0 text-muted">Your account has succesfully created, now input to login.</p>
