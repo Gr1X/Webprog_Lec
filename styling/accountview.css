@@ -135,14 +135,14 @@ h1 {
 }
 
 .navbar {
-    z-index: 1030; /* z-index default Bootstrap untuk fixed navbar */
+    z-index: 1030; 
 }
 
 .alert {
     z-index: 1200; /* Pastikan alert berada di atas */
     transform: translateY(-100%) translateX(-50%);
     opacity: 0;
-    transition: transform 0.9s ease-in-out, opacity 0.9s ease-in-out;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 
 .alert.show {
