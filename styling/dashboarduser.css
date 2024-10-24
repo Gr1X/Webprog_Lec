@@ -22,27 +22,6 @@ body {
     box-shadow: none; /* Menghilangkan shadow default */
 }
 
-/* Tombol Event Styling */
-.button_event {
-    color: #B88EE5; 
-    border-color: #B88EE5; 
-}
-
-.button_event:hover {
-    border-color: #B88EE5;
-    color: #B88EE5;
-}
-
-/* Tombol kategori styling */
-.kategori_tombol {
-    background-color: #B88EE5; /* Mengubah warna latar belakang */
-    border: 2px solid #B88EE5; /* Border sesuai warna tema */
-}
-
-.kategori_tombol p {
-    color: #ffffff; /* Mengubah warna teks menjadi putih */
-}
-
 /* Tombol pencarian */
 .tombol_search {
     background-color: #B88EE5; /* Warna latar belakang tombol */
@@ -63,14 +42,68 @@ body {
     box-shadow: none; /* Menghilangkan shadow biru saat tombol ditekan */
 }
 
-/* Pengaturan layout flexbox navbar */
-.navbar {
-    flex-wrap: nowrap; /* Memastikan elemen tidak berpindah baris */
+/* Untuk layar kecil (sm) dan menengah (md) */
+@media (max-width: 991.98px) {
+    /* Sembunyikan tombol profil */
+    .profile-trigger {
+        display: none;
+    }
+
+    /* Tampilkan isi dropdown secara langsung */
+    #profileDropdownMenu {
+        display: block; /* Tampilkan isi dropdown langsung */
+        position: static; /* Mengatur dropdown agar tampil sebagai menu biasa */
+        float: none;
+        box-shadow: none; /* Hilangkan shadow */
+        background-color: transparent; /* Hilangkan background dropdown */
+        display: flex;
+        flex-direction: column;
+        border: none;
+    }
+
+    #profileDropdownMenu .dropdown-item {
+        padding-top: 10px;
+        padding-bottom: 10px; /* Menambah padding pada semua item dropdown */
+    }
+
+    #profileDropdownMenu .dropdown-item:hover {
+        background: none;
+    }
+
+    #profileDropdownMenu .dropdown-item.text-danger:hover {
+        color: #ff0059;
+    }
+
+    .dropdown-item {
+        padding: 0px;
+    }
+
+    .dropdown-item ul li a{
+        padding: 0px;
+        margin: 0px;
+        margin-top: 5px;
+    }
+
+    .dropdown-menu hr {
+        border: none;
+        margin: 0; /* Hapus margin jika ada */
+    }
+
+    .dropdown-item:hover {
+        background-color: #f1f1f1;
+    }
 }
 
-.navbar-nav {
-    gap: 10px; /* Memberi jarak antara item navigasi */
+/* Pada layar besar (lg ke atas) */
+@media (min-width: 992px) {
+    /* Tampilkan tombol profil */
+    .profile-trigger {
+        display: block;
+    }
+
 }
+
+
 
 .nav-link {
     white-space: nowrap; /* Mencegah teks memotong baris */

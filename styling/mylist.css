@@ -159,27 +159,26 @@ body {
 }
 
 /* Untuk seluruh halaman */
-html, body {
-    overflow-y: auto;
-}
-
-/* Kustomisasi scrollbar */
+/* width */
 ::-webkit-scrollbar {
-    width: 12px;  /* Lebar scrollbar */
-}
+    width: 5px;
+    }
 
+/* Track */
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;  /* Warna lintasan scrollbar */
+    background: #d9d9d9d9; 
 }
+    
+/* Handle */
+    ::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+    }
 
-::-webkit-scrollbar-thumb {
-    background: #888;  /* Warna penggeser */
-    border-radius: 10px;  /* Membuat sudut penggeser bulat */
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #555;  /* Warna penggeser saat dihover */
-}
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+    }
 
 /* Kustomisasi di Firefox */
 body {
