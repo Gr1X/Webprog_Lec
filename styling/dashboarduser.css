@@ -4,44 +4,6 @@ body {
     font-family: 'Coolvetica', sans-serif;
 }
 
-.navbar_custom {
-    border-bottom: 2px solid #B88EE5; /* Mengatur warna dan ketebalan border */
-}
-
-/* Input search styling */
-.input_search {
-    border: 2px solid #B88EE5; /* Mengubah warna border default */
-    border-radius: 5px; /* Sesuaikan radius sudut jika diperlukan */
-    flex-grow: 1; /* Membuat search bar mengisi ruang yang tersedia */
-    max-width: 600px; /* Membatasi lebar maksimum search bar */
-}
-
-.input_search:focus {
-    border-color: #9A6CC5; /* Mengubah warna border saat input dalam fokus */
-    outline: none; /* Menghilangkan outline default */
-    box-shadow: none; /* Menghilangkan shadow default */
-}
-
-/* Tombol pencarian */
-.tombol_search {
-    background-color: #B88EE5; /* Warna latar belakang tombol */
-    color: #fff; /* Warna ikon atau teks tombol */
-    border: none; /* Menghapus border default */
-    outline: none; /* Menghilangkan outline default */
-}
-
-.tombol_search:hover {
-    background-color: #9A6CC5; /* Warna saat tombol di-hover */
-    color: #fff; /* Warna ikon atau teks saat di-hover */
-}
-
-.tombol_search:focus, .tombol_search:active {
-    background-color: #9A6CC5; /* Warna saat tombol ditekan atau difokuskan */
-    color: #fff;
-    outline: none; /* Menghilangkan outline biru saat tombol difokuskan */
-    box-shadow: none; /* Menghilangkan shadow biru saat tombol ditekan */
-}
-
 /* Untuk layar kecil (sm) dan menengah (md) */
 @media (max-width: 991.98px) {
     /* Sembunyikan tombol profil */
@@ -103,7 +65,43 @@ body {
 
 }
 
+.navbar_custom {
+    border-bottom: 2px solid #B88EE5; /* Mengatur warna dan ketebalan border */
+}
 
+/* Input search styling */
+.input_search {
+    border: 2px solid #B88EE5; /* Mengubah warna border default */
+    border-radius: 5px; /* Sesuaikan radius sudut jika diperlukan */
+    flex-grow: 1; /* Membuat search bar mengisi ruang yang tersedia */
+    max-width: 600px; /* Membatasi lebar maksimum search bar */
+}
+
+.input_search:focus {
+    border-color: #9A6CC5; /* Mengubah warna border saat input dalam fokus */
+    outline: none; /* Menghilangkan outline default */
+    box-shadow: none; /* Menghilangkan shadow default */
+}
+
+/* Tombol pencarian */
+.tombol_search {
+    background-color: #B88EE5; /* Warna latar belakang tombol */
+    color: #fff; /* Warna ikon atau teks tombol */
+    border: none; /* Menghapus border default */
+    outline: none; /* Menghilangkan outline default */
+}
+
+.tombol_search:hover {
+    background-color: #9A6CC5; /* Warna saat tombol di-hover */
+    color: #fff; /* Warna ikon atau teks saat di-hover */
+}
+
+.tombol_search:focus, .tombol_search:active {
+    background-color: #9A6CC5; /* Warna saat tombol ditekan atau difokuskan */
+    color: #fff;
+    outline: none; /* Menghilangkan outline biru saat tombol difokuskan */
+    box-shadow: none; /* Menghilangkan shadow biru saat tombol ditekan */
+}
 
 .nav-link {
     white-space: nowrap; /* Mencegah teks memotong baris */
@@ -183,4 +181,24 @@ button.btn {
 .button_custom:hover {
     background-color: #a073d1 !important; /* Warna saat di-hover */
     color: white !important;
+}
+
+/* Tombol Event Styling */
+.button_event {
+    color: #B88EE5; 
+    border-color: #B88EE5;
+}
+
+.button_event:hover {
+    border-color: #B88EE5;
+    color: #B88EE5;
+}
+
+/* Tombol kategori styling */
+.kategori_tombol {
+    background-color: #B88EE5;
+}
+
+.kategori_tombol p {
+    color: #ffffff; /* Mengubah warna teks menjadi putih */
 }

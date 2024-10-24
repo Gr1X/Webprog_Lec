@@ -159,7 +159,7 @@ $events = $stmt16->fetchAll(PDO::FETCH_ASSOC);
                                     </p>
                                 </div>
                                 <div class="d-flex align-items-end">
-                                    <button class="btn tombol_book" data-bs-toggle="modal" data-bs-target="#modalDeleteRegis<?= htmlspecialchars($event['id_event'], ENT_QUOTES, 'UTF-8') ?>">Cancel Book Registration</button>
+                                    <button class="btn tombol_book" data-bs-toggle="modal" data-bs-target="#modalDeleteRegis<?= htmlspecialchars($event['id_event'], ENT_QUOTES, 'UTF-8') ?>">Cancel Registration</button>
                                 </div>
                             </div>
                         </div>
