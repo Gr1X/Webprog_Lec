@@ -14,7 +14,7 @@ $email = isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email'], ENT_QU
 $id_akun = isset($_SESSION['id_akun']) ? htmlspecialchars($_SESSION['id_akun'], ENT_QUOTES, 'UTF-8') : '';
 $akses_akun = isset($_SESSION['akses_akun']) ? htmlspecialchars($_SESSION['akses_akun'], ENT_QUOTES, 'UTF-8') : '';
 
-$link = ($akses_akun === 'user') ? 'dashboarduser.php' : 'dashboardadmin.php';
+$link = ($akses_akun === 'user') ? 'index.php' : 'dashboardadmin.php';
 $link = htmlspecialchars($link, ENT_QUOTES, 'UTF-8');
 
 $query26 = "SELECT id_akun, nama_event, tanggal_event, lokasi_event, tanggal_daftar

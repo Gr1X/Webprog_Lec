@@ -24,4 +24,4 @@ $stmt11->execute([$id_akun, $id_event, $formattedDate]);
 session_start();
 $_SESSION['log'] = "Your has been register successfully.";
 
-header('location: dashboarduser.php');
+header('location: index.php');

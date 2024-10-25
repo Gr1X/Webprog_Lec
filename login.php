@@ -16,7 +16,7 @@
             <div class="col-lg-8 col-md-10 col-sm-12">
                 <div class="card login-card border-0 shadow-lg">
                     <div class="row g-0">
-                        <div class="col-lg-5 d-none d-lg-block"> <!-- Hanya tampil di layar lg -->
+                        <div class="col-lg-5 d-none d-lg-block">
                             <div class="background-card h-100">
                                 <div class="z-1 mt-auto">
                                     <p class="fs-1 m-0">Welcome to Waravent</p>

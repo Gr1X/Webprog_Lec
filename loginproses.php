@@ -35,7 +35,7 @@ if (!$row) {
 
     $akses = $_SESSION['akses_akun'];
     if ($akses == 'user') {
-        header('location: dashboarduser.php');
+        header('location: index.php');
     } else if($akses == 'admin') {
         header('location: dashboardadmin.php');
     }
