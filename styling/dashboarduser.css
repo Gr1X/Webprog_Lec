@@ -18,6 +18,8 @@ body {
         float: none;
         box-shadow: none; /* Hilangkan shadow */
         background-color: transparent; /* Hilangkan background dropdown */
+        display: flex;
+        flex-direction: column;
         border: none;
     }
 

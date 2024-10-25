@@ -172,6 +172,7 @@ list($waktu_mulai, $waktu_selesai) = explode(' - ', $waktu_event);
                     <option value="art" <?= ($kategori == 'art') ? 'selected' : '' ?>>Art</option>
                     <option value="education" <?= ($kategori == 'education') ? 'selected' : '' ?>>Education</option>
                     <option value="technology" <?= ($kategori == 'technology') ? 'selected' : '' ?>>Technology</option>
+                    <option value="traditional" <?= ($kategori == 'traditional') ? 'selected' : '' ?>>Traditional</option>
                 </select>
             </div>
 

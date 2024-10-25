@@ -57,6 +57,8 @@ $events = $stmt16->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light px-4 py-2 fixed-top">
         <div class="container-fluid navbar_asw">
+            <!-- Logo -->
+            <a class="navbar-brand fst-italic pt-sm-3 pt-md-3 pt-lg-0" href="#">Pandawara.</a>
             <!-- Tombol Toggle Navbar -->
             <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -64,8 +66,6 @@ $events = $stmt16->fetchAll(PDO::FETCH_ASSOC);
             
             <!-- Search Bar dan Navigasi -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <!-- Logo -->
-                <a class="navbar-brand fst-italic pt-sm-3 pt-md-3 pt-lg-0" href="#">Pandawara.</a>
                 <!-- Search Bar -->
                 <form action="mylist.php" method="post" class="input-group mx-lg-3 mt-sm-3 mt-md-3 mt-lg-0" role="search">
                     <input class="form-control input_search" type="text" name="keyword" placeholder="Search" aria-label="Search">
@@ -118,7 +118,7 @@ $events = $stmt16->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </nav>
 
-    <div class="mt-5 pt-5 mx-5">
+    <div class="mt-5 pt-5 mx-lg-5 mx-md-4 mx-sm-2">
         <div class="row my-3 mx-3">
             <?php foreach ($events as $event): ?>
                 <div class="col-md-6 mb-3">
@@ -150,6 +150,8 @@ $events = $stmt16->fetchAll(PDO::FETCH_ASSOC);
                                             echo 'Sports';
                                         } else if($event['kategori'] == 'technology'){
                                             echo 'Technology';
+                                        } else if($event['kategori'] == 'traditional'){
+                                            echo 'Traditional';
                                         }
                                         ?>
                                     </p>

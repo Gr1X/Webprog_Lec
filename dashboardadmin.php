@@ -56,6 +56,8 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light px-4 py-2 fixed-top">
     <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand fst-italic pt-sm-3 pt-md-3 pt-lg-0" href="#">Pandawara.</a>
         <!-- Tombol navbar-toggler -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -63,8 +65,6 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
 
         <!-- Collapse untuk navigasi dan search bar -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarScroll">
-            <!-- Logo -->
-            <a class="navbar-brand fst-italic pt-sm-3 pt-md-3 pt-lg-0" href="#">Pandawara.</a>
             <!-- Search Bar -->
             <form action="dashboardadmin.php" method="post" class="input-group mx-lg-3 mt-sm-3 mt-md-3 mt-lg-0" role="search">
                 <input class="form-control input_search" type="text" name="keyword" placeholder="Search" aria-label="Search">
@@ -127,7 +127,7 @@ $events = $stmt5->fetchAll(PDO::FETCH_ASSOC);
 
 
     <div class="container mt-5 pt-5">
-        <div class="row">
+        <div class="row justify-content-center">
             <!-- Card Gambar Event -->
             <div class="row">
                 <?php 

@@ -67,6 +67,8 @@ $registeredEvents = array_column($registers, 'id_event');
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light px-4 py-2 fixed-top">
         <div class="container-fluid navbar_asw">
+            <!-- Logo -->
+            <a class="navbar-brand fst-italic pt-sm-3 pt-md-3 pt-lg-0" href="#">Pandawara.</a>
             <!-- Tombol Toggle Navbar -->
             <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -74,8 +76,6 @@ $registeredEvents = array_column($registers, 'id_event');
             
             <!-- Search Bar dan Navigasi -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <!-- Logo -->
-                <a class="navbar-brand fst-italic pt-sm-3 pt-md-3 pt-lg-0" href="#">Pandawara.</a>
                 <!-- Search Bar -->
                 <form action="mylist.php" method="post" class="input-group mx-lg-3 mt-sm-3 mt-md-3 mt-lg-0" role="search">
                     <input class="form-control input_search" type="text" name="keyword" placeholder="Search" aria-label="Search">
@@ -129,7 +129,7 @@ $registeredEvents = array_column($registers, 'id_event');
     </nav>
 
     <div class="container mt-5 pt-5">
-        <div class="row">
+        <div class="row justify-content-center">
             <!-- Card Gambar Event -->
             <div class="row">
                 <?php 
@@ -155,7 +155,7 @@ $registeredEvents = array_column($registers, 'id_event');
                     $stmt13->execute([$event['id_event']]);
                     $totaldaftar = $stmt13->fetch(PDO::FETCH_ASSOC);
                 ?>
-                <div class="col-md-4">
+                <div class="col-lg-4 col-md-6">
                     <div class="card border border-0 mb-4" style="width: 100%;">
                         <!-- Gambar Event -->
                         <img src="uploads/<?= htmlspecialchars($event['foto_event'], ENT_QUOTES, 'UTF-8') ?>" class="card-img-top border border-0 rounded-3 shadow-sm" alt="...">

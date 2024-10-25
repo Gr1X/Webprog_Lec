@@ -148,6 +148,7 @@ if (!isset($_SESSION['username'])) {
                     <option value="art">Art</option>
                     <option value="education">Education</option>
                     <option value="technology">Technology</option>
+                    <option value="traditional">Traditional</option>
                 </select>
             </div>
 

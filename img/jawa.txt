@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background: #fff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 900px;
+        }
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .upload-photo {
+            background: linear-gradient(45deg, #d53369, #daae51);
+            color: #fff;
+            text-align: center;
+            padding: 50px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        /* .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        } */
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box; /* Ensures padding doesn't affect width */
+        }
+        .form-group textarea {
+            resize: none;
+            height: 100px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        .form-actions {
+            text-align: center;
+        }
+        .btn-create {
+            background: linear-gradient(45deg, #d53369, #daae51);
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn-create:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Create Event</h2>
+        <form action="create_event.php" method="post" enctype="multipart/form-data">
+            <div class="upload-photo">
+                <input type="file" name="event_image" style="display:none;" id="eventImage">
+                <label for="eventImage" style="cursor: pointer;">+ Select Photo to Upload</label>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" id="description" placeholder="Share more about your event and let everyone know" maxlength="1000"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" name="location" id="location" placeholder="Specific">
+            </div>
+            <div class="form-group">
+                <label for="date_event">Date Event</label>
+                <input type="text" name="date_event" id="date_event" placeholder="DD/MM/YY">
+            </div>
+            <div class="form-group">
+                <label for="max_participants">Maximum Participants</label>
+                <input type="number" name="max_participants" id="max_participants" placeholder="Number">
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select name="category" id="category">
+                    <option value="music">Music</option>
+                    <option value="sports">Sports</option>
+                    <option value="art">Art</option>
+                    <option value="education">Education</option>
+                    <option value="technology">Technology</option>
+                </select>
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn-create">Create Event</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

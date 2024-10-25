@@ -50,7 +50,7 @@ $link = htmlspecialchars($link, ENT_QUOTES, 'UTF-8');
                         <!-- Isi Dropdown -->
                         <ul class="dropdown-menu dropdown-menu-end m-0 p-0" id="profileDropdownMenu" aria-labelledby="navbarDropdown">
                             <li class="nav-item">
-                                <a class="dropdown-item d-flex m-0 px-md-0 px-lg-2 text-light icon-link" href="accountview.php">
+                                <a class="dropdown-item d-flex m-0 px-md-0 px-lg-2 text-dark icon-link" href="accountview.php">
                                 <i class='bx bxs-cog fs-4 align-self-center'></i>
                                 <span class="mx-2 p-0">Account Settings</span>
                                 </a>
