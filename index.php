@@ -85,7 +85,7 @@ $registeredEvents = array_column($registers, 'id_event');
                 <!-- Navigasi -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link d-flex align-items-center" href="dashboarduser.php">
+                        <a class="nav-link d-flex align-items-center" href="index.php">
                             <i class='bx bxs-home fs-4'></i>
                             <span class="mx-2 p-0">Dashboard</span>
                         </a>
